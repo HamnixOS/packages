@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "repo": "HamnixOS/packages",
+  "url": "https://255.one/",
+  "updated": "2026-05-26",
+  "description": "Hamnix package repository — JSON index + tarballs, GitHub Pages-hosted at 255.one. See README.md for the package format.",
+  "packages": [
+    {
+      "name": "hamnix-hello",
+      "version": "1.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-hello-1.0.tar.gz",
+      "sha256": "5ba9c945a78e7c5ef44e58b130216f897de9df001006b34fdfcbf41548704753",
+      "size": 686,
+      "description": "Minimal example package — proves the hpm install pipeline works",
+      "depends": []
+    }
+  ]
+}

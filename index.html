@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hamnix packages</title>
+<style>
+  body { font-family: ui-monospace, monospace; max-width: 64em;
+         margin: 2em auto; padding: 0 1em; color: #222; }
+  h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  th, td { padding: 0.4em 0.8em; text-align: left;
+           border-bottom: 1px solid #eee; }
+  th { background: #f6f6f6; }
+  code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; }
+  a { color: #06c; }
+</style>
+</head>
+<body>
+
+<h1>Hamnix packages</h1>
+
+<p>Repository for the Hamnix package manager (<code>hpm</code>).
+JSON index at <a href="index.json"><code>index.json</code></a>;
+tarballs under <a href="packages/"><code>packages/</code></a>.</p>
+
+<p>This page is the human-browsable view. <code>hpm</code> talks to
+<code>index.json</code> over HTTPS and downloads packages by URL +
+SHA-256.</p>
+
+<h2>Available packages</h2>
+
+<table>
+  <tr><th>Name</th><th>Version</th><th>Arch</th><th>Description</th><th>Download</th></tr>
+  <tr>
+    <td>hamnix-hello</td>
+    <td>1.0</td>
+    <td>x86_64</td>
+    <td>Minimal example package — proves the hpm install pipeline works</td>
+    <td><a href="packages/hamnix-hello-1.0.tar.gz">tarball</a></td>
+  </tr>
+</table>
+
+<h2>Package format</h2>
+
+<p>A Hamnix package is a gzipped tar containing a top-level directory
+named <code>&lt;name&gt;-&lt;version&gt;/</code> with this layout:</p>
+
+<pre>
+hamnix-hello-1.0/
+├── PKGINFO         # key:value metadata (name, version, arch, depends, ...)
+├── files/          # files to install into the target namespace
+│   └── bin/
+│       └── hamnix-hello
+└── install.hamsh   # optional post-install hook
+</pre>
+
+<p>See the repo README for the full schema.</p>
+
+<h2>Links</h2>
+
+<ul>
+  <li><a href="https://github.com/HamnixOS/Hamnix">HamnixOS/Hamnix</a> — the OS</li>
+  <li><a href="https://github.com/HamnixOS/adder">HamnixOS/adder</a> — the language</li>
+  <li><a href="https://github.com/HamnixOS/packages">HamnixOS/packages</a> — this repo</li>
+</ul>
+
+</body>
+</html>
