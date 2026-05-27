@@ -1,0 +1,264 @@
+{
+  "schema": 1,
+  "repo": "HamnixOS/packages",
+  "channel": "main",
+  "url": "https://255.one/main/",
+  "updated": "2026-05-27",
+  "description": "Hamnix main channel \u2014 first-party free software (hamnix-base metapackage + ~16 components + bootloader + linux-debian-12)",
+  "packages": [
+    {
+      "name": "hamnix-init",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-init-1.0.0.tar.gz",
+      "sha256": "f9e94c289a761f3bbe6ff5818a491a6792f21f0ead5e70495596086d9438f965",
+      "size": 10880,
+      "description": "Hamnix init (PID 1 shim + /etc/rc.boot + identity)",
+      "depends": [],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-hamsh",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-hamsh-1.0.0.tar.gz",
+      "sha256": "54901efef77b8ea2541d78811461a543c6b0ed25bd7943e6f4e6959429a4cd06",
+      "size": 54754,
+      "description": "Hamnix shell \u2014 /bin/hamsh + motd/banner",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-coreutils",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-coreutils-1.0.0.tar.gz",
+      "sha256": "d28da7ffc9ae137aa440c3c2224439703c868c86e197df21f872ce4527d19ea4",
+      "size": 114410,
+      "description": "Hamnix core userland \u2014 coreutils-shaped tools (cat/ls/echo/ps/...)",
+      "depends": [
+        "hamnix-hamsh>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-net",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-net-1.0.0.tar.gz",
+      "sha256": "b4aafc0e26b80005348534b6629afc3961d77cfb8e28f2d70a0173c9896064a0",
+      "size": 20813,
+      "description": "Hamnix networking userland \u2014 ifconfig, ping, route, httpd",
+      "depends": [
+        "hamnix-hamsh>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-svc-sshd",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-svc-sshd-1.0.0.tar.gz",
+      "sha256": "dee9d1a20197324ee141a730de066063ccca09c422bb34690ff33d2f93520f3e",
+      "size": 39146,
+      "description": "Hamnix in-tree SSH-2 server (sshd + svc definition)",
+      "depends": [
+        "hamnix-net>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hpm",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hpm-1.0.0.tar.gz",
+      "sha256": "bc85f25e26cab0af8ce9939b0db7c3577f0928135d3af4ef65df50461b7cbe7e",
+      "size": 64830,
+      "description": "Hamnix package manager (hpm)",
+      "depends": [
+        "hamnix-net>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-fs-ext4",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-fs-ext4-1.0.0.tar.gz",
+      "sha256": "7d16b4edfacb2b0e67562c3bddbb84b0ca149de01625740e2a3418faca07da9f",
+      "size": 6977,
+      "description": "Hamnix ext4 toolchain \u2014 mkfs_ext4 + install_file_to_slot",
+      "depends": [
+        "hamnix-hamsh>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-fs-fat",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-fs-fat-1.0.0.tar.gz",
+      "sha256": "2b93f0701b179ec9b0f9a99ce3ca5fcc5596f622b11bf792a9393951e2ec7bf8",
+      "size": 2725,
+      "description": "Hamnix FAT toolchain \u2014 mkfs_fat",
+      "depends": [
+        "hamnix-hamsh>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-drivers-net-e1000e",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-drivers-net-e1000e-1.0.0.tar.gz",
+      "sha256": "6686d9985fcea3212530e52cf99d5153ca7e186cd6b29768489de8c41a092c14",
+      "size": 162985,
+      "description": "Intel e1000e Ethernet driver (.ko)",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-drivers-block-ahci",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-drivers-block-ahci-1.0.0.tar.gz",
+      "sha256": "e4f14299a2821afa89b30516ab12122fac702d393dee2bbc75e54355ea45ccdb",
+      "size": 406604,
+      "description": "AHCI SATA block stack (ahci + libata + scsi_mod + ...)",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-drivers-block-nvme",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-drivers-block-nvme-1.0.0.tar.gz",
+      "sha256": "21a8b259fda93d522fc647216cf7bb754694a506085468ee42193ae07381e8eb",
+      "size": 137012,
+      "description": "NVMe block driver (nvme + nvme-core)",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-drivers-usb-xhci",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-drivers-usb-xhci-1.0.0.tar.gz",
+      "sha256": "1d7cf6bb5af65e963a0e501d79e1d0776eb6342fb12971c1a816572a0288b665",
+      "size": 359225,
+      "description": "USB xHCI host controller stack (xhci_pci + xhci_hcd + usbcore)",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-drivers-snd-hda",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-drivers-snd-hda-1.0.0.tar.gz",
+      "sha256": "ca5d4197362f1fde01cdcf8e6829583624761a526b5b8651f4c1919b341a2070",
+      "size": 363376,
+      "description": "Intel HDA audio stack (snd_hda_intel + ALSA core)",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-installer-tools",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-installer-tools-1.0.0.tar.gz",
+      "sha256": "e51cc9baaf1fb944ee94d8c1805ab8ac81074723c9a1c110cef4bf472c26815e",
+      "size": 5704,
+      "description": "Hamnix installer tools \u2014 partitioner + dd_blk",
+      "depends": [
+        "hamnix-fs-ext4>=1",
+        "hamnix-fs-fat>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-bootloader",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-bootloader-1.0.0.tar.gz",
+      "sha256": "829d65717be6e882ae55808103c11303e5b7884b933c1859073673b2d59c493b",
+      "size": 5465330,
+      "description": "Hamnix UEFI bootloader stub + kernel ELF (installs onto the ESP)",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#esp"
+    },
+    {
+      "name": "linux-debian-12",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/linux-debian-12-1.0.0.tar.gz",
+      "sha256": "fa2e9d566a384372df0d6bdf584278e093b13baf044d95f0b283d4cb8b43bba4",
+      "size": 24470559,
+      "description": "Debian 12 (bookworm) rootfs for the Linux namespace",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "provides": [
+        "linux-distro"
+      ],
+      "target": "#distro"
+    },
+    {
+      "name": "hamnix-base",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-base-1.0.0.tar.gz",
+      "sha256": "cacbfd7c0d5749307d73d9dd3c06bf821d8b7b70884243fe910fda4274584f82",
+      "size": 494,
+      "description": "Hamnix base \u2014 metapackage pulling in every component (init/hamsh/coreutils/net/sshd/hpm/fs/drivers/installer/bootloader)",
+      "depends": [
+        "hamnix-init>=1.0.0",
+        "hamnix-hamsh>=1.0.0",
+        "hamnix-coreutils>=1.0.0",
+        "hamnix-net>=1.0.0",
+        "hamnix-svc-sshd>=1.0.0",
+        "hpm>=1.0.0",
+        "hamnix-fs-ext4>=1.0.0",
+        "hamnix-fs-fat>=1.0.0",
+        "hamnix-drivers-net-e1000e>=1.0.0",
+        "hamnix-drivers-block-ahci>=1.0.0",
+        "hamnix-drivers-block-nvme>=1.0.0",
+        "hamnix-drivers-usb-xhci>=1.0.0",
+        "hamnix-drivers-snd-hda>=1.0.0",
+        "hamnix-installer-tools>=1.0.0",
+        "hamnix-bootloader>=1.0.0"
+      ],
+      "target": "#hamnix-system"
+    }
+  ]
+}

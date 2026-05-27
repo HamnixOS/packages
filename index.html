@@ -20,66 +20,56 @@
 <h1>Hamnix packages</h1>
 
 <p>Repository for the Hamnix package manager (<code>hpm</code>).
-JSON index at <a href="index.json"><code>index.json</code></a>;
-tarballs under <a href="packages/"><code>packages/</code></a>.</p>
+Top-level directories under this site are <em>channels</em> mirroring
+Debian's <code>main</code> / <code>contrib</code> /
+<code>non-free</code> / <code>non-free-firmware</code> split.
+<code>hpm</code> talks to each channel's <code>index.json</code> and
+downloads packages by URL + SHA-256.</p>
 
-<p>This page is the human-browsable view. <code>hpm</code> talks to
-<code>index.json</code> over HTTPS and downloads packages by URL +
-SHA-256.</p>
-
-<h2>Available packages</h2>
+<h2>Channels</h2>
 
 <table>
-  <tr><th>Name</th><th>Version</th><th>Arch</th><th>Target</th><th>Description</th><th>Download</th></tr>
+  <tr><th>Channel</th><th>Index</th><th>Packages</th><th>Description</th></tr>
   <tr>
-    <td>hamnix-base</td>
-    <td>1.0.0</td>
-    <td>x86_64</td>
-    <td><code>#hamnix-system</code></td>
-    <td>Hamnix base userland — init, hamsh, services, framework .kos</td>
-    <td><a href="packages/hamnix-base-1.0.0.tar.gz">tarball</a></td>
+    <td><a href="main/"><code>main</code></a></td>
+    <td><a href="main/index.json"><code>main/index.json</code></a></td>
+    <td><a href="main/packages/"><code>main/packages/</code></a></td>
+    <td>First-party / free software. Enabled by default. Holds
+        <code>hamnix-base</code> (metapackage), every component
+        (init/hamsh/coreutils/net/sshd/hpm/fs/drivers/installer/bootloader),
+        and <code>linux-debian-12</code>.</td>
   </tr>
   <tr>
-    <td>hamnix-bootloader</td>
-    <td>1.0.0</td>
-    <td>x86_64</td>
-    <td><code>#esp</code></td>
-    <td>UEFI bootloader stub + kernel ELF (installs onto the ESP)</td>
-    <td><a href="packages/hamnix-bootloader-1.0.0.tar.gz">tarball</a></td>
+    <td><a href="non-free/"><code>non-free</code></a></td>
+    <td><a href="non-free/index.json"><code>non-free/index.json</code></a></td>
+    <td>—</td>
+    <td>Reserved for software whose licence isn't DFSG-free.
+        Placeholder today; opt in with
+        <code>hpm enable non-free</code>.</td>
   </tr>
   <tr>
-    <td>hamnix-installer-tools</td>
-    <td>1.0.0</td>
-    <td>x86_64</td>
-    <td><code>#hamnix-system</code></td>
-    <td>Installer tools — partitioner, mkfs, dd_blk, hpm</td>
-    <td><a href="packages/hamnix-installer-tools-1.0.0.tar.gz">tarball</a></td>
-  </tr>
-  <tr>
-    <td>linux-debian-12</td>
-    <td>1.0.0</td>
-    <td>x86_64</td>
-    <td><code>#distro</code></td>
-    <td>Debian 12 (bookworm) rootfs for the Linux namespace</td>
-    <td><a href="packages/linux-debian-12-1.0.0.tar.gz">tarball</a></td>
-  </tr>
-  <tr>
-    <td>hamnix-hello</td>
-    <td>1.0</td>
-    <td>x86_64</td>
-    <td><code>#hamnix-system</code></td>
-    <td>Minimal example package — proves the hpm install pipeline works</td>
-    <td><a href="packages/hamnix-hello-1.0.tar.gz">tarball</a></td>
+    <td><a href="non-free-firmware/"><code>non-free-firmware</code></a></td>
+    <td><a href="non-free-firmware/index.json"><code>non-free-firmware/index.json</code></a></td>
+    <td>—</td>
+    <td>Reserved for binary firmware blobs (wifi, GPU, camera).
+        Placeholder today; opt in with
+        <code>hpm enable non-free-firmware</code>.</td>
   </tr>
 </table>
 
-<p>Install via <code>hpm install &lt;name&gt;</code>. The v1 release
-(<code>hamnix-base</code> + <code>hamnix-bootloader</code> +
-<code>hamnix-installer-tools</code> + <code>linux-debian-12</code>) is
-what the Hamnix live installer lays down on a fresh disk: instead of
-dd-copying whole partitions, it runs <code>hpm install</code> against a
-mini-repo of these tarballs baked into the ISO at
-<code>/mnt/iso-packages/</code>.</p>
+<h2>Using <code>hpm</code></h2>
+
+<pre>
+hpm channels                       # list enabled channels
+hpm enable non-free-firmware       # subscribe to non-free-firmware
+hpm refresh                        # fetch every enabled channel's index
+hpm install hamnix-base            # metapackage — pulls in the full OS
+</pre>
+
+<p>The Hamnix live installer drives the same <code>hpm install</code>
+pipeline against an ISO-bundled mini-repo at
+<code>file:///iso-packages/main/</code> rather than over HTTPS, but the
+package format and dependency-graph logic are identical.</p>
 
 <h2>Package format</h2>
 
@@ -87,15 +77,17 @@ mini-repo of these tarballs baked into the ISO at
 named <code>&lt;name&gt;-&lt;version&gt;/</code> with this layout:</p>
 
 <pre>
-hamnix-hello-1.0/
+hamnix-init-1.0.0/
 ├── PKGINFO         # key:value metadata (name, version, arch, depends, ...)
 ├── files/          # files to install into the target namespace
-│   └── bin/
-│       └── hamnix-hello
+│   └── init        # → /init on the target
+│   └── etc/
+│       └── rc.boot # → /etc/rc.boot on the target
 └── install.hamsh   # optional post-install hook
 </pre>
 
-<p>See the repo README for the full schema.</p>
+<p>See the repo <a href="https://github.com/HamnixOS/packages">README</a>
+for the full schema and channel notes.</p>
 
 <h2>Links</h2>
 
