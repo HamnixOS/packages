@@ -30,15 +30,56 @@ SHA-256.</p>
 <h2>Available packages</h2>
 
 <table>
-  <tr><th>Name</th><th>Version</th><th>Arch</th><th>Description</th><th>Download</th></tr>
+  <tr><th>Name</th><th>Version</th><th>Arch</th><th>Target</th><th>Description</th><th>Download</th></tr>
+  <tr>
+    <td>hamnix-base</td>
+    <td>1.0.0</td>
+    <td>x86_64</td>
+    <td><code>#hamnix-system</code></td>
+    <td>Hamnix base userland — init, hamsh, services, framework .kos</td>
+    <td><a href="packages/hamnix-base-1.0.0.tar.gz">tarball</a></td>
+  </tr>
+  <tr>
+    <td>hamnix-bootloader</td>
+    <td>1.0.0</td>
+    <td>x86_64</td>
+    <td><code>#esp</code></td>
+    <td>UEFI bootloader stub + kernel ELF (installs onto the ESP)</td>
+    <td><a href="packages/hamnix-bootloader-1.0.0.tar.gz">tarball</a></td>
+  </tr>
+  <tr>
+    <td>hamnix-installer-tools</td>
+    <td>1.0.0</td>
+    <td>x86_64</td>
+    <td><code>#hamnix-system</code></td>
+    <td>Installer tools — partitioner, mkfs, dd_blk, hpm</td>
+    <td><a href="packages/hamnix-installer-tools-1.0.0.tar.gz">tarball</a></td>
+  </tr>
+  <tr>
+    <td>linux-debian-12</td>
+    <td>1.0.0</td>
+    <td>x86_64</td>
+    <td><code>#distro</code></td>
+    <td>Debian 12 (bookworm) rootfs for the Linux namespace</td>
+    <td><a href="packages/linux-debian-12-1.0.0.tar.gz">tarball</a></td>
+  </tr>
   <tr>
     <td>hamnix-hello</td>
     <td>1.0</td>
     <td>x86_64</td>
+    <td><code>#hamnix-system</code></td>
     <td>Minimal example package — proves the hpm install pipeline works</td>
     <td><a href="packages/hamnix-hello-1.0.tar.gz">tarball</a></td>
   </tr>
 </table>
+
+<p>Install via <code>hpm install &lt;name&gt;</code>. The v1 release
+(<code>hamnix-base</code> + <code>hamnix-bootloader</code> +
+<code>hamnix-installer-tools</code> + <code>linux-debian-12</code>) is
+what the Hamnix live installer lays down on a fresh disk: instead of
+dd-copying whole partitions, it runs <code>hpm install</code> against a
+mini-repo of these tarballs baked into the ISO at
+<code>/mnt/iso-packages/</code>.</p>
 
 <h2>Package format</h2>
 
