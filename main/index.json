@@ -4,7 +4,7 @@
   "channel": "main",
   "url": "https://255.one/main/",
   "updated": "2026-05-27",
-  "description": "Hamnix main channel \u2014 first-party free software (hamnix-base metapackage + ~16 components + bootloader + linux-debian-12)",
+  "description": "Hamnix main channel — first-party free software (hamnix-base metapackage + ~16 components + bootloader + linux-debian-12)",
   "packages": [
     {
       "name": "hamnix-init",
@@ -26,7 +26,7 @@
       "url": "packages/hamnix-hamsh-1.0.0.tar.gz",
       "sha256": "54901efef77b8ea2541d78811461a543c6b0ed25bd7943e6f4e6959429a4cd06",
       "size": 54754,
-      "description": "Hamnix shell \u2014 /bin/hamsh + motd/banner",
+      "description": "Hamnix shell — /bin/hamsh + motd/banner",
       "depends": [
         "hamnix-init>=1"
       ],
@@ -40,7 +40,7 @@
       "url": "packages/hamnix-coreutils-1.0.0.tar.gz",
       "sha256": "d28da7ffc9ae137aa440c3c2224439703c868c86e197df21f872ce4527d19ea4",
       "size": 114410,
-      "description": "Hamnix core userland \u2014 coreutils-shaped tools (cat/ls/echo/ps/...)",
+      "description": "Hamnix core userland — coreutils-shaped tools (cat/ls/echo/ps/...)",
       "depends": [
         "hamnix-hamsh>=1"
       ],
@@ -54,7 +54,7 @@
       "url": "packages/hamnix-net-1.0.0.tar.gz",
       "sha256": "b4aafc0e26b80005348534b6629afc3961d77cfb8e28f2d70a0173c9896064a0",
       "size": 20813,
-      "description": "Hamnix networking userland \u2014 ifconfig, ping, route, httpd",
+      "description": "Hamnix networking userland — ifconfig, ping, route, httpd",
       "depends": [
         "hamnix-hamsh>=1"
       ],
@@ -96,7 +96,7 @@
       "url": "packages/hamnix-fs-ext4-1.0.0.tar.gz",
       "sha256": "7d16b4edfacb2b0e67562c3bddbb84b0ca149de01625740e2a3418faca07da9f",
       "size": 6977,
-      "description": "Hamnix ext4 toolchain \u2014 mkfs_ext4 + install_file_to_slot",
+      "description": "Hamnix ext4 toolchain — mkfs_ext4 + install_file_to_slot",
       "depends": [
         "hamnix-hamsh>=1"
       ],
@@ -110,7 +110,7 @@
       "url": "packages/hamnix-fs-fat-1.0.0.tar.gz",
       "sha256": "2b93f0701b179ec9b0f9a99ce3ca5fcc5596f622b11bf792a9393951e2ec7bf8",
       "size": 2725,
-      "description": "Hamnix FAT toolchain \u2014 mkfs_fat",
+      "description": "Hamnix FAT toolchain — mkfs_fat",
       "depends": [
         "hamnix-hamsh>=1"
       ],
@@ -194,7 +194,7 @@
       "url": "packages/hamnix-installer-tools-1.0.0.tar.gz",
       "sha256": "e51cc9baaf1fb944ee94d8c1805ab8ac81074723c9a1c110cef4bf472c26815e",
       "size": 5704,
-      "description": "Hamnix installer tools \u2014 partitioner + dd_blk",
+      "description": "Hamnix installer tools — partitioner + dd_blk",
       "depends": [
         "hamnix-fs-ext4>=1",
         "hamnix-fs-fat>=1"
@@ -240,7 +240,7 @@
       "url": "packages/hamnix-base-1.0.0.tar.gz",
       "sha256": "cacbfd7c0d5749307d73d9dd3c06bf821d8b7b70884243fe910fda4274584f82",
       "size": 494,
-      "description": "Hamnix base \u2014 metapackage pulling in every component (init/hamsh/coreutils/net/sshd/hpm/fs/drivers/installer/bootloader)",
+      "description": "Hamnix base — metapackage pulling in every component (init/hamsh/coreutils/net/sshd/hpm/fs/drivers/installer/bootloader)",
       "depends": [
         "hamnix-init>=1.0.0",
         "hamnix-hamsh>=1.0.0",
