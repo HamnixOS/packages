@@ -20,7 +20,7 @@
       "version": "1.0.0",
       "arch": "x86_64",
       "url": "packages/hamnix-base-1.0.0.tar.gz",
-      "sha256": "1f4bac3a64b9a0dd07801ebdcc714a9fa9430c7369483874bae51bea921ef50f",
+      "sha256": "f3fb5722cc12633a8c4577e9de8db4bea053f2b67a851a5b8a397e96221f34d4",
       "size": 285405,
       "description": "Hamnix base userland \u2014 init, hamsh, services, framework .kos",
       "depends": [],
@@ -31,8 +31,8 @@
       "version": "1.0.0",
       "arch": "x86_64",
       "url": "packages/hamnix-bootloader-1.0.0.tar.gz",
-      "sha256": "67a2172c523186d6a4c2f87a6e4bce58238443489cdc8b29765ab7f1a3744df6",
-      "size": 29860921,
+      "sha256": "5d7880c165e034679b949092a803a01a60c3dcf6e713ed0f3d2ab3c4d04cbcc6",
+      "size": 533,
       "description": "Hamnix UEFI bootloader stub + kernel ELF (installs onto the ESP)",
       "depends": [
         "hamnix-base>=1"
@@ -44,7 +44,7 @@
       "version": "1.0.0",
       "arch": "x86_64",
       "url": "packages/hamnix-installer-tools-1.0.0.tar.gz",
-      "sha256": "61cb177647e0199117dc84edd8560e42b1155c0f283f8b461427d823cfd9545c",
+      "sha256": "6322e6347a67e428cc0c65f8367828f3459c6a8bcd2588dc3fb2fb11e587c2dd",
       "size": 66632,
       "description": "Hamnix installer tools \u2014 partitioner, mkfs, dd_blk, hpm",
       "depends": [
@@ -57,8 +57,8 @@
       "version": "1.0.0",
       "arch": "x86_64",
       "url": "packages/linux-debian-12-1.0.0.tar.gz",
-      "sha256": "8b6fd1de5e5e04f5be1869d213eebac63a7ed04c4cf18ed87ef7fec8d28d71c2",
-      "size": 24470560,
+      "sha256": "2ec9013407f89c37ef0b99fa817b141fc4ce06d8006414762398b442e84cec4a",
+      "size": 558,
       "description": "Debian 12 (bookworm) rootfs for the Linux namespace",
       "depends": [
         "hamnix-base>=1"
