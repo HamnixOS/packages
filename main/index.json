@@ -4,7 +4,7 @@
   "channel": "main",
   "url": "https://255.one/main/",
   "updated": "2026-05-27",
-  "description": "Hamnix main channel — first-party free software (hamnix-base metapackage + ~16 components + bootloader + linux-debian-12)",
+  "description": "Hamnix main channel — first-party free software (hamnix-base + hamnix-coreutils metapackages + one hamnix-<cmd> package per command + components + bootloader + linux-debian-12)",
   "packages": [
     {
       "name": "hamnix-init",
@@ -12,8 +12,8 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-init-1.0.0.tar.gz",
-      "sha256": "f9e94c289a761f3bbe6ff5818a491a6792f21f0ead5e70495596086d9438f965",
-      "size": 10880,
+      "sha256": "baf03f2693514f4f6cb5127d11a11b4949234311977d66859314bdce799cb5e7",
+      "size": 7667,
       "description": "Hamnix init (PID 1 shim + /etc/rc.boot + identity)",
       "depends": [],
       "target": "#hamnix-system"
@@ -24,8 +24,8 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-hamsh-1.0.0.tar.gz",
-      "sha256": "54901efef77b8ea2541d78811461a543c6b0ed25bd7943e6f4e6959429a4cd06",
-      "size": 54754,
+      "sha256": "7617eddc174f8a573f1ad6e59ef97a4bcb3cc5e85ec625218fbde066604c0e62",
+      "size": 57333,
       "description": "Hamnix shell — /bin/hamsh + motd/banner",
       "depends": [
         "hamnix-init>=1"
@@ -38,11 +38,94 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-coreutils-1.0.0.tar.gz",
-      "sha256": "d28da7ffc9ae137aa440c3c2224439703c868c86e197df21f872ce4527d19ea4",
-      "size": 114410,
-      "description": "Hamnix core userland — coreutils-shaped tools (cat/ls/echo/ps/...)",
+      "sha256": "152267b1c46b74a30b3b84c236a5810ff0b75ad44e1c2c2c4108c748a1437492",
+      "size": 710,
+      "description": "Hamnix core userland metapackage — pulls in every per-command package (cat/ls/echo/ps/...)",
       "depends": [
-        "hamnix-hamsh>=1"
+        "hamnix-hamsh>=1",
+        "hamnix-ascii>=1.0.0",
+        "hamnix-awk>=1.0.0",
+        "hamnix-base64>=1.0.0",
+        "hamnix-basename>=1.0.0",
+        "hamnix-cal>=1.0.0",
+        "hamnix-cat>=1.0.0",
+        "hamnix-clear>=1.0.0",
+        "hamnix-cmp>=1.0.0",
+        "hamnix-cp>=1.0.0",
+        "hamnix-cut>=1.0.0",
+        "hamnix-date>=1.0.0",
+        "hamnix-df>=1.0.0",
+        "hamnix-diff>=1.0.0",
+        "hamnix-dirname>=1.0.0",
+        "hamnix-distrofs>=1.0.0",
+        "hamnix-dmesg>=1.0.0",
+        "hamnix-du>=1.0.0",
+        "hamnix-echo>=1.0.0",
+        "hamnix-ed>=1.0.0",
+        "hamnix-env-show>=1.0.0",
+        "hamnix-expr>=1.0.0",
+        "hamnix-false>=1.0.0",
+        "hamnix-find>=1.0.0",
+        "hamnix-free>=1.0.0",
+        "hamnix-getty>=1.0.0",
+        "hamnix-grep>=1.0.0",
+        "hamnix-halt>=1.0.0",
+        "hamnix-hamwd>=1.0.0",
+        "hamnix-head>=1.0.0",
+        "hamnix-hostname>=1.0.0",
+        "hamnix-id>=1.0.0",
+        "hamnix-insmod>=1.0.0",
+        "hamnix-kill>=1.0.0",
+        "hamnix-less>=1.0.0",
+        "hamnix-ln>=1.0.0",
+        "hamnix-login>=1.0.0",
+        "hamnix-ls>=1.0.0",
+        "hamnix-lsmod>=1.0.0",
+        "hamnix-md5sum>=1.0.0",
+        "hamnix-mkdir>=1.0.0",
+        "hamnix-more>=1.0.0",
+        "hamnix-motd>=1.0.0",
+        "hamnix-mv>=1.0.0",
+        "hamnix-nsbindprobe>=1.0.0",
+        "hamnix-nsrun>=1.0.0",
+        "hamnix-od>=1.0.0",
+        "hamnix-p9srv-demo>=1.0.0",
+        "hamnix-passwd>=1.0.0",
+        "hamnix-pgrep>=1.0.0",
+        "hamnix-poweroff>=1.0.0",
+        "hamnix-preempt-demo>=1.0.0",
+        "hamnix-preempt-hog>=1.0.0",
+        "hamnix-printf>=1.0.0",
+        "hamnix-ps>=1.0.0",
+        "hamnix-pwd>=1.0.0",
+        "hamnix-reboot>=1.0.0",
+        "hamnix-rev>=1.0.0",
+        "hamnix-rm>=1.0.0",
+        "hamnix-rmmod>=1.0.0",
+        "hamnix-sed>=1.0.0",
+        "hamnix-seq>=1.0.0",
+        "hamnix-sleep>=1.0.0",
+        "hamnix-sort>=1.0.0",
+        "hamnix-strings>=1.0.0",
+        "hamnix-su>=1.0.0",
+        "hamnix-tail>=1.0.0",
+        "hamnix-tee>=1.0.0",
+        "hamnix-test>=1.0.0",
+        "hamnix-top>=1.0.0",
+        "hamnix-touch>=1.0.0",
+        "hamnix-tr>=1.0.0",
+        "hamnix-true>=1.0.0",
+        "hamnix-uname>=1.0.0",
+        "hamnix-uptime>=1.0.0",
+        "hamnix-u-server>=1.0.0",
+        "hamnix-u-tlstest>=1.0.0",
+        "hamnix-watch>=1.0.0",
+        "hamnix-wc>=1.0.0",
+        "hamnix-whatis>=1.0.0",
+        "hamnix-which>=1.0.0",
+        "hamnix-whoami>=1.0.0",
+        "hamnix-xargs>=1.0.0",
+        "hamnix-yes>=1.0.0"
       ],
       "target": "#hamnix-system"
     },
@@ -52,8 +135,8 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-net-1.0.0.tar.gz",
-      "sha256": "b4aafc0e26b80005348534b6629afc3961d77cfb8e28f2d70a0173c9896064a0",
-      "size": 20813,
+      "sha256": "3ab37c7bf5e7f1fd35ece7c4de49f2f9ab6272b83f36e135804c49a8dce24506",
+      "size": 20973,
       "description": "Hamnix networking userland — ifconfig, ping, route, httpd",
       "depends": [
         "hamnix-hamsh>=1"
@@ -66,8 +149,8 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-svc-sshd-1.0.0.tar.gz",
-      "sha256": "dee9d1a20197324ee141a730de066063ccca09c422bb34690ff33d2f93520f3e",
-      "size": 39146,
+      "sha256": "156dbdc4687458c534cf35da8f817235f90d3847465b1e944f1b5a4ace6abda5",
+      "size": 39216,
       "description": "Hamnix in-tree SSH-2 server (sshd + svc definition)",
       "depends": [
         "hamnix-net>=1"
@@ -80,8 +163,8 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hpm-1.0.0.tar.gz",
-      "sha256": "bc85f25e26cab0af8ce9939b0db7c3577f0928135d3af4ef65df50461b7cbe7e",
-      "size": 64830,
+      "sha256": "bf711b30519c35b679fc401a31ad276eaf57cd6ad9f9ad4d3ed724b1442ffa78",
+      "size": 67592,
       "description": "Hamnix package manager (hpm)",
       "depends": [
         "hamnix-net>=1"
@@ -94,8 +177,8 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-fs-ext4-1.0.0.tar.gz",
-      "sha256": "7d16b4edfacb2b0e67562c3bddbb84b0ca149de01625740e2a3418faca07da9f",
-      "size": 6977,
+      "sha256": "2342f28686469c0a71241b22a1f800db1c12a614d7cc662fd4312e952be8d018",
+      "size": 7061,
       "description": "Hamnix ext4 toolchain — mkfs_ext4 + install_file_to_slot",
       "depends": [
         "hamnix-hamsh>=1"
@@ -108,8 +191,8 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-fs-fat-1.0.0.tar.gz",
-      "sha256": "2b93f0701b179ec9b0f9a99ce3ca5fcc5596f622b11bf792a9393951e2ec7bf8",
-      "size": 2725,
+      "sha256": "ae3116c384e3f1967b62c4445e41db3a0174ddee51b2409fa1f3c72eb7bfeded",
+      "size": 2773,
       "description": "Hamnix FAT toolchain — mkfs_fat",
       "depends": [
         "hamnix-hamsh>=1"
@@ -122,7 +205,7 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-drivers-net-e1000e-1.0.0.tar.gz",
-      "sha256": "6686d9985fcea3212530e52cf99d5153ca7e186cd6b29768489de8c41a092c14",
+      "sha256": "4f80cf879ea16935c1d6caa2f61cbf0d7460baa83d1f599f3405786c30ba0cd4",
       "size": 162985,
       "description": "Intel e1000e Ethernet driver (.ko)",
       "depends": [
@@ -136,7 +219,7 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-drivers-block-ahci-1.0.0.tar.gz",
-      "sha256": "e4f14299a2821afa89b30516ab12122fac702d393dee2bbc75e54355ea45ccdb",
+      "sha256": "62582559e44cc1b83c66e7d7b65e0937c944af384bbcca888028eb79eba41ed7",
       "size": 406604,
       "description": "AHCI SATA block stack (ahci + libata + scsi_mod + ...)",
       "depends": [
@@ -150,7 +233,7 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-drivers-block-nvme-1.0.0.tar.gz",
-      "sha256": "21a8b259fda93d522fc647216cf7bb754694a506085468ee42193ae07381e8eb",
+      "sha256": "b2dfbe6247497830cd91d4102accd273dada7c0b369568650830cbe3b096dacd",
       "size": 137012,
       "description": "NVMe block driver (nvme + nvme-core)",
       "depends": [
@@ -164,7 +247,7 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-drivers-usb-xhci-1.0.0.tar.gz",
-      "sha256": "1d7cf6bb5af65e963a0e501d79e1d0776eb6342fb12971c1a816572a0288b665",
+      "sha256": "42904ba0993fa30a2ef8bfab7ad702d728c4245a16afbce0357f08b3dadd5896",
       "size": 359225,
       "description": "USB xHCI host controller stack (xhci_pci + xhci_hcd + usbcore)",
       "depends": [
@@ -178,7 +261,7 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-drivers-snd-hda-1.0.0.tar.gz",
-      "sha256": "ca5d4197362f1fde01cdcf8e6829583624761a526b5b8651f4c1919b341a2070",
+      "sha256": "492455c0e7900b76220047e17ac91d0a2ee276e193e6830787e3f6758531c921",
       "size": 363376,
       "description": "Intel HDA audio stack (snd_hda_intel + ALSA core)",
       "depends": [
@@ -192,12 +275,1174 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-installer-tools-1.0.0.tar.gz",
-      "sha256": "e51cc9baaf1fb944ee94d8c1805ab8ac81074723c9a1c110cef4bf472c26815e",
-      "size": 5704,
+      "sha256": "c35192d627066e32b235a542de099e5aca6ea95fdaeb8b97460e47e4eab4f725",
+      "size": 5762,
       "description": "Hamnix installer tools — partitioner + dd_blk",
       "depends": [
         "hamnix-fs-ext4>=1",
         "hamnix-fs-fat>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-ascii",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-ascii-1.0.0.tar.gz",
+      "sha256": "18529994dba8cc15fa15414bf9f2e1bc04f3fcd4f10e136e8c9675eac0cc8fda",
+      "size": 2122,
+      "description": "Hamnix ascii command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-awk",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-awk-1.0.0.tar.gz",
+      "sha256": "1c1b0f30d1dd6b796d8289f6a1061a36f0141a2325a01d1dc75efe032d17e6cb",
+      "size": 2733,
+      "description": "Hamnix awk command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-base64",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-base64-1.0.0.tar.gz",
+      "sha256": "d1003247c7c75d6f66bf9b999cc698a6aa1f89048589ab8bec9694f67270bc3f",
+      "size": 3556,
+      "description": "Hamnix base64 command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-basename",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-basename-1.0.0.tar.gz",
+      "sha256": "c411829c26929b792b44554d0238a3f22d63c44bdb81e8230de84cc731a36960",
+      "size": 1879,
+      "description": "Hamnix basename command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-cal",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-cal-1.0.0.tar.gz",
+      "sha256": "779e1d8b7a3851c324303a2f6ff8d051b4a8fca9026d0e3389d34b17c464a041",
+      "size": 1894,
+      "description": "Hamnix cal command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-cat",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-cat-1.0.0.tar.gz",
+      "sha256": "10d50aafb7dd8e32e8484dc4c92ecb77a9b1d7bfca124f11e0ef4445d3753ee6",
+      "size": 2155,
+      "description": "Hamnix cat — stream one or more files to stdout",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-clear",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-clear-1.0.0.tar.gz",
+      "sha256": "4c8f43e34a6c5aa8478a1e2898ef26d09e00d6de951223df50d2fbf3e0404ca2",
+      "size": 1559,
+      "description": "Hamnix clear command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-cmp",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-cmp-1.0.0.tar.gz",
+      "sha256": "5978124b35b8921bb6736242099928a02cc55119225e250b31e0b244f8b0db57",
+      "size": 2643,
+      "description": "Hamnix cmp command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-cp",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-cp-1.0.0.tar.gz",
+      "sha256": "f7829805f441600ecdefeeb4d4a70c093c4ad78f1b315320de4226856300ed2f",
+      "size": 4179,
+      "description": "Hamnix cp — copy one file to another",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-cut",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-cut-1.0.0.tar.gz",
+      "sha256": "f6698fcf4ac482bed24adec5587cdf638f9da41e483153741af0e1870e298b12",
+      "size": 2675,
+      "description": "Hamnix cut command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-date",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-date-1.0.0.tar.gz",
+      "sha256": "563b066bc5b351259d4cda9ebb19211be19128e0aa21e0ee8ebb302a0b36c4ad",
+      "size": 2203,
+      "description": "Hamnix date command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-df",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-df-1.0.0.tar.gz",
+      "sha256": "d47f4ed3aed12bf6316b1b706dd488a2bae55d1f282c02f3b612554920e1d75b",
+      "size": 1962,
+      "description": "Hamnix df — dump /proc/mounts",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-diff",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-diff-1.0.0.tar.gz",
+      "sha256": "24d815b1c22b461fa27a5e18aa18e9dcf846e97414a8285468262774fb731c3b",
+      "size": 2664,
+      "description": "Hamnix diff command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-dirname",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-dirname-1.0.0.tar.gz",
+      "sha256": "aaa7bd2e78de784f4669b48dd521540dc281107471d9a5d5f94117f827153232",
+      "size": 1952,
+      "description": "Hamnix dirname command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-distrofs",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-distrofs-1.0.0.tar.gz",
+      "sha256": "9aaf1fa2dfad784c61161f255e9d4afd877878210b010c638adb343a49fa2072",
+      "size": 23055,
+      "description": "Hamnix distrofs command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-dmesg",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-dmesg-1.0.0.tar.gz",
+      "sha256": "fbfda28ec6e21c3eec05b652136940a03b9f3f4c4e13a3ce4804153b013eda14",
+      "size": 1926,
+      "description": "Hamnix dmesg — read /proc/kmsg",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-du",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-du-1.0.0.tar.gz",
+      "sha256": "27aeacd92e59012620e5297af0064f558c849534b4c92a0d40ec01915b96f583",
+      "size": 2304,
+      "description": "Hamnix du — count entries beneath a directory",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-echo",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-echo-1.0.0.tar.gz",
+      "sha256": "16a79ddd35a56322deb55e788f6468f287eef7fe44ce74159e2247f4214eef15",
+      "size": 1800,
+      "description": "Hamnix echo command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-ed",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-ed-1.0.0.tar.gz",
+      "sha256": "fb73444f566fddd586d7eb28512ca7f1b0963db22aa1fc1243e4f1a4a5f12a12",
+      "size": 312,
+      "description": "Hamnix ed command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-env-show",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-env-show-1.0.0.tar.gz",
+      "sha256": "c4faad5d0ca2c1738f36da308eb93c7d647498853b5a723db0055d823c23a3e0",
+      "size": 1600,
+      "description": "Hamnix env_show command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-expr",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-expr-1.0.0.tar.gz",
+      "sha256": "46db8d18d3efcc1974b4c8bed9ee84dd750cf464e0578e3b0f2400760d3fee38",
+      "size": 2636,
+      "description": "Hamnix expr command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-false",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-false-1.0.0.tar.gz",
+      "sha256": "43426a89b8526bb6b30ecf0e549694811c4866d34dc7942341058e25acd8678c",
+      "size": 1499,
+      "description": "Hamnix false command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-find",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-find-1.0.0.tar.gz",
+      "sha256": "4f198bcdae89072f4c6acdafef94f000f2d1dc95457b66d35297aa84686fc578",
+      "size": 2560,
+      "description": "Hamnix find — print every path under a starting directory",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-free",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-free-1.0.0.tar.gz",
+      "sha256": "c48e8c2df43594a30e8555b2d1af4fc98ff48178fb55e2a26f30fee7c6320554",
+      "size": 2493,
+      "description": "Hamnix free command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-getty",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-getty-1.0.0.tar.gz",
+      "sha256": "9d2387846a4ab0139006ace2f2a2579ad8de44990ed80dbfd65e4b93e6642be4",
+      "size": 1837,
+      "description": "Hamnix getty command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-grep",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-grep-1.0.0.tar.gz",
+      "sha256": "aa730c2347e77edf2c33d2438864a058fcff8f2e6ac8bb8ce4b077d088fabee0",
+      "size": 2417,
+      "description": "Hamnix grep command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-halt",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-halt-1.0.0.tar.gz",
+      "sha256": "db558204d7e14cd35c9bac96e443067c234c83cbedd6710a278f28b068a5df1f",
+      "size": 1742,
+      "description": "Hamnix halt command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-hamwd",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-hamwd-1.0.0.tar.gz",
+      "sha256": "03d14d6b9b43dfc5d5a5cd8401eda6b88a46058f6ad4fbfaf61622da1aa85a8b",
+      "size": 6213,
+      "description": "Hamnix hamwd command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-head",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-head-1.0.0.tar.gz",
+      "sha256": "941f260a4b8dd6e9dfdc91a10ff06a504c97baf217015ed1447e34ee86c84dfb",
+      "size": 2306,
+      "description": "Hamnix head command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-hostname",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-hostname-1.0.0.tar.gz",
+      "sha256": "575d3b3b3657db5c99f746f9f2b1e4860944a0506a401cbdfb3ef58ad6a1115e",
+      "size": 1882,
+      "description": "Hamnix hostname command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-id",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-id-1.0.0.tar.gz",
+      "sha256": "9fe12a1ed17eaf2a7c044f6c0f48f392a8d4adae376a357b21d90d3934a8faea",
+      "size": 1566,
+      "description": "Hamnix id command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-insmod",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-insmod-1.0.0.tar.gz",
+      "sha256": "879da2467d2033283ed9921b1c8d24d99a265e556794a79f29b3fad50af38a4e",
+      "size": 2266,
+      "description": "Hamnix insmod command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-kill",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-kill-1.0.0.tar.gz",
+      "sha256": "4bdd1d011da48be6a7a065a89a9de39453243ee6cd931266418d5d16ddc51bbb",
+      "size": 2136,
+      "description": "Hamnix kill command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-less",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-less-1.0.0.tar.gz",
+      "sha256": "1dc392fa86bce1524160f30748cc90ebbd21079c1e00827cc0581f941b51473c",
+      "size": 2064,
+      "description": "Hamnix less command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-ln",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-ln-1.0.0.tar.gz",
+      "sha256": "7ce2dd660fcc511740c7b35e889e290bea832c53b6ab99650f802e38d578ebc0",
+      "size": 1856,
+      "description": "Hamnix ln command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-login",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-login-1.0.0.tar.gz",
+      "sha256": "19f6d95261133ce078b694949566f9cc15eff8aaa8020bd84e9d8fdbf223c2cc",
+      "size": 1722,
+      "description": "Hamnix login command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-ls",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-ls-1.0.0.tar.gz",
+      "sha256": "3f3b5c750b77975f1bd9293779ecfb94f6f193a9587970d62eed71fc29bad1bc",
+      "size": 1986,
+      "description": "Hamnix ls — list the entries of a directory",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-lsmod",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-lsmod-1.0.0.tar.gz",
+      "sha256": "2a50c07fb432bc460b4dbc4f3d843de57a83ec8d438781b2e155456118b788d0",
+      "size": 1738,
+      "description": "Hamnix lsmod command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-md5sum",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-md5sum-1.0.0.tar.gz",
+      "sha256": "ee1348aedd88daa9a1873901ab35dbaabf5c3aa101a0b60b762230178f1a4d61",
+      "size": 1724,
+      "description": "Hamnix md5sum command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-mkdir",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-mkdir-1.0.0.tar.gz",
+      "sha256": "d5545896d1ad20db2954eebe57e12d46b6d368bed348a6a79b457dd35c0a08f9",
+      "size": 1909,
+      "description": "Hamnix mkdir command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-more",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-more-1.0.0.tar.gz",
+      "sha256": "e538a55e5b0401581322ecaef17166cc4d98dead39a0c988b916a2e60a2312f4",
+      "size": 2066,
+      "description": "Hamnix more command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-motd",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-motd-1.0.0.tar.gz",
+      "sha256": "0656dd8c93d723b44bb3b9c788b87616c65f18c269060d588e3c134b8e3dbbd1",
+      "size": 1793,
+      "description": "Hamnix motd command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-mv",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-mv-1.0.0.tar.gz",
+      "sha256": "d5d31442d759f84c8a133d7ffef2acae63bac88d39d33518ee979732c7002e9d",
+      "size": 2290,
+      "description": "Hamnix mv command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-nsbindprobe",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-nsbindprobe-1.0.0.tar.gz",
+      "sha256": "5e18377939b5640d93e3d418f095ba7c5ff82d9f20263ad9c5693eadc725cd8c",
+      "size": 1812,
+      "description": "Hamnix nsbindprobe command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-nsrun",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-nsrun-1.0.0.tar.gz",
+      "sha256": "d46b804b40ca4faacb8d7b65b85f90a80e825476f55013726e455dc70e94fed5",
+      "size": 3910,
+      "description": "Hamnix nsrun command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-od",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-od-1.0.0.tar.gz",
+      "sha256": "1a508ea7ed00cc7cece8dd59963028553db7a8cc7b8fab374bef75f223de8218",
+      "size": 2076,
+      "description": "Hamnix od command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-p9srv-demo",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-p9srv-demo-1.0.0.tar.gz",
+      "sha256": "97d8033e1a8ed6345c71027f3de8a2d6dd9799383b2b5ac61a5e0566912a697e",
+      "size": 14028,
+      "description": "Hamnix p9srv_demo command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-passwd",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-passwd-1.0.0.tar.gz",
+      "sha256": "c6cfd68ac60d3f97a5f4dd51a86fe04285df9ec65fff2138ebe773f2b0b8a9fb",
+      "size": 1724,
+      "description": "Hamnix passwd command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-pgrep",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-pgrep-1.0.0.tar.gz",
+      "sha256": "493ed568844c51e42363336f10eadd64fdcb4a87e6196482df82e007a483b9c9",
+      "size": 2626,
+      "description": "Hamnix pgrep command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-poweroff",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-poweroff-1.0.0.tar.gz",
+      "sha256": "19a0cfd8f27efb3bb554e1510fb7f361cdcc2901d76de52c76b0834ae398d8dd",
+      "size": 1759,
+      "description": "Hamnix poweroff command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-preempt-demo",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-preempt-demo-1.0.0.tar.gz",
+      "sha256": "9f2f63351212f4fd18e2928c035971316d67a709d8b0430c880f4eb37ee468df",
+      "size": 2214,
+      "description": "Hamnix preempt_demo command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-preempt-hog",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-preempt-hog-1.0.0.tar.gz",
+      "sha256": "85de05f35db0a03266cc30deacff808963c6c862eec03a60de393f42760e0f75",
+      "size": 1779,
+      "description": "Hamnix preempt_hog command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-printf",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-printf-1.0.0.tar.gz",
+      "sha256": "586a78d5f57e63f8388c3a0f404566f4c1ad94ae2c53b18b1d377a28d035900d",
+      "size": 2567,
+      "description": "Hamnix printf command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-ps",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-ps-1.0.0.tar.gz",
+      "sha256": "fec0fd7b0b059ed230a29b6a1f41f8c0f2f9e454dc7ba23929a3542ac4216716",
+      "size": 2097,
+      "description": "Hamnix ps — print a per-task snapshot from /proc",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-pwd",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-pwd-1.0.0.tar.gz",
+      "sha256": "50e25987258298ac9f77d75364aafd932e855da9d94206480a8fc594c20a0a01",
+      "size": 1680,
+      "description": "Hamnix pwd command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-reboot",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-reboot-1.0.0.tar.gz",
+      "sha256": "d126492cd44db075f484fa6dc4681f8124128ffab26a77aae3ab0320d6d1aa63",
+      "size": 1736,
+      "description": "Hamnix reboot command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-rev",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-rev-1.0.0.tar.gz",
+      "sha256": "9477c97a048926bb014d6991e5e7d4c3bc2b2bb6e66e095f928494b202a64ac9",
+      "size": 2074,
+      "description": "Hamnix rev command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-rm",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-rm-1.0.0.tar.gz",
+      "sha256": "8db321f242f87a255ee965c91a8b8094a2758a1123c3eb620ef9899900b07dbe",
+      "size": 1900,
+      "description": "Hamnix rm command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-rmmod",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-rmmod-1.0.0.tar.gz",
+      "sha256": "4039a5e57647b2430048de3f3ed7e1c533267a7c36aabffe1307e44e74e0049c",
+      "size": 2078,
+      "description": "Hamnix rmmod command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-sed",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-sed-1.0.0.tar.gz",
+      "sha256": "9ba64fbb637a4d283ad7204f05a0efeb62c434cd987e388b8afc15770c4045aa",
+      "size": 2938,
+      "description": "Hamnix sed command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-seq",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-seq-1.0.0.tar.gz",
+      "sha256": "a2bead272c953600f83542be0532b62e013c444cdc22fc370b1eb80d495a5a10",
+      "size": 2332,
+      "description": "Hamnix seq command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-sleep",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-sleep-1.0.0.tar.gz",
+      "sha256": "cd158829ed69fbe4fdf258e72fb220d8e81bee5edbc0bb63990815f4dca0b090",
+      "size": 2019,
+      "description": "Hamnix sleep command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-sort",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-sort-1.0.0.tar.gz",
+      "sha256": "bc4c39f533f2f8667879b643603804056d31dffd3046c8229f17f9dcec122240",
+      "size": 2660,
+      "description": "Hamnix sort command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-strings",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-strings-1.0.0.tar.gz",
+      "sha256": "7c4d184f896d79f884ae4eb6c613914b457982b4ad988246eb3206014fa1c9c9",
+      "size": 2266,
+      "description": "Hamnix strings command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-su",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-su-1.0.0.tar.gz",
+      "sha256": "c6e07296008b82bfff21d28e89c99ed9380c89d1464bc5d07592590185768357",
+      "size": 1711,
+      "description": "Hamnix su command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-tail",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-tail-1.0.0.tar.gz",
+      "sha256": "25f9d386a042519661987d690b5de63c500f64f1356249c053ad7d6631862303",
+      "size": 2450,
+      "description": "Hamnix tail command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-tee",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-tee-1.0.0.tar.gz",
+      "sha256": "b19bf93aafbc2db1462cf036a49fc74cb27d53fc7938dbb3f4ba085b8a2ba8fd",
+      "size": 1983,
+      "description": "Hamnix tee command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-test",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-test-1.0.0.tar.gz",
+      "sha256": "4ea4ad9c4e33d1ba7f5c820de3aefe9e1bea2875e386f4df15dc91b9a294d4ae",
+      "size": 2260,
+      "description": "Hamnix test command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-top",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-top-1.0.0.tar.gz",
+      "sha256": "fae59d52dc17b1d07b3e3666155f2f30eb79d0424bbd20b05eeb37a3dee3d980",
+      "size": 2148,
+      "description": "Hamnix top — print a snapshot of system and per-task state",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-touch",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-touch-1.0.0.tar.gz",
+      "sha256": "362bb9d705a9d365ad29d009ed5231553863197787c4fe7f07c8ac2595870ba4",
+      "size": 1916,
+      "description": "Hamnix touch command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-tr",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-tr-1.0.0.tar.gz",
+      "sha256": "d3174aee7b0daf9075f34207e2c9cccf93c4333bf86a4f783cd7bdd682915cbc",
+      "size": 2182,
+      "description": "Hamnix tr command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-true",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-true-1.0.0.tar.gz",
+      "sha256": "91464ee44426568b59ff127066a858e5d3667fc1242b0ed7614b0918c5350ead",
+      "size": 1499,
+      "description": "Hamnix true command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-uname",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-uname-1.0.0.tar.gz",
+      "sha256": "3b2802b80659d45fb76db3eacb258a02d3ba4b8059588e95d9ca7e9946ce5bc3",
+      "size": 1556,
+      "description": "Hamnix uname command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-uptime",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-uptime-1.0.0.tar.gz",
+      "sha256": "3dfd11d2cfcabb80f726d7e1f476fa2257337c7dc4a426bcfa670663dc0d90ca",
+      "size": 2141,
+      "description": "Hamnix uptime command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-u-server",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-u-server-1.0.0.tar.gz",
+      "sha256": "e80bbd5d75e69f7ba72738b00e29f058a17df4af3a8612f7fc390eba46abd28b",
+      "size": 5065,
+      "description": "Hamnix u_server command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-u-tlstest",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-u-tlstest-1.0.0.tar.gz",
+      "sha256": "b8a2e38231195a07bc027e76a9cee81b4a2b6df2cea694474afa59f2748372d9",
+      "size": 5389,
+      "description": "Hamnix u_tlstest command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-watch",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-watch-1.0.0.tar.gz",
+      "sha256": "b72bab50d182053d852d0b9c6e2b65574e22df807b5a86cd1c7397d3943efa6d",
+      "size": 2452,
+      "description": "Hamnix watch command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-wc",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-wc-1.0.0.tar.gz",
+      "sha256": "9eccedebc9a9c234f15adfd765a0d799137ac68cad77c9960640b41c1b8b4b81",
+      "size": 2234,
+      "description": "Hamnix wc command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-whatis",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-whatis-1.0.0.tar.gz",
+      "sha256": "1f833fcbe7f28cd28e8f695528648f841d7c3df3aab5fbab276403ba036f1ab5",
+      "size": 2637,
+      "description": "Hamnix whatis command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-which",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-which-1.0.0.tar.gz",
+      "sha256": "0e3e9dbf21bd787f125102d4069fe9222f707560c6720a982c0c7183c69886dd",
+      "size": 2359,
+      "description": "Hamnix which command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-whoami",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-whoami-1.0.0.tar.gz",
+      "sha256": "7c398d48c252a17e4f4ab8ef2757881f7c093765adf9114be3abb244630173e8",
+      "size": 1555,
+      "description": "Hamnix whoami command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-xargs",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-xargs-1.0.0.tar.gz",
+      "sha256": "f6dc75b6b3ff011e0a9ce13f1ca18daa54150961a4eb35322998072933f2d59f",
+      "size": 2504,
+      "description": "Hamnix xargs command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system"
+    },
+    {
+      "name": "hamnix-yes",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "channel": "main",
+      "url": "packages/hamnix-yes-1.0.0.tar.gz",
+      "sha256": "1cbfaf6f34ab86dab336e659c544b9d84d72cd0aadeaa4d435b2f6b51c8df6dd",
+      "size": 2048,
+      "description": "Hamnix yes command",
+      "depends": [
+        "hamnix-init>=1"
       ],
       "target": "#hamnix-system"
     },
@@ -207,8 +1452,8 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-bootloader-1.0.0.tar.gz",
-      "sha256": "829d65717be6e882ae55808103c11303e5b7884b933c1859073673b2d59c493b",
-      "size": 5465330,
+      "sha256": "58f2a3031f9d1b52808a6404e3a0dfe0c23ec1e24d533821985c28cc95b4f946",
+      "size": 8047141,
       "description": "Hamnix UEFI bootloader stub + kernel ELF (installs onto the ESP)",
       "depends": [
         "hamnix-init>=1"
@@ -221,7 +1466,7 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/linux-debian-12-1.0.0.tar.gz",
-      "sha256": "fa2e9d566a384372df0d6bdf584278e093b13baf044d95f0b283d4cb8b43bba4",
+      "sha256": "4930fcb29a1c8746ce65f5411dc4b43d9ac51c3fbf5f9494c9ceba48df974f19",
       "size": 24470559,
       "description": "Debian 12 (bookworm) rootfs for the Linux namespace",
       "depends": [
@@ -238,7 +1483,7 @@
       "arch": "x86_64",
       "channel": "main",
       "url": "packages/hamnix-base-1.0.0.tar.gz",
-      "sha256": "cacbfd7c0d5749307d73d9dd3c06bf821d8b7b70884243fe910fda4274584f82",
+      "sha256": "678f1e00095b1184aa49002d47d9bc92ea3e7a1db4a090a67b0fdd4ad8f97acf",
       "size": 494,
       "description": "Hamnix base — metapackage pulling in every component (init/hamsh/coreutils/net/sshd/hpm/fs/drivers/installer/bootloader)",
       "depends": [
