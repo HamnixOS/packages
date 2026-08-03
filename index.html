@@ -80,7 +80,9 @@
 
   header { padding:4.5rem 0 3.5rem; }
   .hero { display:flex; gap:2.5rem; align-items:center; flex-wrap:wrap; }
-  .hero img { width:104px; height:104px; flex:none; }
+  .hero img { width:112px; height:158px; flex:none; color:var(--fg);
+              opacity:.92; }
+  @media (max-width:560px) { .hero img { width:76px; height:107px; } }
   .hero h1 { font-size:clamp(2.1rem,5vw,3.1rem); margin:0 0 .6rem; }
   .hero p { color:var(--dim); max-width:58ch; margin:0 0 1.4rem;
             font-size:1.09rem; }
