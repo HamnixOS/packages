@@ -2,100 +2,424 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Hamnix packages</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hamnix — a from-scratch OS with Plan 9 namespaces and a Linux ABI</title>
+
+<meta name="description" content="Hamnix is a from-scratch x86_64 operating system written in Adder, a Python-syntax systems language with its own compiler. Plan 9-shape namespaces underneath, a Linux ABI shim on top, one kernel. Downloads, screenshots and packages.">
+<meta name="author" content="David Hamner">
+<link rel="canonical" href="https://255.one/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://255.one/">
+<meta property="og:site_name" content="Hamnix">
+<meta property="og:title" content="Hamnix — a from-scratch OS with Plan 9 namespaces and a Linux ABI">
+<meta property="og:description" content="A whole operating system — kernel, drivers, filesystems, network stack, desktop and package manager — written from scratch in a language built for the purpose.">
+<meta property="og:image" content="https://255.one/img/desktop.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Hamnix",
+  "applicationCategory": "OperatingSystem",
+  "operatingSystem": "x86_64 (UEFI); AArch64 port in progress",
+  "url": "https://255.one/",
+  "codeRepository": "https://github.com/HamnixOS/Hamnix",
+  "author": { "@type": "Person", "name": "David Hamner" },
+  "description": "A from-scratch x86_64 operating system written in Adder, a Python-syntax systems language with its own compiler. Plan 9-shape namespaces at the syscall layer with a Linux ABI shim above, sharing one kernel.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
 <style>
-  body { font-family: ui-monospace, monospace; max-width: 64em;
-         margin: 2em auto; padding: 0 1em; color: #222; }
-  h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
-  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
-  th, td { padding: 0.4em 0.8em; text-align: left;
-           border-bottom: 1px solid #eee; }
-  th { background: #f6f6f6; }
-  code { background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 3px; }
-  a { color: #06c; }
+  :root {
+    --bg:#0d1117; --panel:#151b23; --line:#242c38;
+    --fg:#e6edf3; --dim:#9aa7b4; --faint:#6b7785;
+    --accent:#4ade80; --accent2:#38bdf8; --warn:#fbbf24;
+    --onaccent:#06210f;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#fbfcfd; --panel:#ffffff; --line:#e3e8ee;
+            --fg:#111820; --dim:#4d5865; --faint:#7a8795;
+            --accent:#15803d; --accent2:#0369a1; --warn:#a16207;
+            --onaccent:#ffffff; }
+  }
+  :root[data-theme="dark"] {
+    --bg:#0d1117; --panel:#151b23; --line:#242c38;
+    --fg:#e6edf3; --dim:#9aa7b4; --faint:#6b7785;
+    --accent:#4ade80; --accent2:#38bdf8; --warn:#fbbf24;
+    --onaccent:#06210f;
+  }
+  :root[data-theme="light"] {
+    --bg:#fbfcfd; --panel:#ffffff; --line:#e3e8ee;
+    --fg:#111820; --dim:#4d5865; --faint:#7a8795;
+    --accent:#15803d; --accent2:#0369a1; --warn:#a16207;
+    --onaccent:#ffffff;
+  }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font-family:var(--sans); line-height:1.65;
+         -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:74rem; margin:0 auto; padding:0 1.25rem; }
+  a { color:var(--accent2); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  code, kbd { font-family:var(--mono); font-size:.9em; }
+  code { background:var(--panel); border:1px solid var(--line);
+         padding:.1em .35em; border-radius:4px; }
+  h1,h2,h3 { line-height:1.25; letter-spacing:-.01em; }
+  h2 { font-size:1.6rem; margin:0 0 .35rem; }
+  section { padding:3.5rem 0; border-top:1px solid var(--line); }
+  .lede { color:var(--dim); max-width:62ch; margin:0 0 2rem; }
+
+  header { padding:4.5rem 0 3.5rem; }
+  .hero { display:flex; gap:2.5rem; align-items:center; flex-wrap:wrap; }
+  .hero img { width:104px; height:104px; flex:none; }
+  .hero h1 { font-size:clamp(2.1rem,5vw,3.1rem); margin:0 0 .6rem; }
+  .hero p { color:var(--dim); max-width:58ch; margin:0 0 1.4rem;
+            font-size:1.09rem; }
+  .tag { display:inline-block; font-family:var(--mono); font-size:.76rem;
+         color:var(--accent); border:1px solid var(--accent);
+         border-radius:999px; padding:.15em .7em; margin-bottom:1rem; }
+  .cta { display:flex; gap:.7rem; flex-wrap:wrap; }
+  .btn { display:inline-block; font-weight:600; font-size:.95rem;
+         padding:.62rem 1.15rem; border-radius:7px;
+         border:1px solid var(--line); background:var(--panel);
+         color:var(--fg); }
+  .btn:hover { border-color:var(--accent); text-decoration:none; }
+  .btn.primary { background:var(--accent); border-color:var(--accent);
+                 color:var(--onaccent); }
+
+  .stats { display:grid; gap:1px; background:var(--line);
+           border:1px solid var(--line); border-radius:10px;
+           overflow:hidden; margin-top:2.5rem;
+           grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); }
+  .stat { background:var(--panel); padding:1.05rem 1.15rem; }
+  .stat b { display:block; font-family:var(--mono); font-size:1.45rem;
+            color:var(--accent); font-weight:600; letter-spacing:-.02em; }
+  .stat span { font-size:.83rem; color:var(--faint); }
+
+  .grid { display:grid; gap:1.15rem;
+          grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); }
+  .card { background:var(--panel); border:1px solid var(--line);
+          border-radius:10px; padding:1.3rem 1.4rem; }
+  .card h3 { margin:.1rem 0 .5rem; font-size:1.06rem; }
+  .card p { margin:0; color:var(--dim); font-size:.94rem; }
+
+  .shots { display:grid; gap:1.15rem;
+           grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+  figure { margin:0; background:var(--panel); border:1px solid var(--line);
+           border-radius:10px; overflow:hidden; }
+  figure img { display:block; width:100%; height:auto;
+               border-bottom:1px solid var(--line); background:#000; }
+  figcaption { padding:.7rem 1rem; font-size:.86rem; color:var(--dim); }
+  figcaption b { color:var(--fg); font-weight:600; }
+
+  .tblwrap { overflow-x:auto; margin-top:1.2rem; }
+  .tbl { width:100%; border-collapse:collapse; font-size:.93rem;
+         min-width:38rem; }
+  .tbl th, .tbl td { text-align:left; padding:.6rem .8rem;
+                     border-bottom:1px solid var(--line);
+                     vertical-align:top; }
+  .tbl th { color:var(--faint); font-weight:600; font-size:.8rem;
+            text-transform:uppercase; letter-spacing:.04em; }
+  .yes { color:var(--accent); font-family:var(--mono); }
+  .part { color:var(--warn); font-family:var(--mono); }
+  .no { color:var(--faint); font-family:var(--mono); }
+
+  pre { background:var(--panel); border:1px solid var(--line);
+        border-radius:9px; padding:1rem 1.15rem; overflow-x:auto;
+        font-family:var(--mono); font-size:.88rem; line-height:1.55; }
+  pre .c { color:var(--faint); }
+
+  .note { border-left:3px solid var(--warn); background:var(--panel);
+          border-radius:0 8px 8px 0; padding:1rem 1.2rem;
+          margin:1.6rem 0; font-size:.94rem; color:var(--dim); }
+  .note b { color:var(--fg); }
+
+  footer { border-top:1px solid var(--line); padding:2.5rem 0 3.5rem;
+           color:var(--faint); font-size:.88rem; }
+  footer a { color:var(--dim); }
 </style>
 </head>
 <body>
 
-<h1>Hamnix packages</h1>
+<header>
+  <div class="wrap hero">
+    <img src="logo.svg" alt="Hamnix logo">
+    <div>
+      <div class="tag">1.0 — built to find out whether it was possible</div>
+      <h1>Hamnix</h1>
+      <p>A from-scratch operating system — kernel, drivers, filesystems,
+         network stack, desktop and package manager — written in
+         <strong>Adder</strong>, a Python-syntax systems language with its
+         own compiler. Plan&nbsp;9-shape namespaces at the syscall layer,
+         a Linux ABI shim above them, sharing one kernel.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/HamnixOS/Hamnix/releases">Download</a>
+        <a class="btn" href="https://github.com/HamnixOS/Hamnix">Source</a>
+        <a class="btn" href="#packages">Package repo</a>
+      </div>
+    </div>
+  </div>
 
-<p>Repository for the Hamnix package manager (<code>hpm</code>).
-Top-level directories under this site are <em>channels</em> mirroring
-Debian's <code>main</code> / <code>contrib</code> /
-<code>non-free</code> / <code>non-free-firmware</code> split.
-<code>hpm</code> talks to each channel's <code>index.json</code> and
-downloads packages by URL + SHA-256.</p>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>106</b><span>native Plan 9-shape syscalls</span></div>
+      <div class="stat"><b>278</b><span>userland applications</span></div>
+      <div class="stat"><b>100</b><span>packages in this repo</span></div>
+      <div class="stat"><b>577</b><span>host test gates</span></div>
+      <div class="stat"><b>0</b><span>lines of C in the kernel</span></div>
+    </div>
+  </div>
+</header>
 
-<h2>Channels</h2>
+<section id="what">
+  <div class="wrap">
+    <h2>What it actually is</h2>
+    <p class="lede">Not a Linux distribution and not a Linux fork. The
+       kernel, the compiler and the language were all written for this
+       project.</p>
 
-<table>
-  <tr><th>Channel</th><th>Index</th><th>Packages</th><th>Description</th></tr>
-  <tr>
-    <td><a href="main/"><code>main</code></a></td>
-    <td><a href="main/index.json"><code>main/index.json</code></a></td>
-    <td><a href="main/packages/"><code>main/packages/</code></a></td>
-    <td>First-party / free software. Enabled by default. Holds
-        <code>hamnix-base</code> (metapackage), every component
-        (init/hamsh/coreutils/net/sshd/hpm/fs/drivers/installer/bootloader),
-        and <code>linux-debian-12</code>.</td>
-  </tr>
-  <tr>
-    <td><a href="non-free/"><code>non-free</code></a></td>
-    <td><a href="non-free/index.json"><code>non-free/index.json</code></a></td>
-    <td>—</td>
-    <td>Reserved for software whose licence isn't DFSG-free.
-        Placeholder today; opt in with
-        <code>hpm enable non-free</code>.</td>
-  </tr>
-  <tr>
-    <td><a href="non-free-firmware/"><code>non-free-firmware</code></a></td>
-    <td><a href="non-free-firmware/index.json"><code>non-free-firmware/index.json</code></a></td>
-    <td>—</td>
-    <td>Reserved for binary firmware blobs (wifi, GPU, camera).
-        Placeholder today; opt in with
-        <code>hpm enable non-free-firmware</code>.</td>
-  </tr>
-</table>
+    <div class="grid">
+      <div class="card">
+        <h3>Two worlds, one kernel</h3>
+        <p>Native code sees Plan 9-shape files — <code>/dev/cpuinfo</code>,
+           <code>/net/tcp</code>, per-process namespaces built with
+           <code>bind</code>. Linux binaries run inside
+           <code>enter linux { … }</code>, where the <em>same</em> kernel
+           file servers are bound at the paths Debian expects. No string
+           rewriting in the syscall path.</p>
+      </div>
+      <div class="card">
+        <h3>Its own language</h3>
+        <p>Adder has Python's syntax and a systems language's semantics.
+           A hand-written x86_64 backend compiles the kernel and doubles
+           as the differential oracle; an LLVM backend builds all 278
+           userland applications and is the only supported AArch64 path.</p>
+      </div>
+      <div class="card">
+        <h3>No sockets</h3>
+        <p>TCP, UDP and TLS 1.3 are exposed as the <code>/net</code> file
+           tree, Plan 9 style. There are zero BSD socket syscalls at the
+           native layer. <code>curl</code>, <code>sshd</code> and an NTP
+           client all dial out through files.</p>
+      </div>
+      <div class="card">
+        <h3>A real desktop</h3>
+        <p>A scene-file compositor in which the kernel owns no pixels —
+           each window is a display list in a file server. Panel, menu,
+           drag and drop, <code>.desktop</code> launchers, and a native
+           toolkit underneath.</p>
+      </div>
+      <div class="card">
+        <h3>Its own browser</h3>
+        <p>HTML, CSS and a JavaScript engine written from scratch and
+           measured against the Web Platform Tests. It renders real
+           pages. It is not a Firefox replacement, and the table below
+           says exactly where it stands.</p>
+      </div>
+      <div class="card">
+        <h3>Its own package manager</h3>
+        <p><code>hpm</code> — binary packages, Ed25519-signed indexes, a
+           dependency solver, Debian-shape channels. It fetches from this
+           very site, and keeps working from an on-disk mirror after
+           installation with no network at all.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>Using <code>hpm</code></h2>
+<section id="screenshots">
+  <div class="wrap">
+    <h2>Screenshots</h2>
+    <p class="lede">Captured from the framebuffer of a running system,
+       not mock-ups.</p>
+    <div class="shots">
+      <figure>
+        <img src="img/desktop.png" alt="The Hamnix desktop showing wallpaper, panel and desktop icons" loading="lazy">
+        <figcaption><b>The desktop</b> — panel, clock, launchers.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/menu.png" alt="The Hamnix application menu open, listing installed applications" loading="lazy">
+        <figcaption><b>Application menu</b> — driven from <code>.desktop</code> files.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/browser.png" alt="The Hamnix browser rendering a web page" loading="lazy">
+        <figcaption><b>hambrowse</b> — the from-scratch web engine.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/terminal.png" alt="The Hamnix terminal running the hamsh shell" loading="lazy">
+        <figcaption><b>hamsh</b> — Python-syntax shell, job control, service supervisor.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/files.png" alt="The Hamnix file manager showing a directory listing" loading="lazy">
+        <figcaption><b>Files</b> — browsing the native namespace.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/installer.png" alt="The Hamnix graphical installer" loading="lazy">
+        <figcaption><b>Installer</b> — partitions, formats and installs to NVMe.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-<pre>
-hpm channels                       # list enabled channels
-hpm enable non-free-firmware       # subscribe to non-free-firmware
-hpm refresh                        # fetch every enabled channel's index
-hpm install hamnix-base            # metapackage — pulls in the full OS
-</pre>
+<section id="status">
+  <div class="wrap">
+    <h2>Where it honestly stands</h2>
+    <p class="lede">This is a 1.0 in the sense of "it works and it is
+       worth looking at", not "ready to be your daily driver". That
+       distinction matters enough to spell out.</p>
 
-<p>The Hamnix live installer drives the same <code>hpm install</code>
-pipeline against an ISO-bundled mini-repo at
-<code>file:///iso-packages/main/</code> rather than over HTTPS, but the
-package format and dependency-graph logic are identical.</p>
+    <div class="tblwrap">
+    <table class="tbl">
+      <tr><th>Area</th><th>State</th><th>Detail</th></tr>
+      <tr><td>Boot (UEFI, virtual machine)</td><td class="yes">works</td>
+          <td>Boots to a desktop under QEMU/KVM with OVMF. This is the tested path.</td></tr>
+      <tr><td>Boot (bare metal)</td><td class="part">stale</td>
+          <td>Booted on an Intel NUC and an Asus laptop — historically, many hundreds of commits ago. <strong>Not re-verified at 1.0.</strong></td></tr>
+      <tr><td>Filesystems &amp; storage</td><td class="yes">works</td>
+          <td>ext4 read and write (validated clean by <code>e2fsck</code>), FAT32, MBR + GPT, AHCI and NVMe.</td></tr>
+      <tr><td>Networking</td><td class="yes">works</td>
+          <td>ARP, IP, UDP, TCP, ICMP, DHCP, DNS, HTTP, TLS 1.3 over the <code>/net</code> file tree. virtio-net, e1000e, r8169.</td></tr>
+      <tr><td>Linux binaries</td><td class="yes">works</td>
+          <td>Real Debian <code>apt</code> and <code>dpkg</code> install packages inside <code>enter linux</code>. CPython and busybox run as static-PIE.</td></tr>
+      <tr><td>Memory over time</td><td class="yes">works</td>
+          <td>A four-hour soak — 2,444 application launches and closes — finished with no measurable leak.</td></tr>
+      <tr><td>Web engine</td><td class="part">partial</td>
+          <td>~83% of a pinned Web Platform Tests subset; Chromium scores ~91% on the identical harness. Renders real pages; heavy JavaScript sites will not work.</td></tr>
+      <tr><td>AArch64</td><td class="part">in progress</td>
+          <td>Boots to EL0 on QEMU <code>virt</code> with per-task address spaces, demand paging and per-task kernel stacks. No hardware port yet.</td></tr>
+      <tr><td>Wi-Fi</td><td class="no">no</td>
+          <td>No native driver. Wired networking only.</td></tr>
+      <tr><td>GPU acceleration</td><td class="no">no</td>
+          <td>Software rasteriser throughout.</td></tr>
+    </table>
+    </div>
 
-<h2>Package format</h2>
+    <div class="note">
+      <b>Please do not install this on a machine you care about.</b> It
+      partitions and formats real disks, and its bare-metal behaviour is
+      unverified at this revision. A virtual machine is the right place to
+      try it. If you do run it on hardware, a report either way — working
+      or not — is genuinely useful.
+    </div>
+  </div>
+</section>
 
-<p>A Hamnix package is a gzipped tar containing a top-level directory
-named <code>&lt;name&gt;-&lt;version&gt;/</code> with this layout:</p>
+<section id="download">
+  <div class="wrap">
+    <h2>Getting it</h2>
+    <p class="lede">Images are published on GitHub Releases. The
+       recommended artifact is the in-RAM installer image: firmware loads
+       the kernel and a squashfs root entirely into memory, so nothing is
+       read from the boot medium after handoff.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/HamnixOS/Hamnix/releases/latest">Latest release</a>
+      <a class="btn" href="https://github.com/HamnixOS/Hamnix/blob/main/docs/BOOT.md">Boot notes</a>
+      <a class="btn" href="https://github.com/HamnixOS/Hamnix/blob/main/docs/REAL_HARDWARE.md">Real hardware</a>
+    </div>
+    <p style="margin-top:1.6rem;color:var(--dim);font-size:.94rem">
+      Or build it yourself. The tree is self-contained; the host needs
+      Python, <code>clang</code> and QEMU.</p>
+<pre><span class="c"># build the in-RAM installer image, then boot it under QEMU</span>
+git clone https://github.com/HamnixOS/Hamnix
+cd Hamnix
+bash scripts/build_installer_img.sh</pre>
+  </div>
+</section>
 
-<pre>
-hamnix-init-1.0.0/
-├── PKGINFO         # key:value metadata (name, version, arch, depends, ...)
-├── files/          # files to install into the target namespace
-│   └── init        # → /init on the target
-│   └── etc/
-│       └── rc.boot # → /etc/rc.boot on the target
-└── install.hamsh   # optional post-install hook
-</pre>
+<section id="packages">
+  <div class="wrap">
+    <h2>Package repository</h2>
+    <p class="lede">This site is also the live <code>hpm</code> repository.
+       Top-level directories are channels, mirroring Debian's split.
+       <code>hpm</code> reads each channel's <code>index.json</code> and
+       fetches packages by URL and SHA-256.</p>
 
-<p>See the repo <a href="https://github.com/HamnixOS/packages">README</a>
-for the full schema and channel notes.</p>
+    <div class="tblwrap">
+    <table class="tbl">
+      <tr><th>Channel</th><th>Index</th><th>Contents</th></tr>
+      <tr>
+        <td><a href="main/"><code>main</code></a></td>
+        <td><a href="main/index.json"><code>main/index.json</code></a></td>
+        <td>First-party, free software. Enabled by default. 100 packages —
+            one per CLI tool, plus the <code>hamnix-base</code>
+            metapackage, the bootloader, installer tools and a curated
+            Debian rootfs tree.</td>
+      </tr>
+      <tr>
+        <td><a href="non-free/"><code>non-free</code></a></td>
+        <td><a href="non-free/index.json"><code>non-free/index.json</code></a></td>
+        <td>Reserved for software whose licence is not DFSG-free. Empty
+            placeholder; opt in with
+            <code>hpm channels enable non-free</code>.</td>
+      </tr>
+      <tr>
+        <td><a href="non-free-firmware/"><code>non-free-firmware</code></a></td>
+        <td><a href="non-free-firmware/index.json"><code>non-free-firmware/index.json</code></a></td>
+        <td>Reserved for redistributable firmware blobs. Empty placeholder.</td>
+      </tr>
+    </table>
+    </div>
 
-<h2>Links</h2>
+<pre><span class="c"># on a running Hamnix system</span>
+hpm refresh
+hpm search editor
+hpm install hamnix-base</pre>
 
-<ul>
-  <li><a href="https://github.com/HamnixOS/Hamnix">HamnixOS/Hamnix</a> — the OS</li>
-  <li><a href="https://github.com/HamnixOS/adder">HamnixOS/adder</a> — the language</li>
-  <li><a href="https://github.com/HamnixOS/packages">HamnixOS/packages</a> — this repo</li>
-</ul>
+    <p style="color:var(--dim);font-size:.94rem">Channel indexes are
+       Ed25519-signed and verified against a compiled-in key. An installed
+       system carries an on-disk mirror of the packages outside the base
+       set, so <code>hpm</code> keeps working with no network.</p>
+  </div>
+</section>
+
+<section id="source">
+  <div class="wrap">
+    <h2>Source &amp; contact</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Repositories</h3>
+        <p><a href="https://github.com/HamnixOS/Hamnix">HamnixOS/Hamnix</a>
+           — the OS, the language and the compiler.<br>
+           <a href="https://github.com/HamnixOS/packages">HamnixOS/packages</a>
+           — this site and the package channels.</p>
+      </div>
+      <div class="card">
+        <h3>Where to start reading</h3>
+        <p><a href="https://github.com/HamnixOS/Hamnix/blob/main/docs/architecture.md">architecture.md</a>
+           for the layering,
+           <a href="https://github.com/HamnixOS/Hamnix/blob/main/docs/native-api.md">native-api.md</a>
+           for the syscall surface, and
+           <a href="https://github.com/HamnixOS/Hamnix/blob/main/docs/adder_language_guide.md">the Adder guide</a>
+           for the language.</p>
+      </div>
+      <div class="card">
+        <h3>Reports welcome</h3>
+        <p>Bare-metal results, boot logs from machines that fail, and
+           pages the browser renders badly are all useful.
+           <a href="https://github.com/HamnixOS/Hamnix/issues">Open an issue</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Hamnix — written in Adder by David Hamner. This site and the
+       package channels live in
+       <a href="https://github.com/HamnixOS/packages">HamnixOS/packages</a>.</p>
+    <p>Crawlers and language models are welcome — see
+       <a href="robots.txt">robots.txt</a>.</p>
+  </div>
+</footer>
 
 </body>
 </html>

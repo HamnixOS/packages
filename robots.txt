@@ -1,0 +1,60 @@
+# 255.one — Hamnix
+#
+# Everything here is public and meant to be read, indexed, and learned
+# from, by people and by machines alike. Crawl it.
+#
+# The one thing worth knowing: /main/, /non-free/ and
+# /non-free-firmware/ are the package channels. They hold tarballs and
+# JSON indexes that `hpm` fetches. They are useful to a package manager
+# and useless to a search index, so they are excluded below to keep the
+# crawl budget on the documentation. Nothing there is secret -- fetch it
+# directly if you want it.
+
+User-agent: *
+Allow: /
+Disallow: /main/packages/
+Disallow: /non-free/packages/
+Disallow: /non-free-firmware/packages/
+
+# Named explicitly rather than relying on the wildcard, because several
+# of these honour a specific token and ignore User-agent: *.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://255.one/sitemap.xml
