@@ -1,0 +1,921 @@
+{
+  "schema": 1,
+  "repo": "HamnixOS/packages",
+  "channel": "linux",
+  "url": "https://255.one/linux/",
+  "updated": "2026-08-09",
+  "description": "hamnix-linux channel -- the Hamnix userland built against the Linux kernel. Same package names as `main`; the binaries are glibc-linked ELFs for this line, not native Hamnix ELFs.",
+  "packages": [
+    {
+      "name": "hamnix-init",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-init-1.0.0.tar.gz",
+      "sha256": "ff02627bb26e545fc901de73ddc81403e9db1d963747b3c3775075ccfa47249a",
+      "size": 42894,
+      "description": "hamnix-linux init (the Adder PID 1) and the boot rc scripts",
+      "depends": [],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-hamsh",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-hamsh-1.0.0.tar.gz",
+      "sha256": "439bbbbbbb8902ffeb18c1d796e1d264e6ac76dbb2bef0b71398454efa8715e3",
+      "size": 322268,
+      "description": "hamnix-linux shell -- /bin/hamsh",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-net",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-net-1.0.0.tar.gz",
+      "sha256": "b7b3c2d4b0665c0f1522649d3764f48678f3eb2a1076c926cb8123ec7b2c5b42",
+      "size": 255568,
+      "description": "hamnix-linux networking userland -- ifconfig, route, ping, host, curl, wget",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hpm",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hpm-1.0.0.tar.gz",
+      "sha256": "4616ada85910f895293d8e69a9b037fb55652fff85abce31d47eb064556b4886",
+      "size": 143127,
+      "description": "Hamnix package manager (hpm), built for the Linux line",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-desktop",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-desktop-1.0.0.tar.gz",
+      "sha256": "85858bd9b95fcf017c3d6c278793528a79ffe184d99aa210c9602eed779edb87",
+      "size": 1289913,
+      "description": "hamnix-linux desktop -- the scene compositor and the DE clients",
+      "depends": [
+        "hamnix-init>=1",
+        "hamnix-hamsh>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-ls",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-ls-1.0.0.tar.gz",
+      "sha256": "2c839353f00691af9736549e5b81a546f9b92d4fbdc3d1b15a02c2573ead3ce4",
+      "size": 48580,
+      "description": "ls - list the entries of a directory",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-cat",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-cat-1.0.0.tar.gz",
+      "sha256": "0bbfae28ff601816e999b18bbb099b83429282249076933c114b472796cfe7ea",
+      "size": 34760,
+      "description": "cat - stream one or more files to stdout",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-echo",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-echo-1.0.0.tar.gz",
+      "sha256": "f0920e27d0efa549b50855a4b6d2b830f609ff18de0ede90f3939eae2572d4e0",
+      "size": 34219,
+      "description": "hamnix-linux echo command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-cp",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-cp-1.0.0.tar.gz",
+      "sha256": "c6fb1bbc810fd0972bd8f63d2c84890369870d48c8f6fad2e796c3a846625d34",
+      "size": 50203,
+      "description": "cp - copy one file to another",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-mv",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-mv-1.0.0.tar.gz",
+      "sha256": "f0c3a470c9343957067e8be9dca7d6809987ab646d4140be0abba606d4471121",
+      "size": 34572,
+      "description": "hamnix-linux mv command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-rm",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-rm-1.0.0.tar.gz",
+      "sha256": "8ef6dc548c68e40686ea6f1e106eccc38b6f4cc558384983f1ad4c20c4067d4b",
+      "size": 34304,
+      "description": "hamnix-linux rm command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-mkdir",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-mkdir-1.0.0.tar.gz",
+      "sha256": "72d7e7914cfbda89f536bced8f2dff5a20e412b174fdd59974e173920393963a",
+      "size": 34321,
+      "description": "hamnix-linux mkdir command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-ln",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-ln-1.0.0.tar.gz",
+      "sha256": "e3bafeb926c5b5de7485b2d43b4ab528b107467f507c74791f2a3066ae57e72a",
+      "size": 34310,
+      "description": "hamnix-linux ln command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-touch",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-touch-1.0.0.tar.gz",
+      "sha256": "8b5af15acc6694547c9daf36eae15d69827661ce5391c1d5de897578d4aa3b11",
+      "size": 34316,
+      "description": "hamnix-linux touch command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-pwd",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-pwd-1.0.0.tar.gz",
+      "sha256": "c0d92a71146b40d05570883c98041424bffe92470881439e4e578de4970e6584",
+      "size": 34103,
+      "description": "hamnix-linux pwd command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-grep",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-grep-1.0.0.tar.gz",
+      "sha256": "c314c570fb29b0e44c526fe694326ee28f572eb4405cb78560730c1a49553a7d",
+      "size": 43576,
+      "description": "hamnix-linux grep command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-sed",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-sed-1.0.0.tar.gz",
+      "sha256": "41579e7994cfd6cdf34a9c053a4352c5a7fb89fb8c279abfa3688c370e0483cc",
+      "size": 44307,
+      "description": "hamnix-linux sed command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-sort",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-sort-1.0.0.tar.gz",
+      "sha256": "2226057111c8a44137d0689ac6e7d8942f6ee8267361255581f8ae82ed04c617",
+      "size": 37425,
+      "description": "hamnix-linux sort command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-uniq",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-uniq-1.0.0.tar.gz",
+      "sha256": "ae1844a38fac735061e3669d6433e033cde19ff68f7621ddb945b286c4ab366a",
+      "size": 35292,
+      "description": "hamnix-linux uniq command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-head",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-head-1.0.0.tar.gz",
+      "sha256": "82f58ddf39d3047683e5ca92857b9da7b5c0bf480b861958422c9c2bdbc936f4",
+      "size": 34450,
+      "description": "hamnix-linux head command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-tail",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-tail-1.0.0.tar.gz",
+      "sha256": "c8db4aa6361376c6cee9f6021c9f8580b084e63f243cce269c903744c8ded1ac",
+      "size": 34576,
+      "description": "hamnix-linux tail command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-wc",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-wc-1.0.0.tar.gz",
+      "sha256": "b94acc1fb56915f1124434747f883a039e109d94f6093be4f7453085f8921ae6",
+      "size": 34903,
+      "description": "hamnix-linux wc command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-cut",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-cut-1.0.0.tar.gz",
+      "sha256": "5314ac03c407c5296eff5478d9fa84c92455e3e8733df55ca315db250010bcea",
+      "size": 36779,
+      "description": "hamnix-linux cut command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-tr",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-tr-1.0.0.tar.gz",
+      "sha256": "a5d7e5201dfa17672dd3dab015a0989ca2d1de8b91c4f20314388156aeb8665e",
+      "size": 36684,
+      "description": "hamnix-linux tr command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-find",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-find-1.0.0.tar.gz",
+      "sha256": "f5fc3c97a977c20ed07e283e7ad01628d8576ddba715094f0372834c697c1202",
+      "size": 51635,
+      "description": "find - print every path under a starting directory",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-du",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-du-1.0.0.tar.gz",
+      "sha256": "3e1a7529f23405e485dbafe7e684e40c83ccd34b9a649fa22a687789f4f53806",
+      "size": 48108,
+      "description": "du - count entries beneath a directory",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-df",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-df-1.0.0.tar.gz",
+      "sha256": "7200103f1eb498bbd652e990319b401c4e8eede62feebab9584cf3bc7ef6c295",
+      "size": 34281,
+      "description": "df - dump /proc/mounts",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-stat",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-stat-1.0.0.tar.gz",
+      "sha256": "14438ab125076d7a9cc53a339985d8641512c192414af5d73098626e86a9ff44",
+      "size": 48780,
+      "description": "hamnix-linux stat command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-tree",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-tree-1.0.0.tar.gz",
+      "sha256": "d7a24c6e989bd37c6074f4841ebf4e773e789325c8147ce3057f068133e6ff9c",
+      "size": 50653,
+      "description": "hamnix-linux tree command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-date",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-date-1.0.0.tar.gz",
+      "sha256": "1334bde31b165db57a598c9e277227b53c42054a943e0b23c4c1dabc67f5581b",
+      "size": 34446,
+      "description": "hamnix-linux date command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-sleep",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-sleep-1.0.0.tar.gz",
+      "sha256": "c998946932859a76e45f114ba0d5276a820a873b90ca19c54a241d5518b485b9",
+      "size": 34357,
+      "description": "hamnix-linux sleep command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-true",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-true-1.0.0.tar.gz",
+      "sha256": "1182d20517625e58581c598ecb463ed4c66e49d7cf79ef79eb2a33197667b53d",
+      "size": 34040,
+      "description": "hamnix-linux true command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-false",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-false-1.0.0.tar.gz",
+      "sha256": "184594db62f4eb239690eff575200e9a876635bbc87e3f2f6c57f147a4d60472",
+      "size": 34042,
+      "description": "hamnix-linux false command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-yes",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-yes-1.0.0.tar.gz",
+      "sha256": "7ad2c91a48082c5400e1c3a96ce8c31312e6d76338f396c25d0c2457ff696267",
+      "size": 34353,
+      "description": "hamnix-linux yes command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-seq",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-seq-1.0.0.tar.gz",
+      "sha256": "384f253f9cbb02445e49558de823a15b6e8cf52957e9b461fa2691201ab97103",
+      "size": 34864,
+      "description": "hamnix-linux seq command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-basename",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-basename-1.0.0.tar.gz",
+      "sha256": "d1bb5f2137257c60ec20d95ca7131e59f7f01ab456cacf9bfb779ea6f14a3ae5",
+      "size": 34389,
+      "description": "hamnix-linux basename command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-dirname",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-dirname-1.0.0.tar.gz",
+      "sha256": "4d9355cb6aa7decdf7b0f5ddb27d532cbd69ec7e69a05e83238ef9ea05a83d1d",
+      "size": 34397,
+      "description": "hamnix-linux dirname command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-env-show",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-env-show-1.0.0.tar.gz",
+      "sha256": "7bf7012f00b4324053538a388cd6e8673ec99c9eb9686de2b051541da0a44d6b",
+      "size": 34129,
+      "description": "hamnix-linux env_show command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-printenv",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-printenv-1.0.0.tar.gz",
+      "sha256": "6aa977897465bec2255d965b5b64b25a77f48bf2d68e5441de91e32c56673aa0",
+      "size": 34610,
+      "description": "hamnix-linux printenv command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-id",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-id-1.0.0.tar.gz",
+      "sha256": "36be30bba1fb4d9a64703981392840e68d25da1e50cfec4638e765ead9487e39",
+      "size": 37813,
+      "description": "hamnix-linux id command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-hostname",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-hostname-1.0.0.tar.gz",
+      "sha256": "68cb1e44e71ab52238f60eb58a73546bf2da8180a9d7f9479e87bca7cff18da2",
+      "size": 34178,
+      "description": "hamnix-linux hostname command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-uname",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-uname-1.0.0.tar.gz",
+      "sha256": "c5a4e70e4ca80de411265565ef375b21dfce9b2b8e9582b77d0b4e364dc67b54",
+      "size": 34081,
+      "description": "hamnix-linux uname command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-ps",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-ps-1.0.0.tar.gz",
+      "sha256": "bedcae861659ab5b74c671d962b8a1b17dd0bf2a2d259e670f880263f4797961",
+      "size": 34458,
+      "description": "ps - print a per-task snapshot from /proc",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-kill",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-kill-1.0.0.tar.gz",
+      "sha256": "427ab3fdfb3702c1414abc7fdbf4da17721da9f15c229dc72be1661ebc6a56e1",
+      "size": 48009,
+      "description": "hamnix-linux kill command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-tar",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-tar-1.0.0.tar.gz",
+      "sha256": "94957e16fb734fce8b81a1c09ccd31306da5ab05bc7d6ed050c506b94feed681",
+      "size": 64185,
+      "description": "hamnix-linux tar command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-gzip",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-gzip-1.0.0.tar.gz",
+      "sha256": "03a976c2aeeca0666673431f469ed3a06482fa18e25c11ef7e8cf36f84a9e418",
+      "size": 44519,
+      "description": "hamnix-linux gzip command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-base64",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-base64-1.0.0.tar.gz",
+      "sha256": "9713143d7e94673906729c1700b2135e2bcc62f40d3e7382ad76ae2a4250d181",
+      "size": 35451,
+      "description": "hamnix-linux base64 command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-cksum",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-cksum-1.0.0.tar.gz",
+      "sha256": "6887ad8051cd60608ce9f48e3899054851f70734cf7c0a26f1ac70c187ae8b53",
+      "size": 34918,
+      "description": "hamnix-linux cksum command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-md5sum",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-md5sum-1.0.0.tar.gz",
+      "sha256": "f28c9fb6ff728d694465f8a23e38f2aa0761ad0f7906e556a2d3bbb409177e38",
+      "size": 34147,
+      "description": "hamnix-linux md5sum command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-more",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-more-1.0.0.tar.gz",
+      "sha256": "7e97cb6011a873ac43d066ccae959f895dd28a45ce88145b441a12db014408ea",
+      "size": 34362,
+      "description": "hamnix-linux more command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-less",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-less-1.0.0.tar.gz",
+      "sha256": "4288925f7d7ad0dd86633de99616faeeae7ded1a070559367bc89f580ca45454",
+      "size": 34358,
+      "description": "hamnix-linux less command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-bc",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-bc-1.0.0.tar.gz",
+      "sha256": "3c12fb4bc5e55fb270efe4c0a85bea0295d9aa83a5ec60a9dddad861ec80a784",
+      "size": 37834,
+      "description": "hamnix-linux bc command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-cal",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-cal-1.0.0.tar.gz",
+      "sha256": "9d91117ea73a2fb98996aeb418eb00ce0ccc3e9f060c85c5e62797b9e2807f34",
+      "size": 34380,
+      "description": "hamnix-linux cal command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-ascii",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-ascii-1.0.0.tar.gz",
+      "sha256": "67c7f161d1550a1be70a7aea8aa6092298415c6d371327fccc57e48109719446",
+      "size": 34551,
+      "description": "hamnix-linux ascii command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-awk",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-awk-1.0.0.tar.gz",
+      "sha256": "90cce177a105149726d44222f20d2a0d22b00783eb9304041c3c789a71edabba",
+      "size": 72047,
+      "description": "hamnix-linux awk command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-cmp",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-cmp-1.0.0.tar.gz",
+      "sha256": "c959f183590fdda0bc016e71ea480b1151ba75e1ab7f595cbf1f270f2b1c99f1",
+      "size": 34970,
+      "description": "hamnix-linux cmp command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-column",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-column-1.0.0.tar.gz",
+      "sha256": "63fc5f943bd0d38ff698b4b330451e6faaadbc6c0ff8821ade8163aae6c25703",
+      "size": 37709,
+      "description": "hamnix-linux column command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-comm",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-comm-1.0.0.tar.gz",
+      "sha256": "194b7b0a5b09f7c7f800a4712504b8b75fbeedbbd64d47ad8b1070b72e5598d7",
+      "size": 35800,
+      "description": "hamnix-linux comm command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-diff",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-diff-1.0.0.tar.gz",
+      "sha256": "d87e4fab7f62f22904012e25d02ad77b3a1a5c8cc25ebd7626512b61715105fe",
+      "size": 38294,
+      "description": "hamnix-linux diff command",
+      "depends": [
+        "hamnix-init>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-coreutils",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-coreutils-1.0.0.tar.gz",
+      "sha256": "0a65b54f3f998b45f51514805a6420838112e7049fe445a6d9e729d328204c29",
+      "size": 479,
+      "description": "hamnix-linux core userland -- pulls in every per-command package",
+      "depends": [
+        "hamnix-ascii",
+        "hamnix-awk",
+        "hamnix-base64",
+        "hamnix-basename",
+        "hamnix-bc",
+        "hamnix-cal",
+        "hamnix-cat",
+        "hamnix-cksum",
+        "hamnix-cmp",
+        "hamnix-column",
+        "hamnix-comm",
+        "hamnix-cp",
+        "hamnix-cut",
+        "hamnix-date",
+        "hamnix-df",
+        "hamnix-diff",
+        "hamnix-dirname",
+        "hamnix-du",
+        "hamnix-echo",
+        "hamnix-env-show",
+        "hamnix-false",
+        "hamnix-find",
+        "hamnix-grep",
+        "hamnix-gzip",
+        "hamnix-head",
+        "hamnix-hostname",
+        "hamnix-id",
+        "hamnix-kill",
+        "hamnix-less",
+        "hamnix-ln",
+        "hamnix-ls",
+        "hamnix-md5sum",
+        "hamnix-mkdir",
+        "hamnix-more",
+        "hamnix-mv",
+        "hamnix-printenv",
+        "hamnix-ps",
+        "hamnix-pwd",
+        "hamnix-rm",
+        "hamnix-sed",
+        "hamnix-seq",
+        "hamnix-sleep",
+        "hamnix-sort",
+        "hamnix-stat",
+        "hamnix-tail",
+        "hamnix-tar",
+        "hamnix-touch",
+        "hamnix-tr",
+        "hamnix-tree",
+        "hamnix-true",
+        "hamnix-uname",
+        "hamnix-uniq",
+        "hamnix-wc",
+        "hamnix-yes"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    },
+    {
+      "name": "hamnix-base",
+      "version": "1.0.0",
+      "arch": "x86_64",
+      "url": "packages/hamnix-base-1.0.0.tar.gz",
+      "sha256": "af9b6a34c8593ebf65ce381de7abc097542facff8cb9c3ed744692754fd1dfbd",
+      "size": 320,
+      "description": "hamnix-linux base system -- init, shell, coreutils, networking, package manager and desktop",
+      "depends": [
+        "hamnix-init>=1",
+        "hamnix-hamsh>=1",
+        "hamnix-coreutils>=1",
+        "hamnix-net>=1",
+        "hpm>=1",
+        "hamnix-desktop>=1"
+      ],
+      "target": "#hamnix-system",
+      "channel": "linux"
+    }
+  ]
+}

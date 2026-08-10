@@ -21,6 +21,9 @@ channel's `packages/` subdir.
 │       ├── hamnix-base-1.0.0.tar.gz
 │       ├── hamnix-init-1.0.0.tar.gz
 │       └── ...
+├── linux/                           # the hamnix-linux line (see below)
+│   ├── index.json
+│   └── packages/
 ├── non-free/                        # opt-in: non-DFSG-free software
 │   └── index.json                   # placeholder ({"packages":[]})
 └── non-free-firmware/               # opt-in: binary firmware blobs
@@ -41,6 +44,32 @@ hpm install hamnix-base              # install (resolves deps across channels)
 ```
 
 Default install subscribes to `main` only.
+
+## `main` and `linux` — same names, different kernel
+
+`main` holds **native Hamnix** binaries: user ELFs for the Hamnix
+kernel. `linux` holds the **same userland built against the Linux
+kernel** — hamnix-linux, where the Plan 9 namespaces, the file servers,
+the boot process, the shell and the desktop are the same Adder programs
+but the thing underneath them is Linux.
+
+The package **names are deliberately identical**. `hamnix-cat` is the
+same program on both lines, and `hpm install hamnix-base` resolves the
+same closure. What differs is the binary inside the tarball and the
+`channel` field in the index.
+
+That means a machine must subscribe to the channel that matches its
+kernel. Subscribing to the wrong one installs packages that verify,
+extract and then refuse to run:
+
+```
+# native Hamnix                     # hamnix-linux
+$ cat /etc/hpm/channels             $ cat /etc/hpm/channels
+main                                linux
+```
+
+Both channels are unsigned today, so `hpm refresh` wants
+`--allow-unsigned` for either.
 
 ## Package format
 
