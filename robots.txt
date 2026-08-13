@@ -3,7 +3,7 @@
 # Everything here is public and meant to be read, indexed, and learned
 # from, by people and by machines alike. Crawl it.
 #
-# The one thing worth knowing: /main/, /non-free/ and
+# The one thing worth knowing: /linux/, /main/, /non-free/ and
 # /non-free-firmware/ are the package channels. They hold tarballs and
 # JSON indexes that `hpm` fetches. They are useful to a package manager
 # and useless to a search index, so they are excluded below to keep the
@@ -12,6 +12,7 @@
 
 User-agent: *
 Allow: /
+Disallow: /linux/packages/
 Disallow: /main/packages/
 Disallow: /non-free/packages/
 Disallow: /non-free-firmware/packages/

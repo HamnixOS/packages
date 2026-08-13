@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hamnix — a from-scratch OS with Plan 9 namespaces and a Linux ABI</title>
+<title>Hamnix — one userland, two kernels</title>
 
-<meta name="description" content="Hamnix is a from-scratch x86_64 operating system written in Adder, a Python-syntax systems language with its own compiler. Plan 9-shape namespaces underneath, a Linux ABI shim on top, one kernel. Downloads, screenshots and packages.">
+<meta name="description" content="Hamnix is a complete userland — PID 1, shell, window system, compositor, desktop and package manager — written in Adder, a Python-syntax systems language. It runs on a from-scratch x86_64 kernel with Plan 9 namespaces, and on a stock Linux kernel. Downloads, screenshots and packages.">
 <meta name="author" content="David Hamner">
 <link rel="canonical" href="https://255.one/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -13,9 +13,9 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://255.one/">
 <meta property="og:site_name" content="Hamnix">
-<meta property="og:title" content="Hamnix — a from-scratch OS with Plan 9 namespaces and a Linux ABI">
-<meta property="og:description" content="A whole operating system — kernel, drivers, filesystems, network stack, desktop and package manager — written from scratch in a language built for the purpose.">
-<meta property="og:image" content="https://255.one/img/desktop.png">
+<meta property="og:title" content="Hamnix — one userland, two kernels">
+<meta property="og:description" content="A whole userland — PID 1, shell, window system, compositor, desktop and package manager — written from scratch in a language built for the purpose. It runs on our kernel, and on Linux's.">
+<meta property="og:image" content="https://255.one/img/linux-menu.png">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="logo.svg" type="image/svg+xml">
@@ -26,11 +26,11 @@
   "@type": "SoftwareApplication",
   "name": "Hamnix",
   "applicationCategory": "OperatingSystem",
-  "operatingSystem": "x86_64 (UEFI); AArch64 port in progress",
+  "operatingSystem": "x86_64 (UEFI), Linux x86_64; AArch64 port in progress",
   "url": "https://255.one/",
-  "codeRepository": "https://github.com/HamnixOS/Hamnix",
+  "codeRepository": "https://github.com/HamnixOS/hamnix-linux",
   "author": { "@type": "Person", "name": "David Hamner" },
-  "description": "A from-scratch x86_64 operating system written in Adder, a Python-syntax systems language with its own compiler. Plan 9-shape namespaces at the syscall layer with a Linux ABI shim above, sharing one kernel.",
+  "description": "A complete userland written in Adder, a Python-syntax systems language with its own compiler: PID 1, shell, window system, compositor, desktop and package manager. It runs on a from-scratch x86_64 kernel with Plan 9-shape namespaces, and on a stock Linux kernel.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
@@ -156,16 +156,18 @@
   <div class="wrap hero">
     <img src="logo.svg" alt="Hamnix logo">
     <div>
-      <div class="tag">1.0 — built to find out whether it was possible</div>
+      <div class="tag">one userland, two kernels</div>
       <h1>Hamnix</h1>
-      <p>A from-scratch operating system — kernel, drivers, filesystems,
-         network stack, desktop and package manager — written in
-         <strong>Adder</strong>, a Python-syntax systems language with its
-         own compiler. Plan&nbsp;9-shape namespaces at the syscall layer,
-         a Linux ABI shim above them, sharing one kernel.</p>
+      <p>A complete userland — PID&nbsp;1, the shell, the window system, the
+         compositor, the desktop, the file manager, the package manager —
+         written in <strong>Adder</strong>, a Python-syntax systems language
+         with its own compiler.</p>
+      <p>It runs on a from-scratch x86_64 kernel with Plan&nbsp;9-shape
+         namespaces, and it runs on a stock Linux kernel. Same programs, two
+         floors under them.</p>
       <div class="cta">
-        <a class="btn primary" href="https://github.com/HamnixOS/Hamnix/releases">Download</a>
-        <a class="btn" href="https://github.com/HamnixOS/Hamnix">Source</a>
+        <a class="btn primary" href="linux.html">Hamnix Linux</a>
+        <a class="btn" href="native.html">Hamnix (native)</a>
         <a class="btn" href="#packages">Package repo</a>
       </div>
     </div>
@@ -173,173 +175,94 @@
 
   <div class="wrap">
     <div class="stats">
-      <div class="stat"><b>106</b><span>native Plan 9-shape syscalls</span></div>
-      <div class="stat"><b>278</b><span>userland applications</span></div>
-      <div class="stat"><b>100</b><span>packages in this repo</span></div>
-      <div class="stat"><b>577</b><span>host test gates</span></div>
-      <div class="stat"><b>0</b><span>lines of C in the kernel</span></div>
+      <div class="stat"><b>2</b><span>kernels the userland runs on</span></div>
+      <div class="stat"><b>1.0.22</b><span>Hamnix Linux, live now</span></div>
+      <div class="stat"><b>224</b><span>packages served from this site</span></div>
+      <div class="stat"><b>0</b><span>lines of C in the native kernel</span></div>
     </div>
   </div>
 </header>
 
-<section id="what">
+<section id="two">
   <div class="wrap">
-    <h2>What it actually is</h2>
-    <p class="lede">Not a Linux distribution and not a Linux fork. The
-       kernel, the compiler and the language were all written for this
-       project.</p>
+    <h2>Two things, sharing everything above the kernel</h2>
+    <p class="lede">The userland is the product. The interesting question was
+       never "can you write a kernel" — it was whether one set of programs can
+       sit on a from-scratch kernel and on Linux without becoming two
+       codebases. It can, and these are the two results.</p>
 
     <div class="grid">
       <div class="card">
-        <h3>Two worlds, one kernel</h3>
-        <p>Native code sees Plan 9-shape files — <code>/dev/cpuinfo</code>,
-           <code>/net/tcp</code>, per-process namespaces built with
-           <code>bind</code>. Linux binaries run inside
-           <code>enter linux { … }</code>, where the <em>same</em> kernel
-           file servers are bound at the paths Debian expects. No string
-           rewriting in the syscall path.</p>
+        <h3><a href="linux.html">Hamnix Linux</a> — the one you can run</h3>
+        <p>The same Adder userland on a stock Linux kernel. An Adder PID&nbsp;1
+           builds the namespace, <code>hamsh</code> runs the boot scripts, and
+           you get a desktop. It installs itself onto UEFI + ext4 and updates
+           from this site with Ed25519-signed packages — 124 of them, at 1.0.22
+           today. The tested path is a virtual machine; a native install onto
+           real hardware is in progress.</p>
       </div>
       <div class="card">
-        <h3>Its own language</h3>
-        <p>Adder has Python's syntax and a systems language's semantics.
-           A hand-written x86_64 backend compiles the kernel and doubles
-           as the differential oracle; an LLVM backend builds all 278
-           userland applications and is the only supported AArch64 path.</p>
+        <h3><a href="native.html">Hamnix (native)</a> — the radical one</h3>
+        <p>A from-scratch x86_64 operating system: its own kernel, drivers,
+           filesystems and network stack, with <strong>zero lines of C in the
+           kernel</strong>. Plan&nbsp;9-shape namespaces at the syscall layer —
+           no BSD sockets at all, TCP and TLS are the <code>/net</code> file
+           tree — and a Linux ABI shim above them, so Debian binaries run
+           inside <code>enter linux { … }</code> on the same kernel.</p>
+      </div>
+    </div>
+
+    <div class="cta" style="margin-top:1.6rem">
+      <a class="btn primary" href="linux.html">The Linux distribution, in depth</a>
+      <a class="btn" href="native.html">The from-scratch OS</a>
+    </div>
+  </div>
+</section>
+
+<section id="userland">
+  <div class="wrap">
+    <h2>What the shared userland is</h2>
+    <p class="lede">Everything in this list is written in Adder and is the same
+       code on both kernels.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>A shell and an init</h3>
+        <p><code>hamsh</code> — Python-syntax, with job control and a service
+           supervisor — is PID&nbsp;1's first exec and the thing that runs the
+           <code>rc</code> scripts.</p>
       </div>
       <div class="card">
-        <h3>No sockets</h3>
-        <p>TCP, UDP and TLS 1.3 are exposed as the <code>/net</code> file
-           tree, Plan 9 style. There are zero BSD socket syscalls at the
-           native layer. <code>curl</code>, <code>sshd</code> and an NTP
-           client all dial out through files.</p>
+        <h3>A window system that is a file server</h3>
+        <p>Each window is a display list in <code>/dev/wsys</code>, not a
+           socket protocol. The compositor reads files; the kernel owns no
+           pixels.</p>
       </div>
       <div class="card">
-        <h3>A real desktop</h3>
-        <p>A scene-file compositor in which the kernel owns no pixels —
-           each window is a display list in a file server. Panel, menu,
-           drag and drop, <code>.desktop</code> launchers, and a native
-           toolkit underneath.</p>
+        <h3>A desktop</h3>
+        <p>Panel, taskbar, workspaces, a categorised Applications menu with
+           search and favourites, a file manager, a terminal, a text editor and
+           a system monitor.</p>
       </div>
       <div class="card">
-        <h3>Its own browser</h3>
-        <p>HTML, CSS and a JavaScript engine written from scratch and
-           measured against the Web Platform Tests. It renders real
-           pages, and it is not a Firefox replacement — the table below
-           says exactly where it stands.</p>
+        <h3>A web engine</h3>
+        <p>HTML, CSS and a JavaScript engine written from scratch and measured
+           against the Web Platform Tests. It renders real pages; it is not a
+           Firefox replacement, and both pages say where it stands.</p>
       </div>
       <div class="card">
-        <h3>Its own package manager</h3>
+        <h3>A package manager</h3>
         <p><code>hpm</code> — binary packages, Ed25519-signed indexes, a
-           dependency solver, Debian-shape channels. It fetches from this
-           very site, and keeps working from an on-disk mirror after
-           installation with no network at all.</p>
+           dependency solver, Debian-shape channels. It fetches from this very
+           site.</p>
+      </div>
+      <div class="card">
+        <h3>A language and a compiler</h3>
+        <p>Adder has Python's syntax and a systems language's semantics. A
+           hand-written x86_64 backend compiles the native kernel and doubles
+           as the differential oracle; an LLVM backend builds the userland.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="screenshots">
-  <div class="wrap">
-    <h2>Screenshots</h2>
-    <p class="lede">Captured from the framebuffer of a running system,
-       not mock-ups.</p>
-    <div class="shots">
-      <figure>
-        <img src="img/desktop.png" alt="The Hamnix desktop showing wallpaper, panel and desktop icons" loading="lazy">
-        <figcaption><b>The desktop</b> — panel, clock, launchers.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/menu.png" alt="The Hamnix application menu open, listing installed applications" loading="lazy">
-        <figcaption><b>Application menu</b> — driven from <code>.desktop</code> files.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/browser.png" alt="The Hamnix browser rendering its built-in demo page" loading="lazy">
-        <figcaption><b>hambrowse</b> — the from-scratch web engine, here on its
-          built-in demo page. The capture machine had no network card, so this
-          is not evidence about real-world sites.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/terminal.png" alt="The Hamnix terminal running the hamsh shell" loading="lazy">
-        <figcaption><b>hamsh</b> — Python-syntax shell, job control, service supervisor.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/files.png" alt="The Hamnix file manager showing a directory listing" loading="lazy">
-        <figcaption><b>Files</b> — browsing the native namespace.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/sysmon.png" alt="The Hamnix system monitor showing CPU, memory and process list" loading="lazy">
-        <figcaption><b>System Monitor</b> — live CPU, memory and processes.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/installer.png" alt="The Hamnix graphical installer" loading="lazy">
-        <figcaption><b>Installer</b> — partitions, formats and installs to NVMe.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section id="status">
-  <div class="wrap">
-    <h2>Where it honestly stands</h2>
-    <p class="lede">This is a 1.0 in the sense of "it works and it is
-       worth looking at", not "ready to be your daily driver". That
-       distinction matters enough to spell out.</p>
-
-    <div class="tblwrap">
-    <table class="tbl">
-      <tr><th>Area</th><th>State</th><th>Detail</th></tr>
-      <tr><td>Boot (UEFI, virtual machine)</td><td class="yes">works</td>
-          <td>Boots to a desktop under QEMU/KVM with OVMF. This is the tested path.</td></tr>
-      <tr><td>Boot (bare metal)</td><td class="part">stale</td>
-          <td>Booted on an Intel NUC and an Asus laptop — historically, many hundreds of commits ago. <strong>Not re-verified at 1.0.</strong></td></tr>
-      <tr><td>Filesystems &amp; storage</td><td class="yes">works</td>
-          <td>ext4 read and write (validated clean by <code>e2fsck</code>), FAT32, MBR + GPT, AHCI and NVMe.</td></tr>
-      <tr><td>Networking</td><td class="yes">works</td>
-          <td>ARP, IP, UDP, TCP, ICMP, DHCP, DNS, HTTP, TLS 1.3 over the <code>/net</code> file tree. virtio-net, e1000e, r8169.</td></tr>
-      <tr><td>Linux binaries</td><td class="yes">works</td>
-          <td>Real Debian <code>apt</code> and <code>dpkg</code> install packages inside <code>enter linux</code>. CPython and busybox run as static-PIE.</td></tr>
-      <tr><td>Memory over time</td><td class="yes">works</td>
-          <td>A four-hour soak — 2,444 application launches and closes — finished with no measurable leak.</td></tr>
-      <tr><td>Web engine</td><td class="part">partial</td>
-          <td>~83% of a pinned Web Platform Tests subset; Chromium scores ~91% on the identical harness. Renders real pages; heavy JavaScript sites will not work.</td></tr>
-      <tr><td>AArch64</td><td class="part">in progress</td>
-          <td>Boots to EL0 on QEMU <code>virt</code> with per-task address spaces, demand paging and per-task kernel stacks. No hardware port yet.</td></tr>
-      <tr><td>Wi-Fi</td><td class="no">no</td>
-          <td>No native driver. Wired networking only.</td></tr>
-      <tr><td>GPU acceleration</td><td class="no">no</td>
-          <td>Software rasteriser throughout.</td></tr>
-    </table>
-    </div>
-
-    <div class="note">
-      <b>Please do not install this on a machine you care about.</b> It
-      partitions and formats real disks, and its bare-metal behaviour is
-      unverified at this revision. A virtual machine is the right place to
-      try it. If you do run it on hardware, a report either way — working
-      or not — is genuinely useful.
-    </div>
-  </div>
-</section>
-
-<section id="download">
-  <div class="wrap">
-    <h2>Getting it</h2>
-    <p class="lede">Images are published on GitHub Releases. The
-       recommended artifact is the in-RAM installer image: firmware loads
-       the kernel and a squashfs root entirely into memory, so nothing is
-       read from the boot medium after handoff.</p>
-    <div class="cta">
-      <a class="btn primary" href="https://github.com/HamnixOS/Hamnix/releases/latest">Latest release</a>
-      <a class="btn" href="https://github.com/HamnixOS/Hamnix/blob/main/docs/BOOT.md">Boot notes</a>
-      <a class="btn" href="https://github.com/HamnixOS/Hamnix/blob/main/docs/REAL_HARDWARE.md">Real hardware</a>
-    </div>
-    <p style="margin-top:1.6rem;color:var(--dim);font-size:.94rem">
-      Or build it yourself. The tree is self-contained; the host needs
-      Python, <code>clang</code> and QEMU.</p>
-<pre><span class="c"># build the in-RAM installer image, then boot it under QEMU</span>
-git clone https://github.com/HamnixOS/Hamnix
-cd Hamnix
-bash scripts/build_installer_img.sh</pre>
   </div>
 </section>
 
@@ -348,19 +271,29 @@ bash scripts/build_installer_img.sh</pre>
     <h2>Package repository</h2>
     <p class="lede">This site is also the live <code>hpm</code> repository.
        Top-level directories are channels, mirroring Debian's split.
-       <code>hpm</code> reads each channel's <code>index.json</code> and
-       fetches packages by URL and SHA-256.</p>
+       <code>hpm</code> reads each channel's <code>index.json</code> — whose
+       Ed25519 signature it verifies against a compiled-in key — and fetches
+       packages by URL and SHA-256.</p>
 
     <div class="tblwrap">
     <table class="tbl">
       <tr><th>Channel</th><th>Index</th><th>Contents</th></tr>
       <tr>
+        <td><a href="linux/"><code>linux</code></a></td>
+        <td><a href="linux/index.json"><code>linux/index.json</code></a></td>
+        <td><a href="linux.html">Hamnix Linux</a> — the Adder userland on the
+            Linux kernel. <strong>124 packages</strong> at 1.0.22: init and the
+            boot scripts, the shell, the desktop, the applications, the Adder
+            toolchain, the manual pages and the boot-critical kernel
+            modules.</td>
+      </tr>
+      <tr>
         <td><a href="main/"><code>main</code></a></td>
         <td><a href="main/index.json"><code>main/index.json</code></a></td>
-        <td>First-party, free software. Enabled by default. 100 packages —
-            one per CLI tool, plus the <code>hamnix-base</code>
-            metapackage, the bootloader, installer tools and a curated
-            Debian rootfs tree.</td>
+        <td><a href="native.html">Hamnix (native)</a> — first-party, free
+            software. 100 packages: one per CLI tool, plus the
+            <code>hamnix-base</code> metapackage, the bootloader, installer
+            tools and a curated Debian rootfs tree.</td>
       </tr>
       <tr>
         <td><a href="non-free/"><code>non-free</code></a></td>
@@ -382,10 +315,9 @@ hpm refresh
 hpm search editor
 hpm install hamnix-base</pre>
 
-    <p style="color:var(--dim);font-size:.94rem">Channel indexes are
-       Ed25519-signed and verified against a compiled-in key. An installed
-       system carries an on-disk mirror of the packages outside the base
-       set, so <code>hpm</code> keeps working with no network.</p>
+    <p style="color:var(--dim);font-size:.94rem">An installed native system
+       carries an on-disk mirror of the packages outside the base set, so
+       <code>hpm</code> keeps working with no network at all.</p>
   </div>
 </section>
 
@@ -395,8 +327,10 @@ hpm install hamnix-base</pre>
     <div class="grid">
       <div class="card">
         <h3>Repositories</h3>
-        <p><a href="https://github.com/HamnixOS/Hamnix">HamnixOS/Hamnix</a>
-           — the OS, the language and the compiler.<br>
+        <p><a href="https://github.com/HamnixOS/hamnix-linux">HamnixOS/hamnix-linux</a>
+           — the Linux distribution.<br>
+           <a href="https://github.com/HamnixOS/Hamnix">HamnixOS/Hamnix</a>
+           — the from-scratch OS, the language and the compiler.<br>
            <a href="https://github.com/HamnixOS/packages">HamnixOS/packages</a>
            — this site and the package channels.</p>
       </div>
@@ -411,9 +345,10 @@ hpm install hamnix-base</pre>
       </div>
       <div class="card">
         <h3>Reports welcome</h3>
-        <p>Bare-metal results, boot logs from machines that fail, and
-           pages the browser renders badly are all useful.
-           <a href="https://github.com/HamnixOS/Hamnix/issues">Open an issue</a>.</p>
+        <p>Boot logs from physical machines — especially ones that fail — and
+           pages the browser renders badly are the most useful things anyone
+           can send.
+           <a href="https://github.com/HamnixOS/hamnix-linux/issues">Open an issue</a>.</p>
       </div>
     </div>
   </div>
@@ -421,6 +356,9 @@ hpm install hamnix-base</pre>
 
 <footer>
   <div class="wrap">
+    <p><a href="index.html">Hamnix</a> ·
+       <a href="linux.html">Hamnix Linux</a> ·
+       <a href="native.html">Hamnix (native)</a></p>
     <p>Hamnix — written in Adder by David Hamner. This site and the
        package channels live in
        <a href="https://github.com/HamnixOS/packages">HamnixOS/packages</a>.</p>

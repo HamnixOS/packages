@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hamnix Linux — an Adder userland on a stock Linux kernel</title>
+
+<meta name="description" content="Hamnix Linux is a distribution whose PID 1, shell, window system, compositor, desktop, file manager and package manager are all written in Adder, running on a stock Linux kernel. It boots to a desktop, installs itself to UEFI + ext4, and updates from this site with Ed25519-signed packages.">
+<meta name="author" content="David Hamner">
+<link rel="canonical" href="https://255.one/linux.html">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://255.one/linux.html">
+<meta property="og:site_name" content="Hamnix">
+<meta property="og:title" content="Hamnix Linux — an Adder userland on a stock Linux kernel">
+<meta property="og:description" content="Everything above the kernel — PID 1, the shell, the window system, the compositor, the desktop and the package manager — written in Adder. The kernel is Linux's.">
+<meta property="og:image" content="https://255.one/img/linux-menu.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Hamnix Linux",
+  "applicationCategory": "OperatingSystem",
+  "operatingSystem": "Linux x86_64 (UEFI)",
+  "softwareVersion": "1.0.22",
+  "url": "https://255.one/linux.html",
+  "codeRepository": "https://github.com/HamnixOS/hamnix-linux",
+  "author": { "@type": "Person", "name": "David Hamner" },
+  "description": "A Linux distribution whose entire userland — PID 1, shell, window system, compositor, desktop, file manager and package manager — is written in Adder, a Python-syntax systems language. Plan 9-shape namespaces built on Linux primitives, with Debian and Alpine reachable as named subtrees.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+
+<style>
+  :root {
+    --bg:#0d1117; --panel:#151b23; --line:#242c38;
+    --fg:#e6edf3; --dim:#9aa7b4; --faint:#6b7785;
+    --accent:#4ade80; --accent2:#38bdf8; --warn:#fbbf24;
+    --onaccent:#06210f;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#fbfcfd; --panel:#ffffff; --line:#e3e8ee;
+            --fg:#111820; --dim:#4d5865; --faint:#7a8795;
+            --accent:#15803d; --accent2:#0369a1; --warn:#a16207;
+            --onaccent:#ffffff; }
+  }
+  :root[data-theme="dark"] {
+    --bg:#0d1117; --panel:#151b23; --line:#242c38;
+    --fg:#e6edf3; --dim:#9aa7b4; --faint:#6b7785;
+    --accent:#4ade80; --accent2:#38bdf8; --warn:#fbbf24;
+    --onaccent:#06210f;
+  }
+  :root[data-theme="light"] {
+    --bg:#fbfcfd; --panel:#ffffff; --line:#e3e8ee;
+    --fg:#111820; --dim:#4d5865; --faint:#7a8795;
+    --accent:#15803d; --accent2:#0369a1; --warn:#a16207;
+    --onaccent:#ffffff;
+  }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font-family:var(--sans); line-height:1.65;
+         -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:74rem; margin:0 auto; padding:0 1.25rem; }
+  a { color:var(--accent2); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  code, kbd { font-family:var(--mono); font-size:.9em; }
+  code { background:var(--panel); border:1px solid var(--line);
+         padding:.1em .35em; border-radius:4px; }
+  h1,h2,h3 { line-height:1.25; letter-spacing:-.01em; }
+  h2 { font-size:1.6rem; margin:0 0 .35rem; }
+  section { padding:3.5rem 0; border-top:1px solid var(--line); }
+  .lede { color:var(--dim); max-width:62ch; margin:0 0 2rem; }
+
+  header { padding:4.5rem 0 3.5rem; }
+  .hero { display:flex; gap:2.5rem; align-items:center; flex-wrap:wrap; }
+  .hero img { width:112px; height:158px; flex:none; color:var(--fg);
+              opacity:.92; }
+  @media (max-width:560px) { .hero img { width:76px; height:107px; } }
+  .hero h1 { font-size:clamp(2.1rem,5vw,3.1rem); margin:0 0 .6rem; }
+  .hero p { color:var(--dim); max-width:58ch; margin:0 0 1.4rem;
+            font-size:1.09rem; }
+  .tag { display:inline-block; font-family:var(--mono); font-size:.76rem;
+         color:var(--accent); border:1px solid var(--accent);
+         border-radius:999px; padding:.15em .7em; margin-bottom:1rem; }
+  .cta { display:flex; gap:.7rem; flex-wrap:wrap; }
+  .btn { display:inline-block; font-weight:600; font-size:.95rem;
+         padding:.62rem 1.15rem; border-radius:7px;
+         border:1px solid var(--line); background:var(--panel);
+         color:var(--fg); }
+  .btn:hover { border-color:var(--accent); text-decoration:none; }
+  .btn.primary { background:var(--accent); border-color:var(--accent);
+                 color:var(--onaccent); }
+
+  .stats { display:grid; gap:1px; background:var(--line);
+           border:1px solid var(--line); border-radius:10px;
+           overflow:hidden; margin-top:2.5rem;
+           grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); }
+  .stat { background:var(--panel); padding:1.05rem 1.15rem; }
+  .stat b { display:block; font-family:var(--mono); font-size:1.45rem;
+            color:var(--accent); font-weight:600; letter-spacing:-.02em; }
+  .stat span { font-size:.83rem; color:var(--faint); }
+
+  .grid { display:grid; gap:1.15rem;
+          grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); }
+  .card { background:var(--panel); border:1px solid var(--line);
+          border-radius:10px; padding:1.3rem 1.4rem; }
+  .card h3 { margin:.1rem 0 .5rem; font-size:1.06rem; }
+  .card p { margin:0; color:var(--dim); font-size:.94rem; }
+
+  .shots { display:grid; gap:1.15rem;
+           grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+  figure { margin:0; background:var(--panel); border:1px solid var(--line);
+           border-radius:10px; overflow:hidden; }
+  figure img { display:block; width:100%; height:auto;
+               border-bottom:1px solid var(--line); background:#000; }
+  figcaption { padding:.7rem 1rem; font-size:.86rem; color:var(--dim); }
+  figcaption b { color:var(--fg); font-weight:600; }
+
+  .tblwrap { overflow-x:auto; margin-top:1.2rem; }
+  .tbl { width:100%; border-collapse:collapse; font-size:.93rem;
+         min-width:38rem; }
+  .tbl th, .tbl td { text-align:left; padding:.6rem .8rem;
+                     border-bottom:1px solid var(--line);
+                     vertical-align:top; }
+  .tbl th { color:var(--faint); font-weight:600; font-size:.8rem;
+            text-transform:uppercase; letter-spacing:.04em; }
+  .yes { color:var(--accent); font-family:var(--mono); }
+  .part { color:var(--warn); font-family:var(--mono); }
+  .no { color:var(--faint); font-family:var(--mono); }
+
+  pre { background:var(--panel); border:1px solid var(--line);
+        border-radius:9px; padding:1rem 1.15rem; overflow-x:auto;
+        font-family:var(--mono); font-size:.88rem; line-height:1.55; }
+  pre .c { color:var(--faint); }
+
+  .note { border-left:3px solid var(--warn); background:var(--panel);
+          border-radius:0 8px 8px 0; padding:1rem 1.2rem;
+          margin:1.6rem 0; font-size:.94rem; color:var(--dim); }
+  .note b { color:var(--fg); }
+
+  footer { border-top:1px solid var(--line); padding:2.5rem 0 3.5rem;
+           color:var(--faint); font-size:.88rem; }
+  footer a { color:var(--dim); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hero">
+    <img src="logo.svg" alt="Hamnix logo">
+    <div>
+      <div class="tag">1.0.22 — live in the <code>linux</code> channel</div>
+      <h1>Hamnix Linux</h1>
+      <p>Everything above the kernel is ours and is written in
+         <strong>Adder</strong>: PID&nbsp;1, the shell, the window system,
+         the compositor, the desktop, the file manager, the package manager.
+         The kernel is Linux's, unmodified — which is how the driver problem
+         stops being ours.</p>
+      <p>It boots to a desktop, installs itself onto UEFI + ext4, and updates
+         from this site with signed packages. <strong>The tested path today is
+         a virtual machine.</strong></p>
+      <div class="cta">
+        <a class="btn primary" href="#getting">Run it</a>
+        <a class="btn" href="https://github.com/HamnixOS/hamnix-linux">Source</a>
+        <a class="btn" href="#status">Where it stands</a>
+        <a class="btn" href="index.html">Home</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>1.0.22</b><span>current release, live now</span></div>
+      <div class="stat"><b>124</b><span>signed packages in the channel</span></div>
+      <div class="stat"><b>25</b><span>applications in the menu, in 7 categories</span></div>
+      <div class="stat"><b>363</b><span>Adder applications that build for Linux</span></div>
+      <div class="stat"><b>1</b><span>userland, shared with the native OS</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="what">
+  <div class="wrap">
+    <h2>The userland is the product</h2>
+    <p class="lede">Hamnix started as a from-scratch operating system with its
+       own x86_64 kernel. Hamnix Linux is the <em>same userland</em>,
+       retargeted onto the Linux kernel — not a fork of a distribution, and
+       not a desktop environment bolted onto someone else's base. There is no
+       systemd, no glibc userland, no GNU coreutils in the boot path. There is
+       an Adder program at PID&nbsp;1 and Adder programs above it.</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>An Adder PID 1</h3>
+        <p>The kernel execs <code>/init</code> — <code>user/linuxinit.ad</code>
+           — which builds the namespace with <code>bind</code>, execs
+           <code>hamsh</code>, and runs the <code>rc</code> scripts. On the
+           native OS the kernel posts those file servers itself; on Linux,
+           PID&nbsp;1 does. Above that line the code is unchanged.</p>
+      </div>
+      <div class="card">
+        <h3>Plan 9-shape namespaces</h3>
+        <p><code>bind</code> and per-process namespaces, implemented on Linux
+           primitives. Networking is the <code>/net</code> file tree — TCP,
+           UDP, ICMP, TLS and DHCP dialled through files — and the window
+           system is <code>/dev/wsys</code>, a file server, not a socket
+           protocol.</p>
+      </div>
+      <div class="card">
+        <h3>Debian and Alpine, as subtrees</h3>
+        <p><code>enter debian { … }</code> and <code>enter alpine { … }</code>
+           in one boot, from the console and as an unprivileged user, each
+           mapped to a medium by ext4 volume label so a renumbered disk cannot
+           silently change which one you entered. Each gets its own section in
+           the application menu.</p>
+      </div>
+      <div class="card">
+        <h3>It updates itself</h3>
+        <p><code>hpm</code> installs and upgrades the whole distribution from
+           <a href="linux/"><code>255.one/linux/</code></a> over TLS, with
+           Ed25519-signed indexes verified against a compiled-in key —
+           including replacing <code>/bin/hamsh</code> while it is PID&nbsp;1.
+           Proven end to end: install an old version, publish a newer one,
+           <code>hpm update</code>, and the upgraded binary runs. No re-imaging
+           anywhere in it.</p>
+      </div>
+      <div class="card">
+        <h3>A desktop, not a demo</h3>
+        <p>Compositor, panel, taskbar, workspaces, and a categorised
+           Applications menu with a search box, fly-out submenus and
+           favourites. A file manager, a terminal, a text editor, a system
+           monitor, a package manager UI. Every menu entry now ships in the
+           same package as the program it points at, so an entry cannot be
+           published without its program.</p>
+      </div>
+      <div class="card">
+        <h3>It compiles itself on the box</h3>
+        <p><code>ac foo.ad -o foo</code> works on a machine installed from this
+           site — natively, and through <code>clang</code> inside the Debian
+           namespace. That is enforced by a gate that unpacks the toolchain out
+           of the published tarballs and compiles with those files and nothing
+           else, because for eleven versions it was true of the image and false
+           of the channel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="screenshots">
+  <div class="wrap">
+    <h2>Screenshots</h2>
+    <p class="lede">Every pixel here is real scanout, captured with QEMU's
+       <code>screendump</code> off the framebuffer the guest actually
+       presented. Nothing is re-rendered, upscaled, composited or mocked. Some
+       are cropped to the window that appeared; none are retouched.</p>
+
+    <div class="shots">
+      <figure>
+        <img src="img/linux-menu.png" alt="The Hamnix Linux desktop with the Applications menu open and the Accessories submenu flying out" loading="lazy">
+        <figcaption><b>The desktop and the Applications menu</b> — search box,
+          categories, fly-out submenus. Every entry listed here names a program
+          that is on the machine; until 1.0.20, nine of eleven did not.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/linux-desktop.png" alt="Hamnix Linux running on an installed UEFI and ext4 disk, with a terminal listing the root directory" loading="lazy">
+        <figcaption><b>An installed machine</b> — booted from a real ESP onto a
+          real ext4 root, with <code>hamsh</code> listing that root.
+          <code>debian</code> and <code>alpine</code> in the listing are the two
+          namespaces, mounted by volume label.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/linux-update-notice.png" alt="An amber notice under the panel reading: The window system was updated. Restart before opening new apps." loading="lazy">
+        <figcaption><b>What an update looks like when it needs a restart</b> —
+          the desktop survives the window-system upgrade whole, and says so
+          rather than letting the next click appear to do nothing. Captured on
+          an installed UEFI + ext4 disk.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/linux-firefox.png" alt="Firefox running in a Hamnix window with its full chrome, tab strip and address bar" loading="lazy">
+        <figcaption><b>Firefox</b> — running as a native Wayland client against
+          the Adder compositor's Wayland server, in a Hamnix window with a close
+          button on it. This capture is a new tab; it is not evidence about how
+          any particular site renders.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/linux-steam.png" alt="The Steam client showing its store Browse menu with cover artwork, inside a Hamnix window" loading="lazy">
+        <figcaption><b>Steam</b>, through the X bridge — the store front page,
+          its <em>Browse</em> menu with live CDN artwork, scrolling and search.
+          <b>No account was used</b>, so the library, downloads and launching a
+          game are unmeasured and are not claimed.</figcaption>
+      </figure>
+    </div>
+
+    <div class="note">
+      <b>One thing these pictures do not show you.</b> The CPU meter in the
+      panel of the harness captures reads the machine that <em>ran</em> the
+      capture, not the guest in the picture. Ignore that number here; the
+      guest's own cost is measured separately, below.
+    </div>
+  </div>
+</section>
+
+<section id="measured">
+  <div class="wrap">
+    <h2>Two numbers about the desktop</h2>
+    <p class="lede">Both are the result of finding something that was wrong,
+       and both are stated with the conditions they were measured under.
+       Neither is a comparison against anything else — no other desktop was
+       measured on a comparable stimulus, and where a comparison was attempted
+       it turned out not to be constructible, so these numbers stand alone on
+       purpose.</p>
+
+    <div class="tblwrap">
+    <table class="tbl">
+      <tr><th>What</th><th>Then → now</th><th>Conditions</th></tr>
+      <tr>
+        <td><b>Input reaching the screen</b></td>
+        <td class="yes">~10 ms → ~0.3 ms</td>
+        <td>The compositor woke on a fixed timer regardless of what you did;
+            it now wakes because you did something. Three before/after
+            pairs run back to back on one host: median 8.9&nbsp;ms before,
+            0.33–1.07&nbsp;ms after. Idle cost did not regress — parks per
+            second are equal on both sides.
+            <em>Shipped in 1.0.22.</em></td>
+      </tr>
+      <tr>
+        <td><b>Dragging a window</b></td>
+        <td class="yes">~36% → ~4% of a core</td>
+        <td>The compositor was doing work nobody could see, and waking for
+            applications while it already owed a frame. Measured on a real
+            display in one session with one binary, with the probe proven
+            against a known 50% load in the same run. <b>Treat this as a floor,
+            not a promise</b>: the test window draws less than a real one, so a
+            desktop with real content in it will cost somewhat more at both
+            ends. <em>Shipped in 1.0.22.</em></td>
+      </tr>
+      <tr>
+        <td>File manager, sitting open</td>
+        <td class="yes">102.7% → 7.2% of a core</td>
+        <td>It was polling for keystrokes that were never coming instead of
+            waiting for them, which froze the whole desktop. Shipped in 1.0.20.</td>
+      </tr>
+      <tr>
+        <td>An idle desktop being idle</td>
+        <td class="yes">23 programs → 0.0 s</td>
+        <td>Twenty-three programs each burned a whole core simply by being
+            open, and every gate on the tree passed while they did it — only a
+            measurement of <em>time</em> could see it. All 50 painting clients
+            now measure 0.0&nbsp;s of CPU across a 15-second run, pixel-identical
+            before and after. Shipped in 1.0.12.</td>
+      </tr>
+    </table>
+    </div>
+
+    <div class="note">
+      <b>These are measurements, not benchmarks.</b> Each was taken on one
+      machine under a stated load, and the two marked <em>shipped in 1.0.22</em>
+      were taken on the code that is now on the channel, not on a branch
+      that had not reached anybody yet. This site tries hard to keep those two things from
+      quietly becoming the same sentence.
+    </div>
+  </div>
+</section>
+
+<section id="status">
+  <div class="wrap">
+    <h2>Where it honestly stands</h2>
+    <p class="lede">A virtual machine, and hybrid development on a host, are
+       the primary paths right now. Native installation onto real hardware is
+       in progress. Everything below says which it is.</p>
+
+    <div class="tblwrap">
+    <table class="tbl">
+      <tr><th>Area</th><th>State</th><th>Detail</th></tr>
+      <tr><td>Boot (UEFI, virtual machine)</td><td class="yes">works</td>
+          <td>Linux kernel → the Adder PID 1 → namespace via <code>bind</code>
+              → <code>hamsh</code> → the rc scripts → a desktop. This is the
+              tested path.</td></tr>
+      <tr><td>Installed disk (UEFI + ext4)</td><td class="yes">works</td>
+          <td>UEFI → a unified kernel image on an ESP → PID 1 → the real ext4
+              root. Files written on one boot are there on the next. Measured
+              in a virtual machine.</td></tr>
+      <tr><td>Real hardware</td><td class="part">untested</td>
+          <td><strong>Not tried, and therefore not claimed.</strong> No
+              physical machine has been booted and reported here. VM and hybrid
+              development are primary at the moment.</td></tr>
+      <tr><td>Native install</td><td class="part">in progress</td>
+          <td>Being built. When a physical machine has booted this and been
+              measured, it will say so here and not before.</td></tr>
+      <tr><td>Updating itself</td><td class="yes">works</td>
+          <td><code>hpm</code> pulls the whole distribution from
+              <code>255.one/linux/</code> over TLS with Ed25519-signed indexes,
+              and can replace <code>/bin/hamsh</code> while it is PID 1. Proven
+              from an old install to a newer build with no re-imaging.</td></tr>
+      <tr><td>Desktop</td><td class="yes">works</td>
+          <td>Compositor, panel, taskbar, workspaces, categorised menu with
+              search and favourites, file manager, terminal, text editor,
+              system monitor. 25 applications in seven categories.</td></tr>
+      <tr><td>Kernel modules</td><td class="yes">works</td>
+          <td><code>modprobe</code> resolves a name to a module and loads its
+              dependencies in order, out of a real <code>modules.dep</code>.
+              32 PASS / 0 FAIL, and 12 of 19 with the change reverted.</td></tr>
+      <tr><td>Networking</td><td class="yes">works</td>
+          <td>TCP, UDP, ICMP, TLS and DHCP over the <code>/net</code> file
+              tree, with <code>announce</code>/<code>accept</code> across
+              process boundaries.</td></tr>
+      <tr><td>Audio</td><td class="yes">works</td>
+          <td>intel-hda through <code>/dev/audio</code>. Proven by FFT on a WAV
+              captured out of the VM: the tones come back at the frequencies
+              and durations that went in.</td></tr>
+      <tr><td>Debian &amp; Alpine namespaces</td><td class="yes">works</td>
+          <td>Both in one boot, from the console and as an unprivileged
+              desktop user, with a negative control proving each is invisible
+              inside the other.</td></tr>
+      <tr><td>X programs</td><td class="part">partial</td>
+          <td>Firefox runs as a native Wayland client; X11 clients run through
+              Xwayland. A rootless bridge makes each X window a window of this
+              desktop — it is built and measured but is not the default arm,
+              and the first connection is still intermittent.</td></tr>
+      <tr><td>Steam</td><td class="part">partial</td>
+          <td>Its store front page renders, scrolls and searches, driven with
+              real pointer and keyboard events. No account was used, so the
+              library, downloads and launching a game are unmeasured and not
+              claimed.</td></tr>
+      <tr><td>Our own web engine</td><td class="part">partial</td>
+          <td><code>hambrowse</code> renders pages. The fix that made a window
+              larger than 512×512 draw at all shipped in 1.0.22.</td></tr>
+      <tr><td>Wi-Fi</td><td class="part">untested</td>
+          <td>No wireless hardware has been exercised. The kernel is stock, so
+              its drivers are present; that is not the same as having tried
+              one.</td></tr>
+      <tr><td>GPU acceleration</td><td class="no">no</td>
+          <td>Software rasteriser throughout. The scanout path ships inert and
+              is not enabled by default.</td></tr>
+    </table>
+    </div>
+
+    <div class="note">
+      <b>Do not put this on a machine you care about.</b> It writes real
+      partitions and real filesystems, and no physical machine has been tested.
+      A virtual machine is the right place to run it. If you do try hardware, a
+      report either way — booting or not — is the single most useful thing
+      anyone could send.
+    </div>
+  </div>
+</section>
+
+<section id="getting">
+  <div class="wrap">
+    <h2>Running it</h2>
+    <p class="lede">There is no release image yet. You build the tree and boot
+       it under QEMU; the host needs Python, <code>clang</code>, QEMU and
+       OVMF.</p>
+
+<pre><span class="c"># the compiler is a submodule, so clone recursively</span>
+git clone --recurse-submodules https://github.com/HamnixOS/hamnix-linux
+cd hamnix-linux
+
+<span class="c"># stage the root and pack the initramfs</span>
+bash scripts/hamlinux_image.sh
+
+<span class="c"># boot it with a display, and you get the desktop</span>
+bash scripts/hamlinux_vm.sh gpu</pre>
+
+    <p style="color:var(--dim);font-size:.94rem">Once it is up, the machine
+       talks to this site. <code>hpm</code> verifies the channel index's
+       Ed25519 signature before it believes a single package.</p>
+
+<pre><span class="c"># on a running Hamnix Linux system</span>
+hpm refresh https://255.one/
+hpm install hamnix-base
+hpm update</pre>
+
+    <div class="cta" style="margin-top:1.6rem">
+      <a class="btn primary" href="https://github.com/HamnixOS/hamnix-linux">Source</a>
+      <a class="btn" href="https://github.com/HamnixOS/hamnix-linux/blob/main/CHANGELOG.md">Changelog</a>
+      <a class="btn" href="https://github.com/HamnixOS/hamnix-linux/blob/main/HANDOFF.md">Current state, in detail</a>
+      <a class="btn" href="index.html#packages">Package channels</a>
+    </div>
+  </div>
+</section>
+
+<section id="source">
+  <div class="wrap">
+    <h2>Source &amp; contact</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Repositories</h3>
+        <p><a href="https://github.com/HamnixOS/hamnix-linux">HamnixOS/hamnix-linux</a>
+           — this distribution.<br>
+           <a href="https://github.com/HamnixOS/Hamnix">HamnixOS/Hamnix</a>
+           — <a href="native.html">the native OS</a>, sharing the userland.<br>
+           <a href="https://github.com/HamnixOS/packages">HamnixOS/packages</a>
+           — this site and the package channels.</p>
+      </div>
+      <div class="card">
+        <h3>What changed, and why</h3>
+        <p>The <a href="https://github.com/HamnixOS/hamnix-linux/blob/main/CHANGELOG.md">changelog</a>
+           names what changed for someone using the machine, and lists work
+           that was measured and deliberately <em>not</em> done, because a
+           number that says "don't" is a result too.</p>
+      </div>
+      <div class="card">
+        <h3>Reports welcome</h3>
+        <p>Boot logs from physical machines — especially ones that fail — are
+           the most useful thing right now, and so are pages that render badly.
+           <a href="https://github.com/HamnixOS/hamnix-linux/issues">Open an issue</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><a href="index.html">Hamnix</a> ·
+       <a href="linux.html">Hamnix Linux</a> ·
+       <a href="native.html">Hamnix (native)</a></p>
+    <p>Hamnix — written in Adder by David Hamner. This site and the
+       package channels live in
+       <a href="https://github.com/HamnixOS/packages">HamnixOS/packages</a>.</p>
+    <p>Crawlers and language models are welcome — see
+       <a href="robots.txt">robots.txt</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
