@@ -3,16 +3,16 @@
   "repo": "HamnixOS/packages",
   "channel": "linux",
   "url": "https://255.one/linux/",
-  "updated": "2026-08-13",
+  "updated": "2026-08-15",
   "description": "hamnix-linux channel -- the Hamnix userland built against the Linux kernel. Same package names as `main`; the binaries are glibc-linked ELFs for this line, not native Hamnix ELFs.",
   "packages": [
     {
       "name": "hamnix-init",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-init-1.0.23.tar.gz",
-      "sha256": "d0093f38b10d76b8dc7b68dd2a8e09eedd0d223e09c66653375ab4dc5de62fb3",
-      "size": 135422,
+      "url": "packages/hamnix-init-1.0.24.tar.gz",
+      "sha256": "542f7131554a15a1c1f4bbb6935f999e77cbc89109fef90ea7feb6ea7d691923",
+      "size": 141624,
       "description": "hamnix-linux init (the Adder PID 1) and the boot rc scripts",
       "depends": [],
       "target": "#hamnix-system",
@@ -20,11 +20,11 @@
     },
     {
       "name": "hamnix-hamsh",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-hamsh-1.0.23.tar.gz",
-      "sha256": "b8cb6bb01bc6291f7c054053c8b8cc509b424cabb83a3d888af21095d226a750",
-      "size": 415439,
+      "url": "packages/hamnix-hamsh-1.0.24.tar.gz",
+      "sha256": "b186ec112337bba4ba36ede13c13a7fdc089e614e814c4bebb062b98b4187e74",
+      "size": 418643,
       "description": "hamnix-linux shell -- /bin/hamsh",
       "depends": [
         "hamnix-init>=1"
@@ -34,11 +34,11 @@
     },
     {
       "name": "hamnix-net",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-net-1.0.23.tar.gz",
-      "sha256": "d5e37e201699ffcf13ecb6969cf214d69bfd84e9eba70e1cc05191ac857f88b8",
-      "size": 1141535,
+      "url": "packages/hamnix-net-1.0.24.tar.gz",
+      "sha256": "1b456a5579cd149eaf06dc82961759fb7d37789ab1dcf2f09ad1807b7560dcf9",
+      "size": 1164982,
       "description": "hamnix-linux networking userland -- ifconfig, route, ping, host, curl, wget and the ssh client",
       "depends": [
         "hamnix-init>=1"
@@ -48,11 +48,11 @@
     },
     {
       "name": "hamnix-svc-sshd",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-svc-sshd-1.0.23.tar.gz",
-      "sha256": "ed3b18c496f6add76dea9cddb37c2afb5e02d3f4eac37ddbfc1543aeca26c9a7",
-      "size": 175466,
+      "url": "packages/hamnix-svc-sshd-1.0.24.tar.gz",
+      "sha256": "d42127be4ae214e59b89aa02a66030105fca8360e6185694bb2a2c9c94694834",
+      "size": 178267,
       "description": "the hamnix SSH-2 server (curve25519-sha256 + chacha20-poly1305): /bin/sshd and the service definition hamsh's `svc` builtin reads. SEPARATE FROM hamnix-base ON PURPOSE -- installing it is how a person opens port 22, and nothing starts it for them: after `hpm install hamnix-svc-sshd`, `svc start sshd`.",
       "depends": [
         "hamnix-init>=1",
@@ -63,11 +63,11 @@
     },
     {
       "name": "hpm",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hpm-1.0.23.tar.gz",
-      "sha256": "628e9124b938be703feda9e07180061818399081620753bcba60719393e2c4e9",
-      "size": 230121,
+      "url": "packages/hpm-1.0.24.tar.gz",
+      "sha256": "ceaf277d776f8d0d1fe23434ef3d43be8b7810d21d9d7a7e0db93d425388b60c",
+      "size": 233301,
       "description": "Hamnix package manager (hpm), built for the Linux line",
       "depends": [
         "hamnix-init>=1"
@@ -77,11 +77,11 @@
     },
     {
       "name": "hamnix-auth",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-auth-1.0.23.tar.gz",
-      "sha256": "b58a5735c377aaa67453e7c49ff883ee4c2a00c5a64a0032b10ed75751a3ffc2",
-      "size": 471602,
+      "url": "packages/hamnix-auth-1.0.24.tar.gz",
+      "sha256": "7cfd7bc20511586111a5e0677046168bb28c0c91860e5e08b9dd28a69ef6194d",
+      "size": 481811,
       "description": "identity -- login, su, passwd, whoami; clients of /dev/auth",
       "depends": [
         "hamnix-init>=1"
@@ -91,11 +91,11 @@
     },
     {
       "name": "hamnix-modules",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-modules-1.0.23.tar.gz",
-      "sha256": "f88bdee217f9b0c86888996de16d54d7dff64af98ec11931a5aa67b5d565d71e",
-      "size": 462240,
+      "url": "packages/hamnix-modules-1.0.24.tar.gz",
+      "sha256": "1f7de4167a561263e9e07e5f105fb06f61a17f8235e83885e66317a059d3bb67",
+      "size": 472646,
       "description": "kernel module tools -- insmod, lsmod, modprobe, rmmod",
       "depends": [
         "hamnix-init>=1"
@@ -105,11 +105,11 @@
     },
     {
       "name": "hamnix-install",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-install-1.0.23.tar.gz",
-      "sha256": "6811f8eea9e0f00966c1dab68c74b7887e55ccdc32c82aec7b65aa4c1e0f6ccc",
-      "size": 972626,
+      "url": "packages/hamnix-install-1.0.24.tar.gz",
+      "sha256": "575cfbbaee7a2f93d31222958d7908237bd3e6cf1f6c43d555532679f0a5f6d6",
+      "size": 1109188,
       "description": "installer and system tools -- hlinstall, haminstallui, nsrun, reboot",
       "depends": [
         "hamnix-init>=1"
@@ -119,11 +119,11 @@
     },
     {
       "name": "hamnix-adder",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-adder-1.0.23.tar.gz",
-      "sha256": "c0c63eed59d2926900ad25a4220b1be9ce5e2077719e9dec3064fd2e2b3557ce",
-      "size": 769437,
+      "url": "packages/hamnix-adder-1.0.24.tar.gz",
+      "sha256": "59bd5dff9faa86567de5af3091a04b6b131c77c488bed9dd38d5631b5c10d4e2",
+      "size": 781509,
       "description": "the Adder toolchain -- `ac foo.ad -o foo` on the box: the driver (/bin/ac), the compiler it execs (/bin/host_ac, static), and the runtime sources in /usr/share/adder that ac-link.sh links against",
       "depends": [
         "hamnix-init>=1"
@@ -133,11 +133,11 @@
     },
     {
       "name": "hamnix-audio",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-audio-1.0.23.tar.gz",
-      "sha256": "f6593942de28dc18b6bdd2a3ad987a8f9c16c698644bf0d0e3967146b55f29d0",
-      "size": 350571,
+      "url": "packages/hamnix-audio-1.0.24.tar.gz",
+      "sha256": "b78fea8c5de1ca787fe16bdbe96822e4521eb7a9d8a3950c6081be9e24abc358",
+      "size": 358852,
       "description": "hamnix-linux audio userland -- playtone, aplay, arecord, clients of /dev/audio, and /usr/share/sounds/test.wav to play",
       "depends": [
         "hamnix-init>=1"
@@ -147,11 +147,11 @@
     },
     {
       "name": "hamnix-man",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-man-1.0.23.tar.gz",
-      "sha256": "9137449c8951666661c917c7ec99c9d4cf9c5bfb9065a9726edf5f7c51fa6832",
-      "size": 8149,
+      "url": "packages/hamnix-man-1.0.24.tar.gz",
+      "sha256": "8c286dad6e272ef3ba892cd1394b2614a856794fc50f8dd0aabbb2dedb74ebd3",
+      "size": 8148,
       "description": "the manual pages -- /usr/share/man/*.md, which hamsh's `man` and `help` read. Without them `help` reports its own index missing.",
       "depends": [
         "hamnix-init>=1"
@@ -161,11 +161,11 @@
     },
     {
       "name": "hamnix-desktop",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-desktop-1.0.23.tar.gz",
-      "sha256": "8cd16852c688bd696c5aaf00dbad38135ba0e921af8c5cf4c5477329b3889929",
-      "size": 2953524,
+      "url": "packages/hamnix-desktop-1.0.24.tar.gz",
+      "sha256": "89eba0b73ee860b42f561002453f02f9fb4bd5ee54a48716f89ffba4bad83edf",
+      "size": 2993356,
       "description": "hamnix-linux desktop -- the scene compositor, the DE clients, and /etc/skel (the launchers and starter documents a new account gets)",
       "depends": [
         "hamnix-init>=1",
@@ -176,11 +176,11 @@
     },
     {
       "name": "hamnix-vulkan",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-1.0.23.tar.gz",
-      "sha256": "6b9442d24a78fee71647e8652251c5ca2e26a79c189016aaf6f475cd6a9438a2",
-      "size": 2363602,
+      "url": "packages/hamnix-vulkan-1.0.24.tar.gz",
+      "sha256": "470477475e071e61953e1fcc05fdfb276ed7263e2cfa24874ec707a98350a569",
+      "size": 2363598,
       "description": "The Vulkan LOADER (libvulkan.so.1) and the dependency closure every ICD shares -- libdrm, libstdc++, the xcb/wayland presentation libraries. 5.9 MiB. Installs NO driver: the loader reads /usr/share/vulkan/icd.d and finds whatever ICD packages are installed alongside it. `vkprobe` will report zero devices until one is. Everything here lives in the HAMNIX root -- no Debian namespace is involved at any point.",
       "depends": [
         "hamnix-init>=1"
@@ -190,11 +190,11 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part01",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part01-1.0.23.tar.gz",
-      "sha256": "aeb04dfe00ff56b0f563e4dfe71d78cf395c0656346a3b68aca5d56c0c81134d",
-      "size": 3493702,
+      "url": "packages/hamnix-vulkan-llvm-part01-1.0.24.tar.gz",
+      "sha256": "c2b063b1b2ce4cfe5f120c2defa756d05dd616404938593f625f5ed9b8c993f9",
+      "size": 3493703,
       "description": "Payload part 1 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
       "target": "#hamnix-system",
@@ -202,10 +202,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part02",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part02-1.0.23.tar.gz",
-      "sha256": "a8bb010ab4cafecae48f9c0b74b283f0ce887110abb7375bef2ffd179e61d8d4",
+      "url": "packages/hamnix-vulkan-llvm-part02-1.0.24.tar.gz",
+      "sha256": "31c7008b3a697989af9c4567263144835a470bddb4550443d5be8ce52a2dd5e0",
       "size": 3671214,
       "description": "Payload part 2 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -214,10 +214,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part03",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part03-1.0.23.tar.gz",
-      "sha256": "442f2d700383d848868668d1c2209604e592c790b1d3b4968a766223523fbabd",
+      "url": "packages/hamnix-vulkan-llvm-part03-1.0.24.tar.gz",
+      "sha256": "6c16bf28e4e7f3bf8ab18a662e2ce01188b04886d882ade6b02ca9772bfe55e4",
       "size": 3671674,
       "description": "Payload part 3 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -226,10 +226,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part04",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part04-1.0.23.tar.gz",
-      "sha256": "43623a0842d2f82166d0395cd551603cebfbdab78b9dec1758f05c5389a38d81",
+      "url": "packages/hamnix-vulkan-llvm-part04-1.0.24.tar.gz",
+      "sha256": "ce34784caffcd9fbf29dfdc3d29bdd123c3f61bf4cbd92e5410050bd5d136a28",
       "size": 3671141,
       "description": "Payload part 4 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -238,10 +238,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part05",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part05-1.0.23.tar.gz",
-      "sha256": "b2a859bc405fd7cf2547a2e8c5b54293448d3789bf82099244d28fedc2db81eb",
+      "url": "packages/hamnix-vulkan-llvm-part05-1.0.24.tar.gz",
+      "sha256": "bd4d13c2df75ea1450f66d38348fa29f4f5c5750d6fe3dcadd8770cfa45962d1",
       "size": 3669493,
       "description": "Payload part 5 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -250,10 +250,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part06",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part06-1.0.23.tar.gz",
-      "sha256": "228d2f48a7b2f5850f6a0a21b3ea388625137a0f144c4e896cadf2841339716c",
+      "url": "packages/hamnix-vulkan-llvm-part06-1.0.24.tar.gz",
+      "sha256": "f717c28ccd6cc8fba23dac6b3b620471ae171fce221fb92c8eed1ec599fbac4a",
       "size": 3671003,
       "description": "Payload part 6 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -262,10 +262,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part07",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part07-1.0.23.tar.gz",
-      "sha256": "b3150074a3cde3f9090045f18efc3e88e31bbd3d8790bad20f58447240da0876",
+      "url": "packages/hamnix-vulkan-llvm-part07-1.0.24.tar.gz",
+      "sha256": "35c3870e3b693b50e4bf9e92d441ba08c89cd3371af3e60d57563a2ac34811b3",
       "size": 3671529,
       "description": "Payload part 7 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -274,10 +274,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part08",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part08-1.0.23.tar.gz",
-      "sha256": "da28ffa72676e8e022d1f81502467c5362c3d4c523e05bca89dacf89e2f1fd37",
+      "url": "packages/hamnix-vulkan-llvm-part08-1.0.24.tar.gz",
+      "sha256": "b643adfe8bc381c8fefbaf14a45fe7f4a39be55d5921cdc0024f3ee81694d63d",
       "size": 3668836,
       "description": "Payload part 8 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -286,10 +286,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part09",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part09-1.0.23.tar.gz",
-      "sha256": "c38fb635685b333f74040769d33379fe35ba4f0501b823277bc3ca3d9622ca2f",
+      "url": "packages/hamnix-vulkan-llvm-part09-1.0.24.tar.gz",
+      "sha256": "c961f1a8cc51a88ff2b874c6df9eb84b79474aae9aa5bb82521cfeb228cde60d",
       "size": 3422565,
       "description": "Payload part 9 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -298,10 +298,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part10",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part10-1.0.23.tar.gz",
-      "sha256": "0521208b3acffef1d0794ec9752e7be3ffb843e44ac7cb0cd8fceb416dce811b",
+      "url": "packages/hamnix-vulkan-llvm-part10-1.0.24.tar.gz",
+      "sha256": "231fe9363a1eb765698979c308ea8e1e0fbce8b52f656017af5bf6feea2e5522",
       "size": 3460503,
       "description": "Payload part 10 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -310,10 +310,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part11",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part11-1.0.23.tar.gz",
-      "sha256": "46ee77accc6663288e44f2487f1aa6c59910e7f3ee0bea78270409c3bcf9276e",
+      "url": "packages/hamnix-vulkan-llvm-part11-1.0.24.tar.gz",
+      "sha256": "903c32455922edc2dd97998c6f8cc772b13279b2c9467e8831bd18205758f77f",
       "size": 2766811,
       "description": "Payload part 11 of hamnix-vulkan-llvm (libLLVM.so.19.1). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -322,10 +322,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part12",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part12-1.0.23.tar.gz",
-      "sha256": "f08ee9d3502c6ec93a8cf944e1f6388f6a043f6b0858abe1b2fa41e6182b79f4",
+      "url": "packages/hamnix-vulkan-llvm-part12-1.0.24.tar.gz",
+      "sha256": "747f07e644b2adff54038a63bbcdf46bb7ba126ebe64106258f99b60d32dd5cf",
       "size": 3660042,
       "description": "Payload part 1 of hamnix-vulkan-llvm (libz3.so.4). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -334,10 +334,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part13",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part13-1.0.23.tar.gz",
-      "sha256": "7bef1111799fb4481f9ec6786fcb504e027d819aac49fc3093cf9e5b059d02cd",
+      "url": "packages/hamnix-vulkan-llvm-part13-1.0.24.tar.gz",
+      "sha256": "9ed1293172891878fa0460c2e395d525f2c3de574a37f0334f0600a7eaf1e9a2",
       "size": 3671333,
       "description": "Payload part 2 of hamnix-vulkan-llvm (libz3.so.4). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -346,10 +346,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part14",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part14-1.0.23.tar.gz",
-      "sha256": "e99432ba340034f9e76991ad4a24fed38f90c029704e71bdce4ae08a06419933",
+      "url": "packages/hamnix-vulkan-llvm-part14-1.0.24.tar.gz",
+      "sha256": "12755a96b728a135e9570298483d701b055f6fd43babdea5c293a4836738cc06",
       "size": 3668593,
       "description": "Payload part 3 of hamnix-vulkan-llvm (libz3.so.4). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -358,10 +358,10 @@
     },
     {
       "name": "hamnix-vulkan-llvm-part15",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-part15-1.0.23.tar.gz",
-      "sha256": "f91f209bc14c37b2317219c2b632bf3d62c16b35ddb92115d2f07415c33f26df",
+      "url": "packages/hamnix-vulkan-llvm-part15-1.0.24.tar.gz",
+      "sha256": "5ee914f5ef99e9d14b5b4cad4a6017fd16c80e83e4c3301967c43789d30ef8a1",
       "size": 1014053,
       "description": "Payload part 4 of hamnix-vulkan-llvm (libz3.so.4). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-llvm's install hook reassembles the pieces.",
       "depends": [],
@@ -370,11 +370,11 @@
     },
     {
       "name": "hamnix-vulkan-llvm",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-llvm-1.0.23.tar.gz",
-      "sha256": "bca97919e96d2050aea96ac7348e9464f3b7b1d8c1afc66e2f1652ea608613cd",
-      "size": 1092510,
+      "url": "packages/hamnix-vulkan-llvm-1.0.24.tar.gz",
+      "sha256": "1d354a60f594df0b67a4d22e642082008fa8c358628ec7cb40d47797f851515c",
+      "size": 1092511,
       "description": "libLLVM and its closure, 152.6 MiB, because Debian's Mesa links lavapipe and RADV against it. Nothing else in this channel needs LLVM and nothing here is a compiler you can run -- it is a shader backend that two ICDs dlopen through DT_NEEDED. It is split across part packages purely because hpm unpacks in a 4 MiB RAM buffer.",
       "depends": [
         "hamnix-vulkan>=1",
@@ -402,10 +402,10 @@
     },
     {
       "name": "hamnix-vulkan-anv-part01",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-anv-part01-1.0.23.tar.gz",
-      "sha256": "e9a2e61cdf9a5dadb8eeb53a1a7b321497c70788ec32e52070e82c42bf08a522",
+      "url": "packages/hamnix-vulkan-anv-part01-1.0.24.tar.gz",
+      "sha256": "daa109187b6517273424ab9252f175d9f7f0e84eeaaed36122e960789d981cf7",
       "size": 3648767,
       "description": "Payload part 1 of hamnix-vulkan-anv (libvulkan_intel.so). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-anv's install hook reassembles the pieces.",
       "depends": [],
@@ -414,10 +414,10 @@
     },
     {
       "name": "hamnix-vulkan-anv-part02",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-anv-part02-1.0.23.tar.gz",
-      "sha256": "f608068a91d083e635bcf49c3df49ed7699e4cee7ce97083c608da7705e6396f",
+      "url": "packages/hamnix-vulkan-anv-part02-1.0.24.tar.gz",
+      "sha256": "96fa9eb7d3823ab4807aac739ac5d8db1e6dfcbe462bbd898cec858dab764411",
       "size": 1580813,
       "description": "Payload part 2 of hamnix-vulkan-anv (libvulkan_intel.so). Carries no program: it is one piece of a library too large for hpm's 4 MiB in-RAM unpack. hamnix-vulkan-anv's install hook reassembles the pieces.",
       "depends": [],
@@ -426,11 +426,11 @@
     },
     {
       "name": "hamnix-vulkan-anv",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-anv-1.0.23.tar.gz",
-      "sha256": "e5ef399d187a4291950eecc5d583ecca7f638c98135b9a7fcc4b72df834ccdef",
-      "size": 68327,
+      "url": "packages/hamnix-vulkan-anv-1.0.24.tar.gz",
+      "sha256": "e8061c4d1ec39a373eecb80af50c8c6e268e829ef3c15530ab310a90c8ee53e5",
+      "size": 68326,
       "description": "Mesa ANV -- the Vulkan driver for Intel integrated and Arc graphics, Skylake onward. Userspace only: it needs the i915 KERNEL driver, and hamnix-drivers-gpu-intel is what depends on this rather than the other way round, so that installing the driver installs the whole stack. That package's firmware caveats apply here too.",
       "depends": [
         "hamnix-vulkan>=1",
@@ -445,11 +445,11 @@
     },
     {
       "name": "hamnix-vulkan-lavapipe",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-lavapipe-1.0.23.tar.gz",
-      "sha256": "942cdcf27a278b2f62086b3d5b0a4b317eb2811e95051a6068b1ee0d573c3a1b",
-      "size": 2411216,
+      "url": "packages/hamnix-vulkan-lavapipe-1.0.24.tar.gz",
+      "sha256": "a1f405a593e1d31a7a2d62c3c25e3bbaf7895fcfa1a2e5e7a1471e6f6bb16366",
+      "size": 2411217,
       "description": "Mesa LAVAPIPE -- Vulkan on the CPU. No GPU, no kernel driver, no firmware: it enumerates a device on any machine that can run this userland at all, which makes it the fallback and the thing to test against when a real driver misbehaves. It is a SOFTWARE rasteriser and it is slow. Costs 165 MiB installed, nearly all of it libLLVM.",
       "depends": [
         "hamnix-vulkan>=1",
@@ -461,11 +461,11 @@
     },
     {
       "name": "hamnix-vulkan-nvk",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-nvk-1.0.23.tar.gz",
-      "sha256": "22467339cf4b8153a68f7987553cc4b6150ef157fe481124ea9317dfbdd614ef",
-      "size": 3418751,
+      "url": "packages/hamnix-vulkan-nvk-1.0.24.tar.gz",
+      "sha256": "c7eb210249225bc3ec3616769689bdb2c917b2a48985057b48c19f96786b4765",
+      "size": 3418754,
       "description": "Mesa NVK -- the OPEN Vulkan driver for NVIDIA hardware, on top of nouveau. Turing (RTX 20) and newer are where it is a real driver; Kepler through Pascal are supported by the KERNEL side but NVK requires the GSP firmware path, so on those cards you get a display and no Vulkan. This is not the proprietary driver and does not pretend to match it -- see hamnix-drivers-gpu-nvidia.",
       "depends": [
         "hamnix-vulkan>=1",
@@ -476,11 +476,11 @@
     },
     {
       "name": "hamnix-vulkan-radv",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-radv-1.0.23.tar.gz",
-      "sha256": "bd41bb51c82ec26a6268f463444cda8e85700da0219b6fc16c73978108ed7702",
-      "size": 3640321,
+      "url": "packages/hamnix-vulkan-radv-1.0.24.tar.gz",
+      "sha256": "ea7bc90993cd022102ede200f2e9e0c090011af9add79a1232eba65adec834cf",
+      "size": 3640322,
       "description": "Mesa RADV -- the Vulkan driver for AMD GCN and RDNA. NOTE: there is no hamnix-drivers-gpu-amd in this channel yet, so the amdgpu KERNEL driver has to come from somewhere else; this package is the userspace half only. Links libLLVM, hence the hamnix-vulkan-llvm dependency.",
       "depends": [
         "hamnix-vulkan>=1",
@@ -492,10 +492,10 @@
     },
     {
       "name": "hamnix-vulkan-venus",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vulkan-venus-1.0.23.tar.gz",
-      "sha256": "f726a3986b713a166d0e07042b10a41b00962f08750966a07b207440a602a1a7",
+      "url": "packages/hamnix-vulkan-venus-1.0.24.tar.gz",
+      "sha256": "2f9f3703861f7d0337d81eb060a612312b259b1720e8bc935017b1253f1a2372",
       "size": 484316,
       "description": "Mesa VENUS -- the Vulkan driver for virtio-gpu. This is the one that makes a VIRTUAL MACHINE genuinely GPU-accelerated: the guest's Vulkan calls are forwarded over virtio to the host's real driver. Needs a host that offers it (QEMU: -device virtio-gpu-gl-pci,venus=on -- see scripts/hamlinux_vm.sh venus). On a plain virtio-gpu it enumerates nothing, which is correct, not broken.",
       "depends": [
@@ -506,11 +506,11 @@
     },
     {
       "name": "hamnix-drivers-drm",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-drivers-drm-1.0.23.tar.gz",
-      "sha256": "dd72f3fff1fe9255529f41cac6ed637e2de7b5ec3d121b5d62089578e91ecf88",
-      "size": 954797,
+      "url": "packages/hamnix-drivers-drm-1.0.24.tar.gz",
+      "sha256": "6f64276de31343060333ef774ca120dcc9b84ffef12d569173e8aff8b2d6100c",
+      "size": 954801,
       "description": "DRM/KMS core modules for 6.12.85+deb13-amd64 -- drm, drm_kms_helper, ttm, drm_display_helper and the rest of the stack every GPU driver needs. Loaded from /etc/modules at boot. No display on its own; install hamnix-drivers-gpu-intel or -gpu-nouveau on top.",
       "depends": [
         "hamnix-init>=1",
@@ -521,11 +521,11 @@
     },
     {
       "name": "hamnix-firmware-i915-dmc",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-firmware-i915-dmc-1.0.23.tar.gz",
-      "sha256": "4c37dcdbfed09511e3a69e4b85b922d886209ecd2c0e658857afe8170805e255",
-      "size": 157426,
+      "url": "packages/hamnix-firmware-i915-dmc-1.0.24.tar.gz",
+      "sha256": "977fc57fe33c01b72dfc1591979648c47bf40344a68bda8e6018220a230ec69b",
+      "size": 157424,
       "description": "Intel i915 DMC firmware (display microcontroller) -- all gen9+ parts. Needed for display power management; i915 warns and still scans out without it. 21 files, 0.6 MiB installed.",
       "depends": [],
       "target": "#hamnix-system",
@@ -533,11 +533,11 @@
     },
     {
       "name": "hamnix-firmware-i915-guc",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-firmware-i915-guc-1.0.23.tar.gz",
-      "sha256": "8d0bfff22fd60d89fab50e1a6fadaf048458e63c0fd789aaca61701ef0502cfb",
-      "size": 2819131,
+      "url": "packages/hamnix-firmware-i915-guc-1.0.24.tar.gz",
+      "sha256": "3048b3ccb53f69a7f09c99bdd2291437685916b9125b513b2f6fdbadfad12d18",
+      "size": 2819130,
       "description": "Intel i915 GuC firmware (graphics microcontroller) -- OPTIONAL on Skylake..Alder Lake, REQUIRED on DG2/Arc and Meteor Lake, which do not initialise without it. 24 files, 6.3 MiB installed.",
       "depends": [],
       "target": "#hamnix-system",
@@ -545,10 +545,10 @@
     },
     {
       "name": "hamnix-drivers-gpu-intel",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-drivers-gpu-intel-1.0.23.tar.gz",
-      "sha256": "4c94b85013f0004f412d007a829fbee2e0b88df5759214177c28989d683dce4d",
+      "url": "packages/hamnix-drivers-gpu-intel-1.0.24.tar.gz",
+      "sha256": "6e0a75a2edddcf362f257beb0b5d839feb0080d73cf5584f14a54fd84f5bb711",
       "size": 2113180,
       "description": "Intel integrated graphics (i915) for 6.12.85+deb13-amd64, plus the DMC and GuC firmware. Ships gzipped and is unpacked by the install hook: i915.ko is ~9.9 MiB, larger than hpm's in-RAM unpack buffer. Adds itself to /etc/modules; takes effect on the next boot. NOT shipped: HuC/GSC media firmware. Pulls in hamnix-vulkan-anv, so this is a WHOLE stack -- kernel driver, Vulkan loader and Mesa ICD -- not just a display.",
       "depends": [
@@ -563,11 +563,11 @@
     },
     {
       "name": "hamnix-firmware-nouveau",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-firmware-nouveau-1.0.23.tar.gz",
-      "sha256": "1844a2cc418eabbf1b800cc725a27482fd6f45f9e81b45e59d78c12a7f0e31bc",
-      "size": 2335463,
+      "url": "packages/hamnix-firmware-nouveau-1.0.24.tar.gz",
+      "sha256": "315999f0f3fed00884bfb11228d85392f451efef8a7e903e1c681b5e55ac6301",
+      "size": 2335453,
       "description": "Nvidia falcon microcode for nouveau (acr, gr, sec2, nvdec) -- Maxwell, Pascal, Volta and Turing. 407 files, 4.8 MiB. Does NOT include GSP-RM firmware (121 MiB), so Ampere (GA10x) and Ada (AD10x) are not covered.",
       "depends": [],
       "target": "#hamnix-system",
@@ -575,10 +575,10 @@
     },
     {
       "name": "hamnix-drivers-gpu-nouveau",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-drivers-gpu-nouveau-1.0.23.tar.gz",
-      "sha256": "6555a2e9d8a965a352b5f6c90054a230282d428df7589ac4d9d355ba73d1cec9",
+      "url": "packages/hamnix-drivers-gpu-nouveau-1.0.24.tar.gz",
+      "sha256": "f24a23a2643a39cff581b642c3fe0c6f49c440d5ed0d18af290d39486c82912e",
       "size": 1329227,
       "description": "Nouveau -- the open-source Nvidia driver -- for 6.12.85+deb13-amd64. Covers Kepler through Turing; Ampere and newer need GSP-RM firmware, which is 121 MiB and is not in this channel, so those cards will NOT come up with this package. Ships gzipped and is unpacked by the install hook. Adds itself to /etc/modules; takes effect on the next boot. Pulls in hamnix-vulkan-nvk, the open Vulkan driver: on Turing and newer that is real 3D, on older cards it is a display only.",
       "depends": [
@@ -592,10 +592,10 @@
     },
     {
       "name": "hamnix-drivers-gpu-nvidia",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-drivers-gpu-nvidia-1.0.23.tar.gz",
-      "sha256": "5bd5338a83649508bdbed6184d12f4bae16af7b949f77f25764c3bcfabc5d4c8",
+      "url": "packages/hamnix-drivers-gpu-nvidia-1.0.24.tar.gz",
+      "sha256": "0fadd9485f2667c6cdc0d132e009573c714335f49ddbc90ea90b8506cddca330",
       "size": 1346,
       "description": "The proprietary NVIDIA driver. NOT AVAILABLE on this line and this package will not install -- it exists so the name gives you the reason instead of a 'no such package'. Use hamnix-drivers-gpu-nouveau.",
       "depends": [],
@@ -604,11 +604,11 @@
     },
     {
       "name": "hamnix-drivers-base",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-drivers-base-1.0.23.tar.gz",
-      "sha256": "2ed4d30015c58981323eb74c0311b0e8db2b5b78ed0e1e7f5f2f064213a4c995",
-      "size": 1762581,
+      "url": "packages/hamnix-drivers-base-1.0.24.tar.gz",
+      "sha256": "9334af6f4037e0d150d997730b695c5842f114ecfa1c2358e21a61646b81ed11",
+      "size": 1762580,
       "description": "Kernel modules the hamnix-linux image stages, for 6.12.85+deb13-amd64 (base set). These are the modules the image boots with; this package is how an INSTALLED machine receives a fix to them. It does not change /etc/modules (the machine already lists them); it refreshes the files and puts its dependency lines in front of the machine's modules.dep. 34 modules, 2680 bytes of table.",
       "depends": [
         "hamnix-init>=1"
@@ -618,12 +618,12 @@
     },
     {
       "name": "hamnix-drivers-hw",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-drivers-hw-1.0.23.tar.gz",
-      "sha256": "b2e1a3ec5d4d8e5c11b218e9466d7b15d2cb658fa0fae0430e5271a078861397",
-      "size": 1438336,
-      "description": "Kernel modules the hamnix-linux image stages, for 6.12.85+deb13-amd64 (hw set). These are the modules the image boots with; this package is how an INSTALLED machine receives a fix to them. It does not change /etc/modules (the machine already lists them); it refreshes the files and puts its dependency lines in front of the machine's modules.dep. 20 modules, 2083 bytes of table.",
+      "url": "packages/hamnix-drivers-hw-1.0.24.tar.gz",
+      "sha256": "e8fc0293929398a2474f9ed69b698eb8b392095b72294f862cb4274307710a22",
+      "size": 1640055,
+      "description": "Kernel modules the hamnix-linux image stages, for 6.12.85+deb13-amd64 (hw set). These are the modules the image boots with; this package is how an INSTALLED machine receives a fix to them. It does not change /etc/modules (the machine already lists them); it refreshes the files and puts its dependency lines in front of the machine's modules.dep. 29 modules, 2662 bytes of table.",
       "depends": [
         "hamnix-init>=1"
       ],
@@ -632,11 +632,11 @@
     },
     {
       "name": "hamnix-vkprobe",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-vkprobe-1.0.23.tar.gz",
-      "sha256": "de29417f86f3be7c8c2459ac7c1ff8bb8935e2af4591f63931f8937cad1cc449",
-      "size": 115273,
+      "url": "packages/hamnix-vkprobe-1.0.24.tar.gz",
+      "sha256": "7506ad08aedd430bbdcc1a7d35f8b7aec70e1b53eb9dcd9fcc74593b544f855f",
+      "size": 117680,
       "description": "vkprobe -- open the Vulkan loader, create an instance and print every physical device the installed ICDs enumerate. The check that a GPU package did something real. Prints nothing but a device count of 0 when no driver is installed.",
       "depends": [
         "hamnix-init>=1",
@@ -647,11 +647,11 @@
     },
     {
       "name": "hamnix-app-hamaudioscene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamaudioscene-1.0.23.tar.gz",
-      "sha256": "536a19f1c834b0f3e98cffc7c50aadbf84a924cc843543858822e871eb214063",
-      "size": 218495,
+      "url": "packages/hamnix-app-hamaudioscene-1.0.24.tar.gz",
+      "sha256": "b28e874fa71f81f28abf99d3151e7da3a381c5441e5c83c5d26dafbecd9e328e",
+      "size": 221353,
       "description": "Audio Player -- Play .wav / .mp3 audio through the HDA audio sink (/bin/hamaudioscene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -661,11 +661,11 @@
     },
     {
       "name": "hamnix-app-hambrowse",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hambrowse-1.0.23.tar.gz",
-      "sha256": "8ae3e127435ce96352707f710db9abc8fe445c2570b36e4488bbc0ee03c5b0ae",
-      "size": 1145100,
+      "url": "packages/hamnix-app-hambrowse-1.0.24.tar.gz",
+      "sha256": "aa24406f27a9f8a89f39b0a16b94bfd41c5fbfad6f925a2f3fedd398cf914c99",
+      "size": 1148608,
       "description": "Web Browser -- Browse the web (/bin/hambrowse, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -675,11 +675,11 @@
     },
     {
       "name": "hamnix-app-hamcalcscene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamcalcscene-1.0.23.tar.gz",
-      "sha256": "b1769122faf17b38b9d8e6642efcf7f1f010f5a8d0c84547774bb767e39d28fc",
-      "size": 188273,
+      "url": "packages/hamnix-app-hamcalcscene-1.0.24.tar.gz",
+      "sha256": "5c065a1128daa38b944cb4cdaba10200937319569c9092709d63d57f4061d4a4",
+      "size": 190594,
       "description": "Calculator -- Perform calculations (/bin/hamcalcscene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -689,11 +689,11 @@
     },
     {
       "name": "hamnix-app-hamcalscene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamcalscene-1.0.23.tar.gz",
-      "sha256": "a2b79c5f23fb6dd03f52c03ea1b1536b55e9499822eea317043781af8b527231",
-      "size": 190265,
+      "url": "packages/hamnix-app-hamcalscene-1.0.24.tar.gz",
+      "sha256": "b286ebfb3a7accbce18d89076792301e2b830bfd1bdb90349f2dbeaa18b536a8",
+      "size": 192760,
       "description": "Calendar -- View a monthly calendar (/bin/hamcalscene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -703,11 +703,11 @@
     },
     {
       "name": "hamnix-app-hamgamedemo",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamgamedemo-1.0.23.tar.gz",
-      "sha256": "858b4aebb80130a766021c3a083eca8ab015980f703b0dc18e045d15661dca3f",
-      "size": 213811,
+      "url": "packages/hamnix-app-hamgamedemo-1.0.24.tar.gz",
+      "sha256": "8c787ab369aa9bf58b389ce40f4bd73bd59975a7c79b3f445dabdc47ff6831c1",
+      "size": 216222,
       "description": "Coin Dash -- Steer the sprite to collect coins (/bin/hamgamedemo, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -717,11 +717,11 @@
     },
     {
       "name": "hamnix-app-hamctl",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamctl-1.0.23.tar.gz",
-      "sha256": "1a05318b006187c70349d877896195a57edfb2e06179c5bdb7258302cba466a1",
-      "size": 205104,
+      "url": "packages/hamnix-app-hamctl-1.0.24.tar.gz",
+      "sha256": "fee0bb69cc01221e972c50bff7f15e7825786a571597467cf80a524e67cb40f1",
+      "size": 207539,
       "description": "Control Center -- Configure the system: appearance, date & time, about (/bin/hamctl, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -731,11 +731,11 @@
     },
     {
       "name": "hamnix-app-hamfmscene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamfmscene-1.0.23.tar.gz",
-      "sha256": "e7b25e63ff92097b6cf9813ddbbd0d8cf31bb56abb7783cf376a8a9e6b0a32fc",
-      "size": 245083,
+      "url": "packages/hamnix-app-hamfmscene-1.0.24.tar.gz",
+      "sha256": "e16dfda63cbb813eec02a99984e322e343b34f30cc046aa8b3c27e5f803e4ca8",
+      "size": 247888,
       "description": "Files -- Browse files and folders (/bin/hamfmscene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -745,11 +745,11 @@
     },
     {
       "name": "hamnix-app-ham2048scene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-ham2048scene-1.0.23.tar.gz",
-      "sha256": "11b7bb7d3a6338047a18119378c3cdc2d638dad5e1163b107a7538f517e79128",
-      "size": 187712,
+      "url": "packages/hamnix-app-ham2048scene-1.0.24.tar.gz",
+      "sha256": "15a59f9a913a7551a9b844249893f222c02e8a87b70a9a9ffa3afa6ec4f3864c",
+      "size": 190113,
       "description": "2048 -- Slide tiles to reach 2048 (/bin/ham2048scene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -759,11 +759,11 @@
     },
     {
       "name": "hamnix-app-hamchessscene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamchessscene-1.0.23.tar.gz",
-      "sha256": "dee2926ea87ae5932ac8c5ba4b0964f7a0490a1340c3801174397c3bc3fd5c17",
-      "size": 186408,
+      "url": "packages/hamnix-app-hamchessscene-1.0.24.tar.gz",
+      "sha256": "819fa907a179ac43648484e227aab97462ddf1f337abc38fcfdd16a0d500398c",
+      "size": 188945,
       "description": "Chess -- Two-player hot-seat chess (/bin/hamchessscene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -773,11 +773,11 @@
     },
     {
       "name": "hamnix-app-hamgamesnake",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamgamesnake-1.0.23.tar.gz",
-      "sha256": "f2b78831e6b994ff7e4127e6ca123974902f4a6fe08810a25c0809148778d084",
-      "size": 215857,
+      "url": "packages/hamnix-app-hamgamesnake-1.0.24.tar.gz",
+      "sha256": "113d8725ab3aa21d4aad0a712b33f6fc2f6f0afa38d42fb52387846488d952ec",
+      "size": 218278,
       "description": "Snake (hamGame) -- Grid Snake on the hamGame/SDL Surface layer (/bin/hamgamesnake, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -787,11 +787,11 @@
     },
     {
       "name": "hamnix-app-haminput",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-haminput-1.0.23.tar.gz",
-      "sha256": "9dc02211963d33114116b5d864f385f592ae9252099c77c8ac8e593dddc10ac0",
-      "size": 185217,
+      "url": "packages/hamnix-app-haminput-1.0.24.tar.gz",
+      "sha256": "423e7b00681d1eb265ce30e5a91387e3220a1e8583284230e979d081206c2c03",
+      "size": 187922,
       "description": "Input Inspector -- Live keyboard + mouse event inspector (debug middle-click / PRIMARY paste) (/bin/haminput, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -801,11 +801,11 @@
     },
     {
       "name": "hamnix-app-hamminescene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamminescene-1.0.23.tar.gz",
-      "sha256": "ff43572df62f9662aed36dc69f9ee5c8a3f00a3cbfeab9c720342c9db72d94fa",
-      "size": 185235,
+      "url": "packages/hamnix-app-hamminescene-1.0.24.tar.gz",
+      "sha256": "11c1d2bb49411822963881c1873133597418154d4b281ad7540b9c62231dcc2d",
+      "size": 187942,
       "description": "Minesweeper -- Uncover the field without hitting a mine (/bin/hamminescene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -815,11 +815,11 @@
     },
     {
       "name": "hamnix-app-hamsheet",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamsheet-1.0.23.tar.gz",
-      "sha256": "8da3323f46ae1f95633465c4f9ba4f74743c668357b9fc5d674b4e6506ca2b11",
-      "size": 278817,
+      "url": "packages/hamnix-app-hamsheet-1.0.24.tar.gz",
+      "sha256": "416c2754e89617231bc386dccb49260ade0b1e539ab568a5661b009e4b0a5836",
+      "size": 281033,
       "description": "Spreadsheet -- HamSheet: cells, numbers and =formulas (cell refs, SUM/AVG/MIN/MAX/COUNT) that recalculate (/bin/hamsheet, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -829,11 +829,11 @@
     },
     {
       "name": "hamnix-app-hamslides",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamslides-1.0.23.tar.gz",
-      "sha256": "5a7bf863217137656fb36925f47a9e73aba1bc53095e85c8f0681c86a84c5610",
-      "size": 272898,
+      "url": "packages/hamnix-app-hamslides-1.0.24.tar.gz",
+      "sha256": "9d52b5439d34938267c046e6a50a6794701c85f38e4fe2d8887e32bfbe9ffc08",
+      "size": 275582,
       "description": "Presentation -- HamSlides: build a slide deck of titles and bullets, then present it full-window (/bin/hamslides, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -843,11 +843,11 @@
     },
     {
       "name": "hamnix-app-hamsnakescene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamsnakescene-1.0.23.tar.gz",
-      "sha256": "ddc480d291b0327a09082aa1f604fd0bf004c71caaa5b7e2a1241da377a947e2",
-      "size": 183354,
+      "url": "packages/hamnix-app-hamsnakescene-1.0.24.tar.gz",
+      "sha256": "13ff89df35bab6b2deec1e00fbd8e2ab241c0dacad9021832827689aa0e47b85",
+      "size": 186014,
       "description": "Snake -- Steer the snake to eat and grow (/bin/hamsnakescene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -857,11 +857,11 @@
     },
     {
       "name": "hamnix-app-hamtetrisscene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamtetrisscene-1.0.23.tar.gz",
-      "sha256": "90b636e5ee70b18fbe62e2e5ab96f5c1beeffbf2daaa575467ba9cc02edc2b6c",
-      "size": 185702,
+      "url": "packages/hamnix-app-hamtetrisscene-1.0.24.tar.gz",
+      "sha256": "f1cd132ff121718b0f8077d59d5301c29ac0c4e0f2532dcb76c05af74721355b",
+      "size": 188260,
       "description": "Tetris -- Stack the falling tetrominoes and clear lines (/bin/hamtetrisscene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -871,11 +871,11 @@
     },
     {
       "name": "hamnix-app-hamwrite",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamwrite-1.0.23.tar.gz",
-      "sha256": "19e16608eaf582d6a15644f337791fc0aa1769ed41b0d53b9bf84c887308d61a",
-      "size": 274212,
+      "url": "packages/hamnix-app-hamwrite-1.0.24.tar.gz",
+      "sha256": "3dad977b13199078e50d5895b15a24654694a5d2a42bc9d030b11f878511378d",
+      "size": 276884,
       "description": "Word Processor -- HamWrite: write documents with bold/italic/underline, headings, sizes and alignment (/bin/hamwrite, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -885,11 +885,11 @@
     },
     {
       "name": "hamnix-app-hamlogscene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamlogscene-1.0.23.tar.gz",
-      "sha256": "5c8b1cc3b798d729a530144d6e0ab02b9f78c9bdb594dcc99906914b2877943c",
-      "size": 182405,
+      "url": "packages/hamnix-app-hamlogscene-1.0.24.tar.gz",
+      "sha256": "0d6fdc00c5921cf51c4446bb832d91372d5c1433ce9e4629b66d1f4d490d1a88",
+      "size": 185027,
       "description": "Log Viewer -- Browse the kernel log (/proc/kmsg) with page and tail scrolling (/bin/hamlogscene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -899,11 +899,11 @@
     },
     {
       "name": "hamnix-app-hamnotesscene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamnotesscene-1.0.23.tar.gz",
-      "sha256": "3f3b76741db446878763586c4820a5f123eea58da9de6f348e19fb629e6026f7",
-      "size": 233298,
+      "url": "packages/hamnix-app-hamnotesscene-1.0.24.tar.gz",
+      "sha256": "49da177be7c5124c0ac45d59c5f01e26efe7fb3448afb82db4482610ff0d16ae",
+      "size": 236115,
       "description": "Notes -- Quick sticky-note scratchpad (/bin/hamnotesscene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -913,11 +913,11 @@
     },
     {
       "name": "hamnix-app-hamsoftware",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamsoftware-1.0.23.tar.gz",
-      "sha256": "23481ed4e4ebd946e2d3e677d1552dcc16d84575a6da68c1d76231bb613ed990",
-      "size": 236940,
+      "url": "packages/hamnix-app-hamsoftware-1.0.24.tar.gz",
+      "sha256": "2a9d4d5e455a01fcaad2a3dee4bab5fe1590c8ae0a40cc1a69bb7dafc33efa8d",
+      "size": 240062,
       "description": "Software -- Browse, search, install, remove and upgrade software packages (hpm front-end) (/bin/hamsoftware, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -927,11 +927,11 @@
     },
     {
       "name": "hamnix-app-hamshotui",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamshotui-1.0.23.tar.gz",
-      "sha256": "a878581e7ebe1dc16c1b9ba288128f7fb4c6a1d67472979175ec1fcbe2f89ea6",
-      "size": 184915,
+      "url": "packages/hamnix-app-hamshotui-1.0.24.tar.gz",
+      "sha256": "5410cb9180d9526d0f158852325e4332668730145a55448e9296c2f33f22973a",
+      "size": 187633,
       "description": "Screenshot -- Capture the whole desktop, a selected area, or an application window to a PNG in your home folder (/bin/hamshotui, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -941,11 +941,11 @@
     },
     {
       "name": "hamnix-app-hammonscene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hammonscene-1.0.23.tar.gz",
-      "sha256": "5d46deb86c0ba17183432473df7a59d92900c18d8d0f57f4c3ee4f245aa498e4",
-      "size": 189702,
+      "url": "packages/hamnix-app-hammonscene-1.0.24.tar.gz",
+      "sha256": "156296c82aea7ddcf06080cfee352c2768923f0d6ac671b72d8e0dac6dd3f746",
+      "size": 192130,
       "description": "System Monitor -- View system resource usage (/bin/hammonscene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -955,11 +955,11 @@
     },
     {
       "name": "hamnix-app-hamvideoscene",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-app-hamvideoscene-1.0.23.tar.gz",
-      "sha256": "8e448b80030e5923950dabad80d429fb4f435369f1947cd2aa9299a9d5d17ad6",
-      "size": 190379,
+      "url": "packages/hamnix-app-hamvideoscene-1.0.24.tar.gz",
+      "sha256": "577e5236075daeda3bd03a9cf95a471a0ff61000282855e6286a9920dc965fc7",
+      "size": 192866,
       "description": "Video Player -- Play a Motion-JPEG .hmjv clip in a window (/bin/hamvideoscene, and the launcher that lists it in the Applications menu)",
       "depends": [
         "hamnix-desktop>=1"
@@ -969,11 +969,11 @@
     },
     {
       "name": "hamnix-ls",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-ls-1.0.23.tar.gz",
-      "sha256": "082b9e92855a7d6e608e6651b86a03bc5d6b85401c75870363fbcecd4b3b791e",
-      "size": 129484,
+      "url": "packages/hamnix-ls-1.0.24.tar.gz",
+      "sha256": "5cf88fa20cd4eed9219149dae9393d6786ad1b696e2b81ed16d692329b313055",
+      "size": 132152,
       "description": "ls - list the entries of a directory",
       "depends": [
         "hamnix-init>=1"
@@ -983,11 +983,11 @@
     },
     {
       "name": "hamnix-cat",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-cat-1.0.23.tar.gz",
-      "sha256": "f1822abab169e7e3c520513dc148631372cce85b81c9d769ae2701c12d53b42d",
-      "size": 115132,
+      "url": "packages/hamnix-cat-1.0.24.tar.gz",
+      "sha256": "422e57ff33ef327735f420d3228f90c34b4f97a46943cc93ce29e9e5367c3401",
+      "size": 117589,
       "description": "cat - stream one or more files to stdout",
       "depends": [
         "hamnix-init>=1"
@@ -997,11 +997,11 @@
     },
     {
       "name": "hamnix-echo",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-echo-1.0.23.tar.gz",
-      "sha256": "fed7db97efc33366a2d1e5ea06708e871a2bec4a729eb970f9d960d80526a058",
-      "size": 114613,
+      "url": "packages/hamnix-echo-1.0.24.tar.gz",
+      "sha256": "0753f90fb09dcff4aa385bde69fa706eab7be8dcbc2d7fd5d54a4c12044f7d32",
+      "size": 117090,
       "description": "hamnix-linux echo command",
       "depends": [
         "hamnix-init>=1"
@@ -1011,11 +1011,11 @@
     },
     {
       "name": "hamnix-cp",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-cp-1.0.23.tar.gz",
-      "sha256": "c70819042a9ae2b404a2e1412eda6a32a8a0e964a3017750dde1361009b6ae89",
-      "size": 130717,
+      "url": "packages/hamnix-cp-1.0.24.tar.gz",
+      "sha256": "7afbf3a403a36fc0e457a52eeefd9c7289de58926e6a79c610377f1267f02658",
+      "size": 133369,
       "description": "cp - copy one file to another",
       "depends": [
         "hamnix-init>=1"
@@ -1025,11 +1025,11 @@
     },
     {
       "name": "hamnix-mv",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-mv-1.0.23.tar.gz",
-      "sha256": "04f1be62f1d9a2c88883dce1ca472e85202a44a473aa289b6804371ffd7b98f9",
-      "size": 114953,
+      "url": "packages/hamnix-mv-1.0.24.tar.gz",
+      "sha256": "ea65e7af77d0887d26aa86b45e3f6f68ff2a6cae81e6bfcb321165bd760b03f6",
+      "size": 117382,
       "description": "hamnix-linux mv command",
       "depends": [
         "hamnix-init>=1"
@@ -1039,11 +1039,11 @@
     },
     {
       "name": "hamnix-rm",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-rm-1.0.23.tar.gz",
-      "sha256": "5da23715998746acfe996462299d4d46e1c7204d9ac55b9a751f7b86411a7fef",
-      "size": 114678,
+      "url": "packages/hamnix-rm-1.0.24.tar.gz",
+      "sha256": "ba8fcf75dc1af63293eba437fc844a09d8e945dce7d97b9b4293d5969e542118",
+      "size": 117148,
       "description": "hamnix-linux rm command",
       "depends": [
         "hamnix-init>=1"
@@ -1053,11 +1053,11 @@
     },
     {
       "name": "hamnix-mkdir",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-mkdir-1.0.23.tar.gz",
-      "sha256": "d98215e317a2aed74f135122fcece06f77e9c6cc6ae247095a59506b140cfc48",
-      "size": 114694,
+      "url": "packages/hamnix-mkdir-1.0.24.tar.gz",
+      "sha256": "0722a5c1618e8133b01c7fe89fd336963b6e40bce3a42eb849f47f120b8894a3",
+      "size": 117162,
       "description": "hamnix-linux mkdir command",
       "depends": [
         "hamnix-init>=1"
@@ -1067,11 +1067,11 @@
     },
     {
       "name": "hamnix-ln",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-ln-1.0.23.tar.gz",
-      "sha256": "9326e23155cd45e8edd877b099037894dbdeab8c135d5064d41e8cbd987a8e8c",
-      "size": 114731,
+      "url": "packages/hamnix-ln-1.0.24.tar.gz",
+      "sha256": "fe51f46c66399b97d3a916635e13579fb42f57fdf353e3a628733c759a8d72ef",
+      "size": 117174,
       "description": "hamnix-linux ln command",
       "depends": [
         "hamnix-init>=1"
@@ -1081,11 +1081,11 @@
     },
     {
       "name": "hamnix-touch",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-touch-1.0.23.tar.gz",
-      "sha256": "d149887c693c4a78a123bed10826452efe9ab91557db7cb6f218c5f43b6effc9",
-      "size": 114696,
+      "url": "packages/hamnix-touch-1.0.24.tar.gz",
+      "sha256": "f01e3c6c1eaccd7f431c7ebfebd3bfb07a54b9cdc7ce59f31e9d19683fbd7ff3",
+      "size": 117145,
       "description": "hamnix-linux touch command",
       "depends": [
         "hamnix-init>=1"
@@ -1095,11 +1095,11 @@
     },
     {
       "name": "hamnix-pwd",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-pwd-1.0.23.tar.gz",
-      "sha256": "2c182da856ded1201f3d87fd5ac3a8cc83d41b0f77fb58ed9788781fe65fcc08",
-      "size": 114526,
+      "url": "packages/hamnix-pwd-1.0.24.tar.gz",
+      "sha256": "5abb0e734fb76fe42550f92396160c451c991122a0040c1d09fcbf1d2ac4d863",
+      "size": 116963,
       "description": "hamnix-linux pwd command",
       "depends": [
         "hamnix-init>=1"
@@ -1109,11 +1109,11 @@
     },
     {
       "name": "hamnix-grep",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-grep-1.0.23.tar.gz",
-      "sha256": "bc594b4a9a89b1e6b7a526472e470d47bfb5751c20fba48c9678387b21dac21a",
-      "size": 123977,
+      "url": "packages/hamnix-grep-1.0.24.tar.gz",
+      "sha256": "71996a1e4ee1262dd85fb9875199ee6ed4a56f789c59e89570469e66863807ca",
+      "size": 126421,
       "description": "hamnix-linux grep command",
       "depends": [
         "hamnix-init>=1"
@@ -1123,11 +1123,11 @@
     },
     {
       "name": "hamnix-sed",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-sed-1.0.23.tar.gz",
-      "sha256": "8d817a42e4c3124d49d98b2310a67d12cfd738afc3eae06ddf2423ff2b62c857",
-      "size": 124657,
+      "url": "packages/hamnix-sed-1.0.24.tar.gz",
+      "sha256": "0898ef914144dcc7f16da372667563740777a6745a4ecd7c91bcc39594d449a8",
+      "size": 127208,
       "description": "hamnix-linux sed command",
       "depends": [
         "hamnix-init>=1"
@@ -1137,11 +1137,11 @@
     },
     {
       "name": "hamnix-sort",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-sort-1.0.23.tar.gz",
-      "sha256": "945ec3d27456f0fd156b8ed7878be9fce73ad53d25b0559dc13656d139d71c16",
-      "size": 117629,
+      "url": "packages/hamnix-sort-1.0.24.tar.gz",
+      "sha256": "871e1168d4af7cd37069a65977172fd2af7fc11ec9707e55dabafbaac7d87aa2",
+      "size": 120130,
       "description": "hamnix-linux sort command",
       "depends": [
         "hamnix-init>=1"
@@ -1151,11 +1151,11 @@
     },
     {
       "name": "hamnix-uniq",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-uniq-1.0.23.tar.gz",
-      "sha256": "889bb05105e60efa36eeb771b14e4a9050a15f7453a5fcae8799faef04b3bfbc",
-      "size": 115646,
+      "url": "packages/hamnix-uniq-1.0.24.tar.gz",
+      "sha256": "295af8ef59df0593e01e31cab9e8ccde0410264da9e3f05dd8dd3e419a813aa3",
+      "size": 118063,
       "description": "hamnix-linux uniq command",
       "depends": [
         "hamnix-init>=1"
@@ -1165,11 +1165,11 @@
     },
     {
       "name": "hamnix-head",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-head-1.0.23.tar.gz",
-      "sha256": "b296ec06d218617acfb16e87991b80373d673568a09ee9d654dc6d04f5fdc4d0",
-      "size": 115315,
+      "url": "packages/hamnix-head-1.0.24.tar.gz",
+      "sha256": "82049813626793d085bd9a58f8c9696faf2c26480f00986979f687171c78a677",
+      "size": 117732,
       "description": "hamnix-linux head command",
       "depends": [
         "hamnix-init>=1"
@@ -1179,11 +1179,11 @@
     },
     {
       "name": "hamnix-tail",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-tail-1.0.23.tar.gz",
-      "sha256": "f4bf3e93ca02e4ca632ceaf75c32548cc8cd6621fe71ecec12d1e12f98dd3e69",
-      "size": 116135,
+      "url": "packages/hamnix-tail-1.0.24.tar.gz",
+      "sha256": "881863051ce5af0006bfc5431aa360fc00a5bb074feb7b4a8cd82d905fa45d4d",
+      "size": 118469,
       "description": "hamnix-linux tail command",
       "depends": [
         "hamnix-init>=1"
@@ -1193,11 +1193,11 @@
     },
     {
       "name": "hamnix-wc",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-wc-1.0.23.tar.gz",
-      "sha256": "c4a0b02ed05cbaed79c5297e15d167cae0975a40de4ca91622c4da50bbb547da",
-      "size": 116260,
+      "url": "packages/hamnix-wc-1.0.24.tar.gz",
+      "sha256": "20c07bdcebeb18079b2c9bc419a2227d5dc8265846a47362d539fa3566162832",
+      "size": 118611,
       "description": "hamnix-linux wc command",
       "depends": [
         "hamnix-init>=1"
@@ -1207,11 +1207,11 @@
     },
     {
       "name": "hamnix-cut",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-cut-1.0.23.tar.gz",
-      "sha256": "723013e1ee7934154dd0189cea43ae73ee850e9d85d50683b57ef59fb9368405",
-      "size": 117059,
+      "url": "packages/hamnix-cut-1.0.24.tar.gz",
+      "sha256": "c8e04d33134b67ea8af4f68a634077733cd2a4e49976b9a77b2da8fc2fc2da79",
+      "size": 119484,
       "description": "hamnix-linux cut command",
       "depends": [
         "hamnix-init>=1"
@@ -1221,11 +1221,11 @@
     },
     {
       "name": "hamnix-tr",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-tr-1.0.23.tar.gz",
-      "sha256": "c4316f9b014c7ac1df1c79d040122d07849d222beec24b6671f5e66e1f74a1ba",
-      "size": 116853,
+      "url": "packages/hamnix-tr-1.0.24.tar.gz",
+      "sha256": "c331d7338440363a520c0692b0891d963a77201de0d7000c0e39926ae666ff6b",
+      "size": 119360,
       "description": "hamnix-linux tr command",
       "depends": [
         "hamnix-init>=1"
@@ -1235,11 +1235,11 @@
     },
     {
       "name": "hamnix-find",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-find-1.0.23.tar.gz",
-      "sha256": "09791a032b8f29728f110b491752ca0c299e726fc6452b97ee0fe3e2e342fe67",
-      "size": 132124,
+      "url": "packages/hamnix-find-1.0.24.tar.gz",
+      "sha256": "ad913fd6a061b75b507a82633bea2b7c165628b3e027cdcde392b69f929ef755",
+      "size": 134726,
       "description": "find - print every path under a starting directory",
       "depends": [
         "hamnix-init>=1"
@@ -1249,11 +1249,11 @@
     },
     {
       "name": "hamnix-du",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-du-1.0.23.tar.gz",
-      "sha256": "9328b70c04766d53edb1b4630361e0a4f0023a3aac2d51647142c91bebead50f",
-      "size": 128459,
+      "url": "packages/hamnix-du-1.0.24.tar.gz",
+      "sha256": "46da7c30ac30d52897b852a77b1204245664d153c2fd673852f763c37d9c0350",
+      "size": 131169,
       "description": "du - count entries beneath a directory",
       "depends": [
         "hamnix-init>=1"
@@ -1263,11 +1263,11 @@
     },
     {
       "name": "hamnix-df",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-df-1.0.23.tar.gz",
-      "sha256": "7aa8da72cbdf16beb44eba6ba113758e79e2e2cc7ae5d22bfc50c11b5e56406a",
-      "size": 114737,
+      "url": "packages/hamnix-df-1.0.24.tar.gz",
+      "sha256": "2dc72f5c1e3fa770cf8148f22d6f3985081c63e105faeb6849d0797ea7d5f580",
+      "size": 117171,
       "description": "df - dump /proc/mounts",
       "depends": [
         "hamnix-init>=1"
@@ -1277,11 +1277,11 @@
     },
     {
       "name": "hamnix-stat",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-stat-1.0.23.tar.gz",
-      "sha256": "2e0d75a3f4751221c2eb377e0b45797b4b1d3d16b3bb37de31816699c94bb9ee",
-      "size": 129247,
+      "url": "packages/hamnix-stat-1.0.24.tar.gz",
+      "sha256": "9cbe827272336a8193866571517182d2ad10be6fe1bdb5a7088512efe6ead50a",
+      "size": 131968,
       "description": "hamnix-linux stat command",
       "depends": [
         "hamnix-init>=1"
@@ -1291,11 +1291,11 @@
     },
     {
       "name": "hamnix-tree",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-tree-1.0.23.tar.gz",
-      "sha256": "b9e12fb525f9ab8789bc5efef07d5a1b246db3bed17f4ab5f8e3ecb965087a92",
-      "size": 131122,
+      "url": "packages/hamnix-tree-1.0.24.tar.gz",
+      "sha256": "38d7dd25f63989485c45d5ac6a1af78e0f3b5e8a8b14e8a5f99b6f1fd1725eb6",
+      "size": 133779,
       "description": "hamnix-linux tree command",
       "depends": [
         "hamnix-init>=1"
@@ -1305,11 +1305,11 @@
     },
     {
       "name": "hamnix-date",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-date-1.0.23.tar.gz",
-      "sha256": "145f184c7f5556fd1d5776b2de9af8da5ec2aeddaf07904f89a6c568aeeba562",
-      "size": 114854,
+      "url": "packages/hamnix-date-1.0.24.tar.gz",
+      "sha256": "1d75849166fe29d19b283807820291aca7e0d496bd61f332518ff1906303e5cf",
+      "size": 117325,
       "description": "hamnix-linux date command",
       "depends": [
         "hamnix-init>=1"
@@ -1319,11 +1319,11 @@
     },
     {
       "name": "hamnix-sleep",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-sleep-1.0.23.tar.gz",
-      "sha256": "f694f5f82a8bb633c8eaa3adeeacadd3abddae61281d819b17b8d132e543dd21",
-      "size": 114817,
+      "url": "packages/hamnix-sleep-1.0.24.tar.gz",
+      "sha256": "90cdfc7fba0ab1ca89606dfc3a1baaf41a9a0ad57a6e27bb37e3d3ad83f3fd8d",
+      "size": 117277,
       "description": "hamnix-linux sleep command",
       "depends": [
         "hamnix-init>=1"
@@ -1333,11 +1333,11 @@
     },
     {
       "name": "hamnix-true",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-true-1.0.23.tar.gz",
-      "sha256": "a06fb2785b9a718c4fac837ac9178eb1d14a453e28be4cbb6509e81936d3377c",
-      "size": 114440,
+      "url": "packages/hamnix-true-1.0.24.tar.gz",
+      "sha256": "1773f1df736e090350d1a4ba92bcb3b2c4d25eef19484039370b5340d75f041c",
+      "size": 116908,
       "description": "hamnix-linux true command",
       "depends": [
         "hamnix-init>=1"
@@ -1347,11 +1347,11 @@
     },
     {
       "name": "hamnix-false",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-false-1.0.23.tar.gz",
-      "sha256": "069925828f06d07cfe3e17d8838f5dac5af73b4ff3b568f20bb669e0e4a41bd9",
-      "size": 114444,
+      "url": "packages/hamnix-false-1.0.24.tar.gz",
+      "sha256": "86a90f3def7b11f0eeb8034585df2e75944e14e1fb92ed2a7018e8fd5dbe5ab1",
+      "size": 116921,
       "description": "hamnix-linux false command",
       "depends": [
         "hamnix-init>=1"
@@ -1361,11 +1361,11 @@
     },
     {
       "name": "hamnix-yes",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-yes-1.0.23.tar.gz",
-      "sha256": "a57887fac2fa473a770f751009053fab4861cb9a58488364c20da0ff152b07af",
-      "size": 114765,
+      "url": "packages/hamnix-yes-1.0.24.tar.gz",
+      "sha256": "eae48f2a6d71f0b4c3d82f25905b227435f127b9fdadc475f4f47c98d8c6b6a2",
+      "size": 117211,
       "description": "hamnix-linux yes command",
       "depends": [
         "hamnix-init>=1"
@@ -1375,11 +1375,11 @@
     },
     {
       "name": "hamnix-seq",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-seq-1.0.23.tar.gz",
-      "sha256": "1f9c88730f9c672a18ce4bc7967482ccad9116d948b20569964c8dc4e71273d5",
-      "size": 115246,
+      "url": "packages/hamnix-seq-1.0.24.tar.gz",
+      "sha256": "6b35c8afb598f6088ca0a85028f95f8c6b823293b4178a94d4b735e19a9ffc82",
+      "size": 117659,
       "description": "hamnix-linux seq command",
       "depends": [
         "hamnix-init>=1"
@@ -1389,11 +1389,11 @@
     },
     {
       "name": "hamnix-basename",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-basename-1.0.23.tar.gz",
-      "sha256": "0d2af2b97ab200882acb0b1686fa23275c081dce014c34497c0b1aae798cee21",
-      "size": 114780,
+      "url": "packages/hamnix-basename-1.0.24.tar.gz",
+      "sha256": "6c453ec34b384d8c9bb42ed67d74ae6bb1885127bef93333b6322455e9ed4975",
+      "size": 117214,
       "description": "hamnix-linux basename command",
       "depends": [
         "hamnix-init>=1"
@@ -1403,11 +1403,11 @@
     },
     {
       "name": "hamnix-dirname",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-dirname-1.0.23.tar.gz",
-      "sha256": "b9b57649a8b79aeee8ffd3ac43f93add0b378d7113111b9193ad11e79314a873",
-      "size": 114799,
+      "url": "packages/hamnix-dirname-1.0.24.tar.gz",
+      "sha256": "793b8f7e5ebc0a93cd7aa06312df0cf0cb910a98d2ec9a30dfd47c76c9e589c0",
+      "size": 117235,
       "description": "hamnix-linux dirname command",
       "depends": [
         "hamnix-init>=1"
@@ -1417,11 +1417,11 @@
     },
     {
       "name": "hamnix-env-show",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-env-show-1.0.23.tar.gz",
-      "sha256": "342abaddb8819913c688dbf63d1e92f291015b42fbc86bf2c119becc328fa81b",
-      "size": 114557,
+      "url": "packages/hamnix-env-show-1.0.24.tar.gz",
+      "sha256": "c6fa876f20b410ab7b2fac37ee14d38dad7598b23b28f146bade701357e674e1",
+      "size": 117003,
       "description": "hamnix-linux env_show command",
       "depends": [
         "hamnix-init>=1"
@@ -1431,11 +1431,11 @@
     },
     {
       "name": "hamnix-printenv",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-printenv-1.0.23.tar.gz",
-      "sha256": "9aaae424db5016840ae20ddfa0f99620405c867a0d4b3fd61dc1ea37dbbf1ca4",
-      "size": 114958,
+      "url": "packages/hamnix-printenv-1.0.24.tar.gz",
+      "sha256": "b165290bbce6135d012e3b5850605c27ba029ef15df84f884e5366e394d1e562",
+      "size": 117410,
       "description": "hamnix-linux printenv command",
       "depends": [
         "hamnix-init>=1"
@@ -1445,11 +1445,11 @@
     },
     {
       "name": "hamnix-id",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-id-1.0.23.tar.gz",
-      "sha256": "01fe4bdd98b0f0ba5c6dd9470d0769eba68da5bfdc4c2e520646ad330bed1ee8",
-      "size": 118051,
+      "url": "packages/hamnix-id-1.0.24.tar.gz",
+      "sha256": "1b425f993b820a0757782375a4a909d2581b4fa9c1b25a1cf80b511dbf776f2c",
+      "size": 120650,
       "description": "hamnix-linux id command",
       "depends": [
         "hamnix-init>=1"
@@ -1459,11 +1459,11 @@
     },
     {
       "name": "hamnix-hostname",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-hostname-1.0.23.tar.gz",
-      "sha256": "917e6ed72bfacecddd79b82da793d7378e8f771a7261a20457202add63c57e1e",
-      "size": 114577,
+      "url": "packages/hamnix-hostname-1.0.24.tar.gz",
+      "sha256": "7154a4ea78d03201bd990c86464a65718fefab104ce40513f80f1495a47820df",
+      "size": 117084,
       "description": "hamnix-linux hostname command",
       "depends": [
         "hamnix-init>=1"
@@ -1473,11 +1473,11 @@
     },
     {
       "name": "hamnix-uname",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-uname-1.0.23.tar.gz",
-      "sha256": "e2d500d51e7cf63decea6ff4fe6f2cd414a66929bf181e963e2ecd583a4fa348",
-      "size": 114529,
+      "url": "packages/hamnix-uname-1.0.24.tar.gz",
+      "sha256": "6769dad2435588f5c729d259ce3d572c38f588deaea8559e364ea07b7b19e3ff",
+      "size": 116961,
       "description": "hamnix-linux uname command",
       "depends": [
         "hamnix-init>=1"
@@ -1487,11 +1487,11 @@
     },
     {
       "name": "hamnix-ps",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-ps-1.0.23.tar.gz",
-      "sha256": "df63cf00d508844b6f4bbd159ff761e32da5cbc51adf36a5d43e6c1f6b90f06a",
-      "size": 119334,
+      "url": "packages/hamnix-ps-1.0.24.tar.gz",
+      "sha256": "45e2d5731c87f9f66b93225e6e1b9202eb2c54e27f96e3dbb45a7642e87307d7",
+      "size": 121984,
       "description": "ps - print a per-task snapshot from /proc",
       "depends": [
         "hamnix-init>=1"
@@ -1501,11 +1501,11 @@
     },
     {
       "name": "hamnix-kill",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-kill-1.0.23.tar.gz",
-      "sha256": "e3f000939c906030782f8dd2f7f91786cc6687903a9b734b34679ccac65d245c",
-      "size": 128329,
+      "url": "packages/hamnix-kill-1.0.24.tar.gz",
+      "sha256": "11915af4fa639627921dbd4dcaced3b0ed6c3864d4a252dbc7e7be7f999a8756",
+      "size": 131004,
       "description": "hamnix-linux kill command",
       "depends": [
         "hamnix-init>=1"
@@ -1515,11 +1515,11 @@
     },
     {
       "name": "hamnix-tar",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-tar-1.0.23.tar.gz",
-      "sha256": "488db60aee41ac8231e64957b1d39bf5e839df20c57f0e0d266e2dbbc7ebfcf8",
-      "size": 144416,
+      "url": "packages/hamnix-tar-1.0.24.tar.gz",
+      "sha256": "254375fd0feaa7565b913df11bab832b88b60a2025d49692a5d539aa3bd181b9",
+      "size": 147140,
       "description": "hamnix-linux tar command",
       "depends": [
         "hamnix-init>=1"
@@ -1529,11 +1529,11 @@
     },
     {
       "name": "hamnix-gzip",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-gzip-1.0.23.tar.gz",
-      "sha256": "2b21c00ae56b1c0520dffc9bfbd5b227dbf56fc6aeaec527171cd9c5a5189077",
-      "size": 124967,
+      "url": "packages/hamnix-gzip-1.0.24.tar.gz",
+      "sha256": "68b293bbcd2e4e0dbe26c5d0e6ca0224c000cc0df40c977c8dc80568adca8bb9",
+      "size": 127516,
       "description": "hamnix-linux gzip command",
       "depends": [
         "hamnix-init>=1"
@@ -1543,11 +1543,11 @@
     },
     {
       "name": "hamnix-base64",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-base64-1.0.23.tar.gz",
-      "sha256": "c5b7ab57919908e36b8afd34869eb5e1e7bb78205b36b96d6532749fac3bf022",
-      "size": 115690,
+      "url": "packages/hamnix-base64-1.0.24.tar.gz",
+      "sha256": "d53650a5cc9ef50ba9a7ea4bf486b90f11ee98487e2c2618c399bc1c1a351199",
+      "size": 118133,
       "description": "hamnix-linux base64 command",
       "depends": [
         "hamnix-init>=1"
@@ -1557,11 +1557,11 @@
     },
     {
       "name": "hamnix-cksum",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-cksum-1.0.23.tar.gz",
-      "sha256": "91d2bc4b0d799c32aa0d5dcaa6f74aa4cff33dcac8d4b391facf34f005f02059",
-      "size": 115987,
+      "url": "packages/hamnix-cksum-1.0.24.tar.gz",
+      "sha256": "1f9d2e917bda9355c43dbfbf38604b6755cc31fd3c4be796ada45b9fb6d9ac5b",
+      "size": 118319,
       "description": "hamnix-linux cksum command",
       "depends": [
         "hamnix-init>=1"
@@ -1571,11 +1571,11 @@
     },
     {
       "name": "hamnix-md5sum",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-md5sum-1.0.23.tar.gz",
-      "sha256": "b436b3f361a488e98540666be924d6806901f5d43cddeb9cf55b628d31ce1f90",
-      "size": 117611,
+      "url": "packages/hamnix-md5sum-1.0.24.tar.gz",
+      "sha256": "5e96cd9454648587bd20d2eb4a65395690a3d33efeb5cbb041246a9039aed732",
+      "size": 120157,
       "description": "hamnix-linux md5sum command",
       "depends": [
         "hamnix-init>=1"
@@ -1585,11 +1585,11 @@
     },
     {
       "name": "hamnix-more",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-more-1.0.23.tar.gz",
-      "sha256": "5b0ed85cad0c7d1f27d90f62d4d903d329fb7d1b5a2187d31f3386d1769519f7",
-      "size": 114712,
+      "url": "packages/hamnix-more-1.0.24.tar.gz",
+      "sha256": "dfdedf9b2ac9ae7e311a182c9429b9de32047395b25121aa3b1c5a8c5df12dcc",
+      "size": 117154,
       "description": "hamnix-linux more command",
       "depends": [
         "hamnix-init>=1"
@@ -1599,11 +1599,11 @@
     },
     {
       "name": "hamnix-less",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-less-1.0.23.tar.gz",
-      "sha256": "f34af7699bec80f606e514ee012c7c245cbdfefd960501eb3ff4d8cdaafcec7b",
-      "size": 114708,
+      "url": "packages/hamnix-less-1.0.24.tar.gz",
+      "sha256": "41ac37d8ad1a7f468c9b447696da4a3f5353903b1bffbd77a3c1a25c8498f352",
+      "size": 117151,
       "description": "hamnix-linux less command",
       "depends": [
         "hamnix-init>=1"
@@ -1613,11 +1613,11 @@
     },
     {
       "name": "hamnix-bc",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-bc-1.0.23.tar.gz",
-      "sha256": "0f03ea8db10113066e70df76aa617dea543308e9c105ba408ceab7aa6f8bc43f",
-      "size": 118070,
+      "url": "packages/hamnix-bc-1.0.24.tar.gz",
+      "sha256": "e9a473274a25c66a6ed1af7492903871739ec2188d2ca86a3a31186a954b3035",
+      "size": 120672,
       "description": "hamnix-linux bc command",
       "depends": [
         "hamnix-init>=1"
@@ -1627,11 +1627,11 @@
     },
     {
       "name": "hamnix-cal",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-cal-1.0.23.tar.gz",
-      "sha256": "36da75207b50b89feb4e965485b39bd854014b8c6ac4476f7c0851cf6c7dea3c",
-      "size": 114789,
+      "url": "packages/hamnix-cal-1.0.24.tar.gz",
+      "sha256": "4b2fb9ade0333dc7c01abf9b76a058bc938258ce8b0f0190e433884f296d0344",
+      "size": 117245,
       "description": "hamnix-linux cal command",
       "depends": [
         "hamnix-init>=1"
@@ -1641,11 +1641,11 @@
     },
     {
       "name": "hamnix-ascii",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-ascii-1.0.23.tar.gz",
-      "sha256": "5f7c1255bf5625e6a8feb6944cae0115827656ce117cb2883fcc07756b945078",
-      "size": 114946,
+      "url": "packages/hamnix-ascii-1.0.24.tar.gz",
+      "sha256": "bedbc075c6012e9c990bc2ea1c0af0289973f1deaa86bdd4b4b9fbd7a34b35ea",
+      "size": 117391,
       "description": "hamnix-linux ascii command",
       "depends": [
         "hamnix-init>=1"
@@ -1655,11 +1655,11 @@
     },
     {
       "name": "hamnix-awk",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-awk-1.0.23.tar.gz",
-      "sha256": "a8cf215678118497c25214c374d3eb9abacb1bcbd45aa7c1aa17f83279a15865",
-      "size": 152389,
+      "url": "packages/hamnix-awk-1.0.24.tar.gz",
+      "sha256": "2aac92a543859465f3cd4873d1931e28ea4c2766563b86a7d06d45047a398d3e",
+      "size": 155109,
       "description": "hamnix-linux awk command",
       "depends": [
         "hamnix-init>=1"
@@ -1669,11 +1669,11 @@
     },
     {
       "name": "hamnix-cmp",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-cmp-1.0.23.tar.gz",
-      "sha256": "c81a7d19ebaf9dff5700cc65c91492b83b209e10c5be8d64931f178aa6c4d605",
-      "size": 115336,
+      "url": "packages/hamnix-cmp-1.0.24.tar.gz",
+      "sha256": "2dc6098df81c0b56b2d9131c9f870b28f2c3262bae57be2cb2084d532c892284",
+      "size": 117734,
       "description": "hamnix-linux cmp command",
       "depends": [
         "hamnix-init>=1"
@@ -1683,11 +1683,11 @@
     },
     {
       "name": "hamnix-column",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-column-1.0.23.tar.gz",
-      "sha256": "f2cb900de54e66cdfce3d7bdbcd74ab4ce52d0460d13f3577f21b9937ce3db42",
-      "size": 117863,
+      "url": "packages/hamnix-column-1.0.24.tar.gz",
+      "sha256": "029255d8457dbc3c051b9adb851e760ee3f741e5d51f16383204d7da9ad98d40",
+      "size": 120450,
       "description": "hamnix-linux column command",
       "depends": [
         "hamnix-init>=1"
@@ -1697,11 +1697,11 @@
     },
     {
       "name": "hamnix-comm",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-comm-1.0.23.tar.gz",
-      "sha256": "41fb7925af1498f810cb5d75cf0dc9efa47d8bdea4257b89f37dc61854d11e5c",
-      "size": 116172,
+      "url": "packages/hamnix-comm-1.0.24.tar.gz",
+      "sha256": "b76a4de33d192a4077cb1f44799eaa0a4925c870ff0ef9ec289446a2715e82a9",
+      "size": 118542,
       "description": "hamnix-linux comm command",
       "depends": [
         "hamnix-init>=1"
@@ -1711,11 +1711,11 @@
     },
     {
       "name": "hamnix-diff",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-diff-1.0.23.tar.gz",
-      "sha256": "ae6962742fbb97315dc6d62f09e83a298bfba58976a74aebf64b0deffa0036c2",
-      "size": 118446,
+      "url": "packages/hamnix-diff-1.0.24.tar.gz",
+      "sha256": "b052c15440c229fbc8ff2beab810eb2f493eef83314f6ddf4e5dec4ebc000b3e",
+      "size": 121035,
       "description": "hamnix-linux diff command",
       "depends": [
         "hamnix-init>=1"
@@ -1725,10 +1725,10 @@
     },
     {
       "name": "hamnix-coreutils",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-coreutils-1.0.23.tar.gz",
-      "sha256": "c2c66664c4d16222085c25fffa1cb8b0bdee81ddafaec1ec132e0e5f67a29372",
+      "url": "packages/hamnix-coreutils-1.0.24.tar.gz",
+      "sha256": "8dd71dbff2328e6b70378b4a015a5d1bd941486bc06ff0d3d1db6276934c3755",
       "size": 482,
       "description": "hamnix-linux core userland -- pulls in every per-command package",
       "depends": [
@@ -1792,11 +1792,11 @@
     },
     {
       "name": "hamnix-apps",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-apps-1.0.23.tar.gz",
-      "sha256": "6c964b5204a0146b49cb6fe3bc1c86fd58fdcbbc826d05b4cbbd40efd66fa6cc",
-      "size": 458,
+      "url": "packages/hamnix-apps-1.0.24.tar.gz",
+      "sha256": "a3ec885b90fa9e5ead82b6a570ab29e62631fb0b6a20de0226b6eeaae8387525",
+      "size": 457,
       "description": "hamnix-linux desktop applications -- pulls in every per-application package, each carrying its program and the launcher that lists it in the Applications menu",
       "depends": [
         "hamnix-app-ham2048scene",
@@ -1829,11 +1829,11 @@
     },
     {
       "name": "hamnix-base",
-      "version": "1.0.23",
+      "version": "1.0.24",
       "arch": "x86_64",
-      "url": "packages/hamnix-base-1.0.23.tar.gz",
-      "sha256": "56ebe855b861c352fb763126731323ddf6e59577c4e86ae8e90ad7f85dc86328",
-      "size": 369,
+      "url": "packages/hamnix-base-1.0.24.tar.gz",
+      "sha256": "9290541902e119117b74c1b7fc7ca26be49bab43b6a776f499227adc8c76f620",
+      "size": 368,
       "description": "hamnix-linux base system -- init, shell, coreutils, networking, package manager, desktop, manual pages and the boot kernel modules",
       "depends": [
         "hamnix-init>=1",
